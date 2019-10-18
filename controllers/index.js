@@ -3,7 +3,7 @@ const router = express.Router()
 
 const app = express()
 
-router.use("/user", require("./userController"))
+router.use("/", require("./userController.js"))
 
 router.get("/", function(req,res){
     console.log("GET /")

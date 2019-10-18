@@ -1,0 +1,103 @@
+.mainCont {
+    height: 100%;
+    display: flex;
+    background-color: blue;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.info {
+    display: flex;
+    background-color: darkcyan;
+    flex-grow: 1;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.login {
+    display: flex;
+    background-color: darkturquoise;
+    flex-grow: 2;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.loginBod {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    justify-content: center;
+    background-color: lightsalmon;
+    height: 70%;
+    width: 70%;
+}
+
+.head {
+    flex-grow: 1;
+    justify-content: space-around;
+}
+
+.form {
+    display: inline-block;
+    flex-grow: 1;
+    justify-content: space-between;
+}
+
+.field {
+    flex-grow: 1;
+    width: 100%;
+    height: 25px;
+}
+
+.buttons {
+    flex-grow: 1;
+    justify-content: start;
+}
+
+.input {
+    flex-grow: 1;
+    font-size: 25px;
+}
+
+#login {
+    font-size: 50px;
+}
+
+#prompt {
+    font-size: 25px;
+}
+
+#icon {
+    background-color: lightcoral;
+}
+
+#pic {
+    border-radius: 280px;
+    width: 280px;
+    height: 280px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#name {
+    background-color: fuchsia;
+    font-size: 50px;
+    text-align: center;
+}
+
+#desc {
+    background-color: hotpink;
+    font-size: 20px;
+    text-align: center;
+}
+
+button {
+    height: 25px;
+    width: 100px
+}
