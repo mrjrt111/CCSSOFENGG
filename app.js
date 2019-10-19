@@ -13,19 +13,23 @@ app.use(bodyParser.urlencoded({ extended: false }))
 
 mongoose.Promise = global.Promise
 
-var MongoClient = require('mongodb').MongoClient
-var uri = "mongodb+srv://legaspij93:legs123@cluster0-xcsjd.mongodb.net/test?retryWrites=true&w=majority"
-MongoClient.connect(uri,{useNewUrlParser:true},{ useUnifiedTopology: true }, function(err,client){
-    const collection = client.db("SOFENGG").collection("users")
-    console.log("connected")
-    // var ins = {name:'John Legaspi',email:'legaspi@gmail.com', password:'legs', org:'lscs', type:"admin"}
-    // collection.insertOne(ins,function(err,res){
-    //     console.log("added")
-    // })
-//    client.close()
+mongoose.connect("mongodb://localhost:27017/CCSSOFENGG",{
+    useNewUrlParser: true
 })
 
-//app.set("view engine", "hbs")
+// var MongoClient = require('mongodb').MongoClient
+// var uri = "mongodb+srv://legaspij93:legs123@cluster0-xcsjd.mongodb.net/test?retryWrites=true&w=majority"
+// MongoClient.connect(uri,{useNewUrlParser:true},{ useUnifiedTopology: true }, function(err,client){
+//     const collection = client.db("SOFENGG").collection("users")
+//     console.log("connected")
+//     // var ins = {name:'John Legaspi',email:'legaspi@gmail.com', password:'legs', org:'lscs', type:"admin"}
+//     // collection.insertOne(ins,function(err,res){
+//     //     console.log("added")
+//     // })
+//    client.close()
+// })
+
+app.set("view engine", "hbs")
 
 app.use(express.static(__dirname + "/public"))
 

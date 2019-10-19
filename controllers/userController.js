@@ -11,26 +11,42 @@ const urlencoder = bodyparser.urlencoded({
 
 router.use(urlencoder)
 
-router.post("/login", urlencoder, function(req, res){
-    console.log("LOGGED IN")
-    
-    let user = {
-        email: req.body.email,
-        password: req.body.password,
-        org: req.body.org
+router.post("/register", function(req, res){
+    var user = {
+        name: "John Legaspi",
+        email : req.body.email,
+        password : req.body.password,
+        org: req.body.org,
+        type: "Admin"
     }
 
-    User.authenticate(user).then((newUser)=>{
-        if(newUser){
-            req.session.email = user.email
-            console.log(req.session.email)
-            res.render('dashboard.hbs')
-        }
+    User.create(user).then((user)=>{
+        console.log(user)
+        req.session.email = user.email
+        res.render("dashboard.hbs")
     }, (error)=>{
         res.sendFile(error)
     })
 })
 
+router.post("/login", function(req, res){
+  
+    var user = {
+        email: req.body.email,
+        password: req.body.password,
+        org: req.body.org
+    }
+    
+    User.authenticate(user).then((newUser)=>{
+        if(newUser){
+            req.session.email = user.email
+            console.log(req.session.email)
+            res.render("dashboard.hbs")
+        }
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
 
 //router.get('/login', function(req, res){
 //  res.render('dashboard.hbs');
