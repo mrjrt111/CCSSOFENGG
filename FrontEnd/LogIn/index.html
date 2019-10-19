@@ -20,11 +20,12 @@
         <div class="login">
             <div class="loginBod">
                 <div class="head">
-                    <span id="login">Login</span> <br/>
+                    <span class="loginHead" style="display: none;">Login</span> <br/>
+                    <span class="loginHead">Register</span> <br />
                     <span id="prompt">Please enter your login credentials here</span>
                 </div>
                 <div class="form">
-                    <form>
+                    <form style="display: none;">
                         <span class="input">Organization</span> <br />
                         <select class="field">
                             <option>AIESEC</option>
@@ -36,17 +37,23 @@
                         <input class="field" type="password" placeholder="Enter your password"> <br/>
                         <input type="checkbox"> <span class="input"> Remember Me </span>
                     </form>
-                <div class="form" style="display: none;">
+                     <form>
+                         <span class="input">Lastname</span> <br />
+                         <input class="field" type="text" placeholder="Please enter your last name here"> <br />
+                         <span class="input">Given Name</span> <br />
+                         <input class="field" type="password" placeholder="Please enter your given name here"> <br />
+                         <span class="input">Email</span> <br />
+                         <input class="field" type="text" placeholder="username@dlsu.edu.ph"> <br />
+                         <span class="input">Password</span> <br />
+                         <input class="field" type="password" placeholder="Enter your password"> <br />
+                         <span class="input">Phone number</span> <br />
+                         <input class="field" type="text" placeholder="1234567890"> <br />
                          <span class="input">Organization</span> <br />
                          <select class="field">
                              <option>AIESEC</option>
                              <option>AIESEC again</option>
                          </select> <br />
-                        <span class="input">Email</span> <br/>
-                        <input class="field" type="text" placeholder="username@dlsu.edu.ph"> <br/>
-                        <span class="input">Password</span> <br/>
-                        <input class="field" type="password" placeholder="Enter your password"> <br/>
-                </div>
+                     </form>
                 </div>
                 <div class="buttons">
                     <button id="loginButt" type="button">Login</button>
