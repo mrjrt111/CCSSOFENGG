@@ -26,7 +26,16 @@
                     </div>
                     <div id="form">
                         <span class="title">Upload Manually</span><br />
-                        <form>
+                        <div class="top">
+                            <div id="navi">
+                                <div class="button">ACTIVITY</div>
+                                <div class="button">PREACTS</div>
+                                <div class="button">POSTACTS</div>
+
+                                <button class="butt">Encode</button>
+                            </div>
+                        </div>
+                        <form id="activityForm" style="display: none;">
                             <span class="name">Organization</span>
                             <select class="input">
                                 <option>AIESEC</option>
@@ -66,6 +75,120 @@
                             <select class="input">
                                 <option>Officer1</option>
                             </select>
+                        </form>
+                        <form id="preactsForm" style="display: none;">
+                            <span class="name">Organization</span>
+                            <select class="input">
+                                <option>AIESEC</option>
+                            </select>
+                                <br />
+                            <span class="name">Term</span>
+                            <select class="input">
+                                <option>Term 1</option>
+                            </select>
+                                <br />
+                            <span class="name">Activity Name</span>
+                            <select class="input">
+                                <option>ARW</option>
+                            </select>
+                                <br />
+                            <span class="name">Type of Submission</span>
+                            <select class="input">
+                                <option>Document</option>
+                            </select>
+                                <br />
+                            <span class="name">Submitted by</span>
+                            <select class="input">
+                                <option>Me</option>
+                            </select>
+                                <br />
+                            <span class="name">Received by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                                <br />
+                            <span class="name">First checked by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                                <br />
+                            <span class="name">Second checked by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                                <br />
+                            <span class="name">Filed by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                                <br />
+                            <span class="name">Remarks</span>
+                            <input class="input" id="remarksField">
+                        </form>
+                        <form id="postactsForm>
+                            <span class="name">Organization</span>
+                            <select class="input">
+                                <option>AIESEC</option>
+                            </select>
+                            <br />
+                            <span class="name">Term</span>
+                            <select class="input">
+                                <option>Term 1</option>
+                            </select>
+                            <br />
+                            <span class="name">Activity Name</span>
+                            <select class="input">
+                                <option>ARW</option>
+                            </select>
+                            <br />
+                            <span class="name">Type of Submission</span>
+                            <select class="input">
+                                <option>Document</option>
+                            </select>
+                            <br />
+                            <span class="name">Submitted by</span>
+                            <select class="input">
+                                <option>Me</option>
+                            </select>
+                            <br />
+                            <span class="name">Received by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                            <br />
+                            <span class="name">First checked by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                            <br />
+                            <span class="name">Second checked by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                            <br />
+                            <span class="name">Filed by</span>
+                            <select class="input">
+                                <option>Not me</option>
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date">
+                            <br />
+                            <span class="name">Remarks</span>
+                            <input class="input" id="remarksField">
                         </form>
                     </div>
                     </div>
