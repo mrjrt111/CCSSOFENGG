@@ -126,7 +126,7 @@
                         }
                         
                         .topButt {
-                            height: 25px;
+                            height: 50px;
                             width: 100px;
                         }
 
@@ -164,7 +164,7 @@
                             margin-left: 60px;
                         }
 
-                        #blackListButt{
+                        .buttCont{
                             margin-top: auto;
                             margin-bottom: auto;
                             margin-left: auto;
