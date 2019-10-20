@@ -1,6 +1,141 @@
 <html>
+
+<head>
+    <link rel="stylesheet" type="text/css" href="dashboard.css">
+</head>
+
+<body>
+    <div class="mainCont">
+        <div class="header">
+            <span id="name">ADMINNAME</span>
+            <div id="butts">
+                <button id="addCSOOfficerButt" class="topButt" type="button">Add CSO Officer</button>
+                <button id="addOrganizationButt" class="topButt" type="button">Add Organization</button>
+                <button id="logOutButt" class="topButt" type="button" onclick="window.location.href = '/logout'">Logout</button>
+            </div>
+        </div>
+        <div class="header" id="header2">
+            <img id="pic" src="Kitten.jpg" alt="orgIcon">
+            <select id="name">
+                <option> AIESEC </option>
+                <option> AIESEC2 </option>
+                <option> AIESEC3 </option>
+            </select>
+            <span id="status">Status: Whitelisted</span>
+            <div class="buttCont">
+            <button id="addOrgOfficerButt" class="topButt" type="button">Add Org Officer</button>
+            <button id="blackListButt" class="topButt" type="button">Blacklist</button>
+            <button id="deleteButt" class="topButt" type="button">Delete</button>
+            </div>
+            </div>
+        </div>
+        <div id="divider">
+        <div class="body">
+            <div class="top">
+                <div id="navi">
+                    <div class="butt">PREACTS</div>
+                    <div class="butt">POSTACTS</div>
+                    <div class="butt">OTHERS</div>
+                </div>
+            </div>
+            <div class="dashboard">
+                <div class="container" id="preacts">
+                    <div class="submissionsCase">
+                        <div class="squares">
+                            <div class="squareThings">
+                                Total number
+                            </div>
+                            <div class="squareThings">
+                                View document information
+                            </div>
+                            <div class="squareThings">
+                                Recent number
+                            </div>
+                            <div class="squareThings">
+                                <a href="/docu/encode" style="text-decoration:none">Encode</a>
+                            </div>
+                        </div>
+                        <div class="submissions">
+                        <div class="dividerTwo"></div>
+                            <span> Required Pre-Activity Submissions</span>
+                            <div class="table"></div>
+                        </div>
+                    </div>
+                    <div class="officerListCase">
+                        <span id="officerList">List of officers</span>
+                        <div class="officerList"></div>
+                        <button class="manageButt" type="button">Manage Officers</button>
+                    </div>
+                </div>
+                <div class="container" id="postacts" style="display: none;">
+                    <div class="submissionsCase">
+                        <div class="squares">
+                            <div class="squareThings">
+                                Total number
+                            </div>
+                            <div class="squareThings">
+                                View document information
+                            </div>
+                            <div class="squareThings">
+                                Recent number
+                            </div>
+                            <div class="squareThings" onclick="">
+                                Encode
+                            </div>
+                        </div>
+                        <div class="submissions">
+                            <div class="dividerTwo"></div>
+                            <span> Required Post-Activity Submissions</span>
+                            <div class="table"></div>
+                        </div>
+                    </div>
+                    <div class="officerListCase">
+                        <span id="officerList">List of officers</span>
+                        <div class="officerList"></div>
+                        <button class="manageButt" type="button">Manage Officers</button>
+                    </div>
+                </div>
+                <div class="container" id="others" style="display: none;">
+                    <div class="submissionsCase">
+                        <div class="squares">
+                            <div class="squareThings">
+                                Total number
+                            </div>
+                            <div class="squareThings">
+                                View document information
+                            </div>
+                            <div class="squareThings">
+                                Recent number
+                            </div>
+                            <div class="squareThings">
+                                Encode
+                            </div>
+                        </div>
+                        <div class="submissions">
+                            <div class="dividerTwo"></div>
+                            <span> Other Submissions</span>
+                            <div class="table"></div>
+                        </div>
+                    </div>
+                    <div class="officerListCase">
+                        <span id="officerList">List of officers</span>
+                        <div class="officerList"></div>
+                        <button class="manageButt" type="button">Manage Officers</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>
+{{!-- 
+<html>
     <body>
         <form action="/act/addAct" method="post">
+        
+            <span class="input">Org</span> <br/>
+            <input class="field" type="text" placeholder="organization" name="org"> <br/>
+
             <span class="input">Name of Document</span> <br/>
             <input class="field" type="text" placeholder="name of document" name="nameDoc"> <br/>
             
@@ -36,4 +171,4 @@
             </div>
         </form>    
     </body>
-</html>
+</html> --}}

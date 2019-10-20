@@ -1,0 +1,144 @@
+.mainCont {
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+}
+   .header {
+       position: fixed;
+       display: flex;
+       background-color: chartreuse;
+       width: 100%;
+       justify-content: start;
+       align-content: center;
+       padding: 10px 0px 15px 0px;
+       height: 10%;
+       flex-direction: column;
+       top: 0%;
+   }
+
+   .divider{
+       position: absolute;
+       width:100%;
+       background-color: rebeccapurple;
+       height: 7%;
+       top:13%;
+   }
+
+   .body {
+       position: fixed;
+       display: relative;
+       background-color: deeppink;
+       height: 80%;
+       top: 20%;
+       width: 100%;
+   }
+
+   .containerEncode{
+       display: flex;
+       flex-direction: row;
+       width: 100%;
+       height: 90%;
+       margin-top: 2%;
+       background-color: palegreen;
+   }
+    #encoding {
+        background-color: orange;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #encodingDetails {
+        background-color: orangered;
+        flex-grow: 2;
+        display: flex;
+        flex-direction: column;
+    }
+
+    #orgName{
+       font-size: 50px;
+    }
+
+    #function{
+       font-size: 50px;
+       text-align: center;
+       margin-bottom: auto;
+       margin-left: auto;
+       margin-right: auto;
+    }
+
+    .pic{
+        border-radius: 300px;
+        width:300px;
+        height:300px;
+        margin-top: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #uploadDirectly{
+       flex-grow: 1;
+       background-color: salmon;
+    }
+
+    #form{
+        flex-grow: 3;
+        background-color: yellow;
+        display: flex;
+        flex-direction: column;
+        align-content: center;
+        justify-content: space-evenly;
+    }
+
+    .title{
+        font-size: 50px;
+    }
+
+    .name{
+        font-size: 25px;
+    }
+
+    .butt{
+         width: 100px;
+         height: 25px;
+    }
+
+    .smallText{
+        font-size: 14;
+    }
+
+    form{
+        margin: auto auto auto auto;
+        flex-grow: 2;
+    }
+
+     .button {
+         height: 100%;
+         flex-grow: 1;
+         border-style: solid;
+         border-width: 2px;
+         background-color: orange;
+         font-size: 20px;
+         padding-left: 20px;
+     }
+
+      #navi {
+          display: flex;
+          flex-direction: row;
+          width: 95%;
+          height: 40px;
+          margin-left: 30px;
+          justify-content: space-between;
+          background-color: paleturquoise;
+      }
+
+      .top {
+          display: flex;
+          flex-direction: row;
+          width: 100%;
+          flex-grow: 1;
+      }

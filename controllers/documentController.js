@@ -1,0 +1,60 @@
+const express = require("express")
+const router = express.Router()
+const Document = require("../models/document")
+const Organization = require("../models/organization")
+const User = require("../models/user")
+const bodyparser = require("body-parser")
+
+const app = express()
+
+const urlencoder = bodyparser.urlencoded({
+    extended: false
+})
+
+router.use(urlencoder)
+
+router.get("/encode", (req, res)=>{
+    User.getCSO().then((users)=>{
+        console.log(users)
+        Organization.getAll().then((orgs)=>{
+            console.log(orgs)
+            res.render("encode.hbs",{
+                orgs, users
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+    
+})
+
+router.post("/addDocu", (req, res)=>{
+    var docu = {
+        org: req.body.org,
+        term: req.body.term,
+        actName: req.body.actName,
+        subType: req.body.subType,
+        subBy: req.body.subBy,
+        recBy: req.body.recBy,
+        dateRec: req.body.dateRec,
+        firstCheck: req.body.firstCheck,
+        firstDate: req.body.firstDate,
+        secCheck: req.body.secCheck,
+        secDate: req.body.secDate,
+        filedBy: req.body.filedBy,
+        fileDate: req.body.fileDate,
+        remarks: req.body.remarks
+    }
+
+    Document.create(docu).then((docu)=>{
+        console.log(docu)
+        req.session.actName = docu.actName
+        res.render("dashboard.hbs")
+    },(error)=>{
+        res.sendFile(error)
+    })
+})
+
+module.exports = router

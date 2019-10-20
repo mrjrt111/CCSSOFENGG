@@ -57,6 +57,16 @@ exports.get = function(id){
       })
 }
 
+exports.getCSO = function(){
+  return new Promise(function(resolve, reject){
+      User.find({"org":"CSO"}).then((users)=>{
+          resolve(users)
+      }, (err)=>{
+          reject(err)
+      })
+  })
+}
+
 exports.getUser = function(email){
     return new Promise(function(resolve, reject){
         User.findOne({email:email}).then((user)=>{

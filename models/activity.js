@@ -1,6 +1,7 @@
 const mongoose = require("mongoose")
 
 var activitySchema = mongoose.Schema({
+    org: String,
     docuType: String,
     actType: String,
     actName: String,

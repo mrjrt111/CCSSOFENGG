@@ -1,0 +1,215 @@
+.mainCont {
+    background-color: blue;
+    display: flex;
+    flex-wrap: wrap;
+    height: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.header {
+    position: fixed;
+    display: flex;
+    background-color: chartreuse;
+    width: 100%;
+    justify-content: start;
+    align-content: center;
+    padding: 10px 0px 15px 0px;
+    height: 10%;
+    top:0%;
+}
+
+.body {
+    position: fixed;
+    display: flex;
+    background-color: deeppink;
+    height: 80%;
+    top: 25%;
+    width: 100%;
+    flex-direction: column;
+}
+
+.butt {
+    height: 40px;
+    flex-grow: 1;
+    border-style: solid;
+    border-width: 2px;
+    background-color: yellow;
+    font-size: 35px;
+    padding-left: 20px;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    height: 95%;
+    background-color: royalblue;
+    margin-left: 30px;
+    width: 95%;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.submissionsCase {
+    margin-top: 10px;
+    position: relative;
+    height: 100%;
+    background-color: pink;
+    width: 90%;
+    font-size: 25px;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.table {
+    position: absolute;
+    overflow: scroll;
+    top: 10%;
+    height: 80%;
+    width: 95%;
+    margin-left: 20px;
+    background-color: white;
+    border-style: solid;
+    border-width: 2px;
+}
+
+.officerListCase {
+    margin-left: 50px;
+    height: 70%;
+    width: 25%;
+    background-color: blue;
+    border-style: solid;
+    border-width: 2px;
+}
+
+ .officerList {
+     margin-left: auto;
+     margin-right: auto;
+     height: 80%;
+     width: 90%;
+     overflow: scroll;
+     background-color: white;
+     border-style: solid;
+     border-width: 2px;
+ }
+
+.dashboard {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+}
+
+.dividerTwo {
+    width: 100%;
+    height: 10px;
+    background-color: springgreen;
+}
+
+#pic {
+    border-radius: 70px;
+    width: 70px;
+    height: 70px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 50px;
+}
+
+#name {
+    font-size: 25px;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 30px;
+}
+
+.topButt {
+    height: 50px;
+    width: 100px;
+}
+
+#butts{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+#divider {
+    height: 8%;
+    background-color: darkmagenta;
+    width: 100%;
+    position: absolute;
+    top: 22%;
+}
+
+#navi {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height: 40px;
+    margin-left: 30px;
+    justify-content: space-between;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+#officerList {
+    font-size: 25px;
+    margin-left: 60px;
+}
+
+.buttCont{
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: auto;
+}
+
+#status{
+     margin-top: auto;
+     margin-bottom: auto;
+     margin-left: 30px;
+}
+
+#header2{
+    top: 10%;
+    background-color: cyan;
+}
+
+.submissions{
+    height: 70%;
+    width: 90%;
+    position: relative;
+    background-color: salmon;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.squares{
+    height: 30%;
+    width: 90%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: seagreen;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.squareThings{
+    height: 80%;
+    width: 20%;
+    background-color: skyblue;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.manageButt{
+    width: 100%;
+}

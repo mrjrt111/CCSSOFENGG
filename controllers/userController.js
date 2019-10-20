@@ -13,7 +13,7 @@ router.use(urlencoder)
 
 router.post("/register", function(req, res){
     var user = {
-        name: "John Legaspi",
+        name: "Justin Chua",
         email : req.body.email,
         password : req.body.password,
         org: req.body.org,
@@ -23,7 +23,8 @@ router.post("/register", function(req, res){
     User.create(user).then((user)=>{
         console.log(user)
         req.session.email = user.email
-        res.render("dashboard.hbs")
+        res.redirec("/dashboard")
+        // res.render("dashboard.hbs")
     }, (error)=>{
         res.sendFile(error)
     })
@@ -36,12 +37,13 @@ router.post("/login", function(req, res){
         password: req.body.password,
         org: req.body.org
     }
-    
+        
     User.authenticate(user).then((newUser)=>{
         if(newUser){
             req.session.email = user.email
             console.log(req.session.email)
-            res.render("dashboard.hbs")
+            res.redirect("/dashboard")
+            // res.render("dashboard.hbs")
         }
     }, (error)=>{
         res.sendFile(error)

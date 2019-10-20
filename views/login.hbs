@@ -1,5 +1,78 @@
 <html>
 
+    <head>
+        <link rel="stylesheet" type="text/css" href="login.css">
+    </head>
+
+    <body>
+        <div class="mainCont">
+            <div class="info">
+                <div id="icon">
+                    <img id="pic" src="Kitten.jpg" alt="The icon">
+                </div>
+                <div id="name">
+                    <span> App Name Here </span>
+                </div>
+                <div id="desc">
+                    <span> Documents Management System </span>
+                </div>
+            </div>
+            <div class="login">
+                <div class="loginBod">
+                    <div class="head">
+                        <span class="loginHead">Login</span> <br/>
+                        <span class="loginHead" style="display: none;">Register</span> <br />
+                        <span id="prompt">Please enter your login credentials here</span>
+                    </div>
+                    <div class="form">
+                        <form action="/login" method="POST">
+                            <span class="input">Organization</span> <br />
+                            
+                            <select id="orgChoice" class="field" name="org">
+                                {{#each orgs}}
+                                    <option>{{abbrev}}</option>
+                                {{/each}}
+                            </select> <br/>
+
+                            <span class="input">Email</span> <br/>
+                            <input class="field" type="text" placeholder="username@dlsu.edu.ph" name="email"> <br/>
+                            <span class="input">Password</span> <br/>
+                            <input class="field" type="password" placeholder="Enter your password" name="password"> <br/>
+                            <input type="checkbox"> <span class="input"> Remember Me </span>
+
+                            <div class="buttons">
+                                <input id="loginButt" type="submit" value="login"></input>
+                                <input id="adminButt" type="submit" value="register"></input>
+                            </div>
+                        </form>
+                        <form style="display: none;">
+                            <span class="input">Lastname</span> <br />
+                            <input class="field" type="text" placeholder="Please enter your last name here"> <br />
+                            <span class="input">Given Name</span> <br />
+                            <input class="field" type="password" placeholder="Please enter your given name here"> <br />
+                            <span class="input">Email</span> <br />
+                            <input class="field" type="text" placeholder="username@dlsu.edu.ph"> <br />
+                            <span class="input">Password</span> <br />
+                            <input class="field" type="password" placeholder="Enter your password"> <br />
+                            <span class="input">Phone number</span> <br />
+                            <input class="field" type="text" placeholder="1234567890"> <br />
+                            <span class="input">Organization</span> <br />
+                            <select class="field">
+                                <option>AIESEC</option>
+                                <option>AIESEC again</option>
+                            </select> <br />
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+    </body>
+
+</html>
+{{!-- <html>
+
 <head>
     <link rel="stylesheet" type="text/css" href="login.css">
 </head>
@@ -43,4 +116,4 @@
 
 </body>
 
-</html>
+</html> --}}

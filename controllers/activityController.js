@@ -11,8 +11,9 @@ const urlencoder = bodyparser.urlencoded({
 
 router.use(urlencoder)
 
-router.post('/addAct', (req,res) =>{
+router.post("/addAct", (req,res) =>{
     var act = {
+        org: req.body.org,
         docuType: req.body.nameDoc,
         actType: req.body.type,
         actName: req.body.actName,
@@ -28,6 +29,7 @@ router.post('/addAct', (req,res) =>{
     Activity.create(act).then((act)=>{
         console.log(act)
         req.session.actName = act.actName
+        res.render("encode.hbs")
     }, (error)=>{
         res.sendFile(error)
     })
