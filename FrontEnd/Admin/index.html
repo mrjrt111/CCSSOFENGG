@@ -58,12 +58,71 @@
                         <div class="submissions">
                         <div class="dividerTwo"></div>
                             <span> Required Pre-Activity Submissions</span>
-                            <div class="table"></div>
+                            <div class="table">
+                                <table id="preactsTable">
+                                    <tr>
+                                        <th onclick="sortTable(0, 'preactsTable')">Activity Name</th>
+                                        <th onclick="sortTable(1, 'preactsTable')">Activity Status</th>
+                                        <th onclick="sortTable(2, 'preactsTable')">Officer in Charge</th>
+                                        <th>Remarks</th>
+                                    </tr>
+
+                                    <tr>
+                                        <td>
+                                            azsxdcfvghbjnkm
+                                        </td>
+                                        <td>
+                                            gbhjnkml,;
+                                        </td>
+                                        <td>
+                                             cjhskcnkasndkasnx
+                                        </td>
+                                        <td>
+                                            zncksnclkasclksjcc
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            kjdlkfjslfas
+                                        </td>
+                                        <td>
+                                            oipsoipodsif,;
+                                        </td>
+                                        <td>
+                                            vmnv,mdnlksd
+                                        </td>
+                                        <td>
+                                            ocvpcoxivpoxcv
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            asnfkljsalfjas
+                                        </td>
+                                        <td>
+                                            ivcuibuvcibucovb,;
+                                        </td>
+                                        <td>
+                                            uvibhcuibucvibi
+                                        </td>
+                                        <td>
+                                            qwnbwqmeqwen
+                                        </td>
+                                    </tr>
+                                    
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="officerListCase">
                         <span id="officerList">List of officers</span>
-                        <div class="officerList"></div>
+                        <div class="officerList">
+                            <table id="preactsOfficersTable">
+                                <tr>
+                                    <th onclick="sortTable(3, 'preactsOfficersTable')">Officer Name</th>
+                                </tr>
+                            </table>
+                        </div>
                         <button class="manageButt" type="button">Manage Officers</button>
                     </div>
                 </div>
@@ -86,12 +145,27 @@
                         <div class="submissions">
                             <div class="dividerTwo"></div>
                             <span> Required Post-Activity Submissions</span>
-                            <div class="table"></div>
+                            <div class="table">
+                                <table id="postactsTable">
+                                    <tr>
+                                        <th onclick="sortTable(0, 'postactsTable')">Activity Name</th>
+                                        <th onclick="sortTable(1, 'postactsTable')">Activity Status</th>
+                                        <th onclick="sortTable(2, 'postactsTable')">Officer in Charge</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="officerListCase">
                         <span id="officerList">List of officers</span>
-                        <div class="officerList"></div>
+                        <div class="officerList">
+                            <table id="postactsOfficersTable">
+                                <tr>
+                                    <th onclick="sortTable(3, 'postactsOfficersTable')">Officer Name</th>
+                                </tr>
+                            </table>
+                        </div>
                         <button class="manageButt" type="button">Manage Officers</button>
                     </div>
                 </div>
@@ -114,17 +188,71 @@
                         <div class="submissions">
                             <div class="dividerTwo"></div>
                             <span> Other Submissions</span>
-                            <div class="table"></div>
+                            <div class="table">
+                                <table id="othersTable">
+                                    <tr>
+                                        <th onclick="sortTable(0, 'othersTable')">Activity Name</th>
+                                        <th onclick="sortTable(1, 'othersTable')">Activity Status</th>
+                                        <th onclick="sortTable(2,'othersTable')">Officer in Charge</th>
+                                        <th>Remarks</th>
+                                    </tr>
+                                </table>
+                            </div>
                         </div>
                     </div>
                     <div class="officerListCase">
                         <span id="officerList">List of officers</span>
-                        <div class="officerList"></div>
+                        <div class="officerList">
+                            <table id="othersOfficersTable">
+                                <tr>
+                                    <th onclick="sortTable(3,'othersOfficersTable')">Officer Name</th>
+                                </tr>
+                            </table>
+                        </div>
                         <button class="manageButt" type="button">Manage Officers</button>
                     </div>
                 </div>
             </div>
         </div>
+<!--Sorting function for tables LEGS or JUSTIN move this to what file youre using for the scripts-->
+        <script>
+            function sortTable(n, id) {
+                var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                table = document.getElementById(id);
+                switching = true;
+                dir = "asc";
+                while (switching) {
+                    switching = false;
+                    rows = table.rows;
+                    for (i = 1; i < (rows.length - 1); i++) {
+                        shouldSwitch = false;
+                        x = rows[i].getElementsByTagName("TD")[n];
+                        y = rows[i + 1].getElementsByTagName("TD")[n];
+                        if (dir == "asc") {
+                            if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        } else if (dir == "desc") {
+                            if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                shouldSwitch = true;
+                                break;
+                            }
+                        }
+                    }
+                    if (shouldSwitch) {
+                        rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                        switching = true;
+                        switchcount++;
+                    } else {
+                        if (switchcount == 0 && dir == "asc") {
+                            dir = "desc";
+                            switching = true;
+                        }
+                    }
+                }
+            }
+        </script>
 </body>
 
 </html>

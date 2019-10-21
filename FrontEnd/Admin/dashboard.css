@@ -213,3 +213,11 @@
                         .manageButt{
                             width: 100%;
                         }
+
+                        table{
+                            width: 100%;
+                        }
+
+                        tr:nth-child(even) {
+                            background-color: #f37f7f
+                        }
