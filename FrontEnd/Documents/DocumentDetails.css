@@ -2,11 +2,12 @@
     display: flex;
     height: 100;
     width: 100;
-    background-color: blue;
+    background-color: #8C908C;
     justify-content: space-between;
     align-content: center;
     flex-direction: column;
     position: relative;
+    font-family: 'Signika';
 }
 
 .butt {
@@ -21,15 +22,17 @@
     position: fixed;
     display: flex;
     flex-direction: column;
-    background-color: chartreuse;
+    background-color: #1D3D19;
 }
 
 .title {
-    font-size: 25px;
+    font-size: 50px;
+    color: #CBCA98;
+    font-family: 'Fira Sans';
 }
 
 #body {
-    background-color: deeppink;
+    background-color: #CBCA98;
     height: 90%;
     width: 100%;
     position: fixed;
@@ -38,8 +41,13 @@
     flex-direction: row;
 }
 
+#backButt {
+    background-color: #B3AE5D;
+    color: #1D3D19;
+}
+
 #tableContainer {
-    background-color: lavenderblush;
+    background-color: rgb(222, 224, 207);
     height: 90%;
     width: 95%;
     position: relative;
@@ -51,7 +59,7 @@
 }
 
 #table {
-    background-color: pink;
+    background-color: rgb(222, 224, 207);
     width: 95%;
     position: relative;
     top: 5%;
@@ -62,7 +70,7 @@
 }
 
 #buttonsContainer {
-    background-color: palevioletred;
+    background-color: rgb(222, 224, 207);
     width: 95%;
     position: relative;
     display: flex;
@@ -73,5 +81,31 @@
 }
 
 tr:nth-child(n) {
-    background-color: peachpuff;
+    background-color: #CBCA98;
+    color: #1D3D19;
+}
+
+tr:nth-child(2n) {
+    background-color: #8CA484;
+    color: #1D3D19;
+}
+
+th:nth-child(n) {
+    background-color: #1D3D19;
+    color: #B3AE5D;
+}
+
+th:nth-child(2n) {
+    background-color: #B3AE5D;
+    color: #1D3D19;
+}
+
+#editButt {
+    background-color: #8CA484;
+    color: #CBCA98;
+}
+
+#deleteButt {
+    background-color: #8C908C;
+    color: #CBCA98;
 }
