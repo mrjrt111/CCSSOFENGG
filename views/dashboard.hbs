@@ -1,200 +1,260 @@
 <html>
 
-<head>
-    <link rel="stylesheet" type="text/css" href="dashboard.css">
-</head>
+    <head>
+        <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet'>
+        <link rel="stylesheet" type="text/css" href="dashboard.css">
+    </head>
 
-<body>
-    <div class="mainCont">
-        <div class="header">
-            <span id="name">ADMINNAME</span>
-            <div id="butts">
-                <button id="addCSOOfficerButt" class="topButt" type="button">Add CSO Officer</button>
-                <button id="addOrganizationButt" class="topButt" type="button">Add Organization</button>
-                <button id="logOutButt" class="topButt" type="button" onclick="window.location.href = '/logout'">Logout</button>
+    <body>
+        <div class="mainCont">
+            <div class="header">
+                <span id="name">ADMINNAME</span>
+                <div id="butts">
+                    <button id="addCSOOfficerButt" class="topButt" type="button">Add CSO Officer</button>
+                    <button id="addOrganizationButt" class="topButt" type="button">Add Organization</button>
+                    <button id="logOutButt" class="topButt" type="button" onclick="window.location.href = '/logout'">Logout</button>
+                </div>
             </div>
-        </div>
-        <div class="header" id="header2">
-            <img id="pic" src="Kitten.jpg" alt="orgIcon">
-            <select id="name">
-                <option> AIESEC </option>
-                <option> AIESEC2 </option>
-                <option> AIESEC3 </option>
-            </select>
-            <span id="status">Status: Whitelisted</span>
-            <div class="buttCont">
-            <button id="addOrgOfficerButt" class="topButt" type="button">Add Org Officer</button>
-            <button id="blackListButt" class="topButt" type="button">Blacklist</button>
-            <button id="deleteButt" class="topButt" type="button">Delete</button>
-            </div>
+            <div class="header" id="header2">
+                <div id="pic"></div>
+                <!-- <img id="pic" src="Kitten.jpg" alt="orgIcon"> -->
+                <select id="name">
+                    <option> AIESEC </option>
+                    <option> AIESEC2 </option>
+                    <option> AIESEC3 </option>
+                </select>
+                <span id="status">Status: Whitelisted</span>
+                <div class="buttCont">
+                    <button id="addOrgOfficerButt" class="topButt" type="button">Add Org Officer</button>
+                    <button id="blackListButt" class="topButt" type="button">Blacklist</button>
+                    <button id="deleteButt" class="topButt" type="button">Delete</button>
+                </div>
             </div>
         </div>
         <div id="divider">
-        <div class="body">
-            <div class="top">
-                <div id="navi">
-                    <div class="butt">PREACTS</div>
-                    <div class="butt">POSTACTS</div>
-                    <div class="butt">OTHERS</div>
-                </div>
-            </div>
-            <div class="dashboard">
-                <div class="container" id="preacts">
-                    <div class="submissionsCase">
-                        <div class="squares">
-                            <div class="squareThings">
-                                Total number
-                            </div>
-                            <div class="squareThings">
-                                View document information
-                            </div>
-                            <div class="squareThings">
-                                Recent number
-                            </div>
-                            <div class="squareThings">
-                                <a href="/docu/encode" style="text-decoration:none">Encode</a>
-                            </div>
-                        </div>
-                        <div class="submissions">
-                        <div class="dividerTwo"></div>
-                            <span> Required Pre-Activity Submissions</span>
-                            <div class="table">
-                                 <thead>
-                                    <th>Organization</th>
-                                    <th>Term</th>
-                                    <th>Activity</th>
-                                    {{!-- <th>Submission Type</th>
-                                    <th>Submitted By</th>
-                                    <th>Recorded By</th>
-                                    <th>Date Recorded</th>
-                                    <th>First Checked By</th>
-                                    <th>Date Checked</th>
-                                    <th>Second Checked By</th>
-                                    <th>Date Checked</th>
-                                    <th>filed By</th>
-                                    <th>file Date</th>
-                                    <th>Remarks</th> --}}
-                                </thead>
-                                <tbody>
-                                    {{!-- {{#each docus}}
-                                    <tr>{{}}</tr>
-                                    {{/each}} --}}
-                                </tbody>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="officerListCase">
-                        <span id="officerList">List of officers</span>
-                        <div class="officerList"></div>
-                        <button class="manageButt" type="button">Manage Officers</button>
+            <div class="body">
+                <div class="top">
+                    <div id="navi">
+                        <div class="butt">PREACTS</div>
+                        <div class="butt">POSTACTS</div>
+                        <div class="butt">OTHERS</div>
                     </div>
                 </div>
-                <div class="container" id="postacts" style="display: none;">
-                    <div class="submissionsCase">
-                        <div class="squares">
-                            <div class="squareThings">
-                                Total number
+                <div class="dashboard">
+                    <div class="container" id="preacts">
+                        <div class="submissionsCase">
+                            <div class="squares">
+                                <div class="squareThings">
+                                    Total number
+                                </div>
+                                <div class="squareThings">
+                                    View document information
+                                </div>
+                                <div class="squareThings">
+                                    Recent number
+                                </div>
+                                <div class="squareThings">
+                                    <a href="/docu/encode" style="text-decoration:none">Encode</a>
+                                </div>
                             </div>
-                            <div class="squareThings">
-                                View document information
-                            </div>
-                            <div class="squareThings">
-                                Recent number
-                            </div>
-                            <div class="squareThings" onclick="">
-                                Encode
-                            </div>
-                        </div>
-                        <div class="submissions">
-                            <div class="dividerTwo"></div>
-                            <span> Required Post-Activity Submissions</span>
-                            <div class="table">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="officerListCase">
-                        <span id="officerList">List of officers</span>
-                        <div class="officerList"></div>
-                        <button class="manageButt" type="button">Manage Officers</button>
-                    </div>
-                </div>
-                <div class="container" id="others" style="display: none;">
-                    <div class="submissionsCase">
-                        <div class="squares">
-                            <div class="squareThings">
-                                Total number
-                            </div>
-                            <div class="squareThings">
-                                View document information
-                            </div>
-                            <div class="squareThings">
-                                Recent number
-                            </div>
-                            <div class="squareThings">
-                                Encode
-                            </div>
-                        </div>
-                        <div class="submissions">
-                            <div class="dividerTwo"></div>
-                            <span> Other Submissions</span>
-                            <div class="table">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <div class="officerListCase">
-                        <span id="officerList">List of officers</span>
-                        <div class="officerList"></div>
-                        <button class="manageButt" type="button">Manage Officers</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-</body>
+                            <div class="submissions">
+                                <div class="dividerTwo"></div>
+                                <span> Required Pre-Activity Submissions</span>
+                                <div class="table">
+                                    <table id="preactsTable">
+                                        <tr>
+                                            <th onclick="sortTable(0, 'preactsTable')">Activity Name</th>
+                                            <th onclick="sortTable(1, 'preactsTable')">Activity Status</th>
+                                            <th onclick="sortTable(2, 'preactsTable')">Officer in Charge</th>
+                                            <th>Remarks</th>
+                                        </tr>
 
+                                        <tr>
+                                            <td>
+                                                azsxdcfvghbjnkm
+                                            </td>
+                                            <td>
+                                                gbhjnkml,;
+                                            </td>
+                                            <td>
+                                                cjhskcnkasndkasnx
+                                            </td>
+                                            <td>
+                                                zncksnclkasclksjcc
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                kjdlkfjslfas
+                                            </td>
+                                            <td>
+                                                oipsoipodsif,;
+                                            </td>
+                                            <td>
+                                                vmnv,mdnlksd
+                                            </td>
+                                            <td>
+                                                ocvpcoxivpoxcv
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                asnfkljsalfjas
+                                            </td>
+                                            <td>
+                                                ivcuibuvcibucovb,;
+                                            </td>
+                                            <td>
+                                                uvibhcuibucvibi
+                                            </td>
+                                            <td>
+                                                qwnbwqmeqwen
+                                            </td>
+                                        </tr>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="officerListCase">
+                            <span id="officerList">List of officers</span>
+                            <div class="officerList">
+                                <table id="preactsOfficersTable">
+                                    <tr>
+                                        <th onclick="sortTable(3, 'preactsOfficersTable')">Officer Name</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <button class="manageButt" type="button">Manage Officers</button>
+                        </div>
+                    </div>
+                    <div class="container" id="postacts" style="display: none;">
+                        <div class="submissionsCase">
+                            <div class="squares">
+                                <div class="squareThings">
+                                    Total number
+                                </div>
+                                <div class="squareThings">
+                                    View document information
+                                </div>
+                                <div class="squareThings">
+                                    Recent number
+                                </div>
+                                <div class="squareThings">
+                                    Encode
+                                </div>
+                            </div>
+                            <div class="submissions">
+                                <div class="dividerTwo"></div>
+                                <span> Required Post-Activity Submissions</span>
+                                <div class="table">
+                                    <table id="postactsTable">
+                                        <tr>
+                                            <th onclick="sortTable(0, 'postactsTable')">Activity Name</th>
+                                            <th onclick="sortTable(1, 'postactsTable')">Activity Status</th>
+                                            <th onclick="sortTable(2, 'postactsTable')">Officer in Charge</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="officerListCase">
+                            <span id="officerList">List of officers</span>
+                            <div class="officerList">
+                                <table id="postactsOfficersTable">
+                                    <tr>
+                                        <th onclick="sortTable(3, 'postactsOfficersTable')">Officer Name</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <button class="manageButt" type="button">Manage Officers</button>
+                        </div>
+                    </div>
+                    <div class="container" id="others" style="display: none;">
+                        <div class="submissionsCase">
+                            <div class="squares">
+                                <div class="squareThings">
+                                    Total number
+                                </div>
+                                <div class="squareThings">
+                                    View document information
+                                </div>
+                                <div class="squareThings">
+                                    Recent number
+                                </div>
+                                <div class="squareThings">
+                                    <a href="/docu/encode" style="text-decoration:none">Encode</a>
+                                </div>
+                            </div>
+                            <div class="submissions">
+                                <div class="dividerTwo"></div>
+                                <span> Other Submissions</span>
+                                <div class="table">
+                                    <table id="othersTable">
+                                        <tr>
+                                            <th onclick="sortTable(0, 'othersTable')">Activity Name</th>
+                                            <th onclick="sortTable(1, 'othersTable')">Activity Status</th>
+                                            <th onclick="sortTable(2,'othersTable')">Officer in Charge</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="officerListCase">
+                            <span id="officerList">List of officers</span>
+                            <div class="officerList">
+                                <table id="othersOfficersTable">
+                                    <tr>
+                                        <th onclick="sortTable(3,'othersOfficersTable')">Officer Name</th>
+                                    </tr>
+                                </table>
+                            </div>
+                            <button class="manageButt" type="button">Manage Officers</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Sorting function for tables LEGS or JUSTIN move this to what file youre using for the scripts-->
+            <script>
+                function sortTable(n, id) {
+                    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
+                    table = document.getElementById(id);
+                    switching = true;
+                    dir = "asc";
+                    while (switching) {
+                        switching = false;
+                        rows = table.rows;
+                        for (i = 1; i < (rows.length - 1); i++) {
+                            shouldSwitch = false;
+                            x = rows[i].getElementsByTagName("TD")[n];
+                            y = rows[i + 1].getElementsByTagName("TD")[n];
+                            if (dir == "asc") {
+                                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                    shouldSwitch = true;
+                                    break;
+                                }
+                            } else if (dir == "desc") {
+                                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
+                                    shouldSwitch = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (shouldSwitch) {
+                            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                            switching = true;
+                            switchcount++;
+                        } else {
+                            if (switchcount == 0 && dir == "asc") {
+                                dir = "desc";
+                                switching = true;
+                            }
+                        }
+                    }
+                }
+            </script>
+        </body>
 </html>
-{{!-- 
-<html>
-    <body>
-        <form action="/act/addAct" method="post">
-        
-            <span class="input">Org</span> <br/>
-            <input class="field" type="text" placeholder="organization" name="org"> <br/>
-
-            <span class="input">Name of Document</span> <br/>
-            <input class="field" type="text" placeholder="name of document" name="nameDoc"> <br/>
-            
-            <span class="input">Type of Activity</span> <br/>
-            <input class="field" type="text" placeholder="Type of Activity" name="type"> <br/>
-            
-            <span class="input">Name of Activity</span> <br/>
-            <input class="field" type="text" placeholder="Type of Activity" name="actName"> <br/>
-            
-            <span class="input">Date</span> <br/>
-            <input class="field" type="text" placeholder="MM/DD/YYYY" name="date"> <br/>
-                        
-            <span class="input">Venue</span> <br/>
-            <input class="field" type="text" placeholder="Venue" name="venue"> <br/>
-                        
-            <span class="input">Time</span> <br/>
-            <input class="field" type="text" placeholder="00:00" name="time"> <br/>
-            
-            <span class="input">ENP</span> <br/>
-            <input class="field" type="text" placeholder="input number" name="ENPnum"> <br/>
-                        
-            <span class="input">ENMP</span> <br/>
-            <input class="field" type="text" placeholder="input number" name="ENMPnum"> <br/>    
-
-            <span class="input">Is Online</span> <br/>
-            <input class="field" type="text" placeholder="Yes/No" name="online"> <br/>    
-                    
-            <span class="input">In GOSM</span> <br/>
-            <input class="field" type="text" placeholder="Yes/No" name="GOSM"> <br/>    
-                            
-            <div class="buttons">
-                <input id="loginButt" type="submit" value="Submit">
-            </div>
-        </form>    
-    </body>
-</html> --}}

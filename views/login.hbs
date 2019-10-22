@@ -1,5 +1,110 @@
 <html>
 
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="login.css">
+    <script src="jQuery.js"></script>
+
+        <script>
+            let warn = {{error}}
+            $(document).ready(function(){
+                    //$("#loginButt").click(function(){
+                    //    if($("#password").val() == "" || $("#email").val() == ""){
+                    //   console.log("X")
+
+                    //    alert("The username and/or password you entered does not match any of our registered accounts. Please try again or contact a CSO officer to fix this issue.")
+                    //    }
+
+                        
+                    //})
+
+                    if( warn == 1){
+                            alert("INVALID INPUT! TRY AGAIN")
+                        }
+                })
+
+            //$.ajax({
+            //    url: '/login',
+            //    type: "POST",
+            //    data: 'your form data',
+            //    success: function(response){
+            //        alert("ERROR")
+            //   }
+            //})
+        </script>
+</head>
+
+<body>
+    <div class="mainCont">
+        <div class="info">
+            <div id="icon">
+                <!--<img id="pic" src="Kitten.jpg" alt="The icon">-->
+            </div>
+            <div id="name">
+                <span> App Name Here </span>
+            </div>
+            <div id="desc">
+                <span> Documents Management System </span>
+            </div>
+        </div>
+        <div class="login">
+            <div class="loginBod">
+                <div class="head">
+                    <span class="loginHead">Login</span> <br/>
+                    <span class="loginHead" style="display: none;">Register</span> <br />
+                    <span id="prompt">Please enter your login credentials here</span>
+                </div>
+                <div class="form">
+                    <form action="/login" method="POST">
+                        <span class="input">Organization</span> <br />
+                        <select class="field" name="org">
+                            {{#each orgs}}
+                                <option>{{abbrev}}</option>
+                            {{/each}}
+                        </select> <br/>
+                        <span class="input">Email</span> <br/>
+                        <input class="field" type="text" placeholder="username@dlsu.edu.ph" name="email"> <br/>
+                        <span class="input">Password</span> <br/>
+                        <input class="field" type="password" placeholder="Enter your password" name="password"> <br/>
+                        <input type="checkbox"> <span class="input"> Remember Me </span>
+                        <input id="logButt" type="submit" value="Login" style="display: none;">
+                    </form>
+                    <form style="display: none;">
+                        <span class="input">Lastname</span> <br />
+                        <input class="field" type="text" placeholder="Please enter your last name here"> <br />
+                        <span class="input">Given Name</span> <br />
+                        <input class="field" type="password" placeholder="Please enter your given name here"> <br />
+                        <span class="input">Email</span> <br />
+                        <input class="field" type="text" placeholder="username@dlsu.edu.ph"> <br />
+                        <span class="input">Password</span> <br />
+                        <input class="field" type="password" placeholder="Enter your password"> <br />
+                        <span class="input">Phone number</span> <br />
+                        <input class="field" type="text" placeholder="1234567890"> <br />
+                        <span class="input">Organization</span> <br />
+                        <select class="field">
+                             <option>AIESEC</option>
+                             <option>AIESEC again</option>
+                         </select> <br />
+                    </form>
+                </div>
+                <form action="/regis" method="GET" style="display: none;">
+                    <input id="regButt" type="submit">
+                </form>
+                <div class="buttons">
+                    <button id="loginButt" type="button" onclick="document.getElementById('logButt').click()">Login</button>
+                    <button id="adminButt" type="button" onclick="document.getElementById('regButt').click()">Register</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
+
+{{!-- <html>
+
     <head>
         <link rel="stylesheet" type="text/css" href="login.css">
          <script src="jQuery.js"></script>
@@ -103,51 +208,5 @@
 
     </body>
 
-
-</html>
-{{!-- <html>
-
-<head>
-    <link rel="stylesheet" type="text/css" href="login.css">
-</head>
-
-<body>
-    <div class="mainCont">
-        <div class="info">
-            <div id="icon">
-                <img id="pic" src="Kitten.jpg" alt="The icon">
-            </div>
-            <div id="name">
-                <span> App Name Here </span>
-            </div>
-            <div id="desc">
-                <span> Documents Management System </span>
-            </div>
-        </div>
-        <div class="login">
-            <div class="loginBod">
-                <div class="head">
-                    <span id="login">Login</span> <br/>
-                    <span id="prompt">Please enter your login credentials here</span>
-                </div>
-                <div class="form">
-                    <form action="/login" method="post">
-                        <span class="input">Username</span> <br/>
-                        <input class="field" type="text" placeholder="username@dlsu.edu.ph" name="email"> <br/>
-                        <span class="input">Password</span> <br/>
-                        <input class="field" type="password" placeholder="Enter your password" name="password"> <br/>
-                        <span class="input">Organization Email</span> <br/>
-                        <input class="field" type="text" placeholder="organization@dlsu.edu.ph" name="org"> <br/>
-                        <input type="checkbox"> <span class="input"> Remember Me </span>
-                        <div class="buttons">
-                            <input id="loginButt" type="submit" value="login"></input>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-</body>
 
 </html> --}}

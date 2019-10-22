@@ -1,3 +1,257 @@
+{{!-- <html>
+
+<head>
+    <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="/encode.css">
+
+    <script>
+            function submitForm(){
+                var preActs = document.getElementById("preactsForm");
+                var postActs = document.getElementById("postactsForm");
+                var activity = document.getElementById("activityForm");
+                    if (window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(postActs).display == "none") {
+                        document.getElementById('submitActivity').click()
+                     }
+                     else if(window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(activity).display == "none"){
+                        document.getElementById('submitPostacts').click()
+                     }
+                     else if(window.getComputedStyle(postActs).display == "none" && window.getComputedStyle(activity).display == "none"){
+                        document.getElementById('submitPreacts').click()
+                     }
+            }
+        </script>  
+</head>
+
+<body>
+    <div class="mainCont">
+        <div class="header">
+            <button class="butt" type="button" id="backButt">Back</button>
+            <span id="orgName">DLSU ORG</span>
+        </div>
+        <div class="divider"></div>
+        <div class="body">
+            <div class="containerEncode">
+                <div id="encoding">
+                    <div class="pic"></div>
+                    <!-- <img class="pic" src="Kitten.jpg"> -->
+                    <span id="function">PREACTS ENCODING</span>
+                </div>
+                <div id="encodingDetails">
+                    <div id="uploadDirectly">
+                        <span class="title">Upload Directly</span>
+                        <br/>
+                        <span class=name>Name of File</span>
+                        <br/>
+                        <button class="butt">Select File</button>
+                        <button class="butt">Upload</button>
+                    </div>
+                    <div id="form">
+                        <span class="title">Upload Manually</span><br />
+                        <div class="top">
+                            <div id="navi">
+                                <div class="button">ACTIVITY</div>
+                                <div class="button">PREACTS</div>
+                                <div class="button">POSTACTS</div>
+
+                                <button class="butt" onclick="submitForm()">Encode</button>
+                            </div>
+                        </div>
+                        <form id="activityForm" style="display: none;">
+                            <span class="name">Organization</span>
+                            <select class="input">
+                                {{#each orgs}}
+                                    <option>{{abbrev}}</option>
+                                {{/each}}
+                            </select>
+                            <br/>
+                            <span class="name">Document Type</span>
+                            <input class="input" placeholder="doc">
+                            <br/>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="MM/dd">
+                            <br/>
+                            <span class="name">Time</span>
+                            <input class="input" placeholder="HH:MM-HH:MM">
+                            <br/>
+                            <span class="name">Type of Activity</span>
+                            <input class="input" placeholder="type">
+                            <br/>
+                            <span class="name">ENP</span>
+                            <input class="input" placeholder="number">
+                            <br/>
+                            <span class="name">Nature of Activity</span>
+                            <input class="input" placeholder="nature">
+                            <br/>
+                            <span class="name">ENMP</span>
+                            <input class="input" placeholder="number">
+                            <br/>
+                            <span class="name">Venue</span>
+                            <input class="input" placeholder="venue">
+                            <br/>
+                            <input type="checkbox">
+                            <span class="smallText">Online activity</span>
+                            <br/>
+                            <input type="checkbox">
+                            <span class="smallText">Activity is in GOSM</span>
+                            <br/>
+                            <span class="name">Officer in charge</span>
+                            <select class="input">
+                                <option>Officer1</option>
+                            </select>
+                            <input id="submitActivity" type="submit" value="submit" style="display: none;">
+                        </form>
+                        <form id="preactsForm" style="display: none;">
+                            <span class="name">Organization</span>
+                            <select class="input" name="org">
+                                {{#each orgs}}
+                                    <option>{{abbrev}}</option>
+                                {{/each}}
+                            </select>
+                            <br />
+                            <span class="name">Term</span>
+                            <select class="input" name="term">
+                                <option value="1">Term 1</option>
+                                <option value="2">Term 2</option>
+                                <option value="3">Term 3</option>
+                            </select>
+                            <br />
+                            <span class="name">Activity Name</span>
+                            <select class="input" name="actName">
+                                <option>ARW</option>
+                            </select>
+                            <br />
+                            <span class="name">Type of Submission</span>
+                            <select class="input" name="subType">
+                                <option>Document</option>
+                            </select>
+                            <br />
+                            <span class="name">Submitted by</span>
+                            <select class="input" name="subBy">
+                                {{#each officers}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <br />
+                            <span class="name">Received by</span>
+                            <select class="input" name="recBy">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="dateRec">
+                            <br />
+                            <span class="name">First checked by</span>
+                            <select class="input" name="firstCheck">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="firstDate">
+                            <br />
+                            <span class="name">Second checked by</span>
+                            <select class="input" name="secCheck">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="secDate">
+                            <br />
+                            <span class="name">Filed by</span>
+                            <select class="input" name="filedBy">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="fileDate">
+                            <br />
+                            <span class="name">Remarks</span>
+                            <input class="input" id="remarksField" name="remarks">
+                            <input id="submitPreacts" type="submit" value="submit" style="display: none;">
+                        </form>
+                        <form id="postactsForm">
+                            <span class="name">Organization</span>
+                            <select class="input" name="org">
+                                {{#each orgs}}
+                                    <option>{{abbrev}}</option>
+                                {{/each}}
+                            </select>
+                            <br />
+                            <span class="name">Term</span>
+                            <select class="input" name="term">
+                                <option value="1">Term 1</option>
+                                <option value="2">Term 2</option>
+                                <option value="3">Term 3</option>
+                            </select>
+                            <br />
+                            <span class="name">Activity Name</span>
+                            <select class="input" name="actName">
+                                <option>ARW</option>
+                            </select>
+                            <br />
+                            <span class="name">Type of Submission</span>
+                            <select class="input" name="subType">
+                                <option>Document</option>
+                            </select>
+                            <br />
+                            <span class="name">Submitted by</span>
+                            <select class="input" name="subBy">
+                                {{#each officers}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <br />
+                            <span class="name">Received by</span>
+                            <select class="input" name="recBy">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="dateRec">
+                            <br />
+                            <span class="name">First checked by</span>
+                            <select class="input" name="firstCheck">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="firstDate">
+                            <br />
+                            <span class="name">Second checked by</span>
+                            <select class="input" name="secCheck">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="secDate">
+                            <br />
+                            <span class="name">Filed by</span>
+                            <select class="input" name="filedBy">
+                                {{#each users}}
+                                    <option>{{name}}</option>
+                                {{/each}}
+                            </select>
+                            <span class="name">Date</span>
+                            <input class="input" placeholder="date" type="date" name="fileDate">
+                            <br />
+                            <span class="name">Remarks</span>
+                            <input class="input" id="remarksField" name="remarks">
+                        </form>
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html> --}}
+
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/encode.css">  
@@ -343,4 +597,4 @@
             </div>
         </form>    
     </body>
-</html> --}}
+</html>  --}}

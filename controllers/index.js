@@ -33,6 +33,10 @@ router.get("/dashboard", function(req,res){
     res.render("dashboard.hbs")
 })
 
+router.get("/regis", function(req, res){
+    res.render("register.hbs")
+})
+
 router.get("/logout", function(req,res){
     res.redirect("/")
     // res.redirect("/")
