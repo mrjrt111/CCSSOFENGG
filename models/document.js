@@ -33,10 +33,34 @@ exports.create = function(docu){
     })
 }
 
+exports.delete = function (id){
+    return new Promise(function(resolve, reject){
+        //console.log("in promise : " + tag + " "+ username)
+        Document.deleteOne({_id: id
+        }).then((docu)=>{
+            console.log("Deleted: ",  docu)
+        },(err)=>{
+            reject(err)
+        })
+    })
+
+}
+
+
 exports.get = function(id){
     return new Promise(function(resolve, reject){
         Document.findOne({_id:id}).then((docu)=>{
             resolve(docu)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getAll = function(){
+    return new Promise(function(resolve, reject){
+        Document.find().then((docus)=>{
+            resolve(docus)
         }, (err)=>{
             reject(err)
         })

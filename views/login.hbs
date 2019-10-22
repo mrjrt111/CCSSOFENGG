@@ -2,9 +2,40 @@
 
     <head>
         <link rel="stylesheet" type="text/css" href="login.css">
+         <script src="jQuery.js"></script>
+
+        <script>
+            let warn = {{error}}
+            $(document).ready(function(){
+                    $("#loginButt").click(function(){
+                        if($("#password").val() == "" || $("#email").val() == ""){
+                        console.log("X")
+
+                        alert("The username and/or password you entered does not match any of our registered accounts. Please try again or contact a CSO officer to fix this issue.")
+                        }
+
+                        
+                    })
+
+                    if( warn == 1){
+                            alert("ACCOUNT INVALID!")
+                        }
+                })
+
+            //$.ajax({
+            //    url: '/login',
+            //    type: "POST",
+            //    data: 'your form data',
+            //    success: function(response){
+            //        alert("ERROR")
+            //   }
+            //})
+        </script>
+     
     </head>
 
     <body>
+        
         <div class="mainCont">
             <div class="info">
                 <div id="icon">
@@ -23,6 +54,7 @@
                         <span class="loginHead">Login</span> <br/>
                         <span class="loginHead" style="display: none;">Register</span> <br />
                         <span id="prompt">Please enter your login credentials here</span>
+                        <br><br>
                     </div>
                     <div class="form">
                         <form action="/login" method="POST">
@@ -35,15 +67,17 @@
                             </select> <br/>
 
                             <span class="input">Email</span> <br/>
-                            <input class="field" type="text" placeholder="username@dlsu.edu.ph" name="email"> <br/>
+                            <input id="email" class="field" type="text" placeholder="username@dlsu.edu.ph" name="email"> <br/>
                             <span class="input">Password</span> <br/>
-                            <input class="field" type="password" placeholder="Enter your password" name="password"> <br/>
+                            <input id="password" class="field" type="password" placeholder="Enter your password" name="password"> <br/>
                             <input type="checkbox"> <span class="input"> Remember Me </span>
 
                             <div class="buttons">
                                 <input id="loginButt" type="submit" value="login"></input>
                                 <input id="adminButt" type="submit" value="register"></input>
                             </div>
+                            
+                                
                         </form>
                         <form style="display: none;">
                             <span class="input">Lastname</span> <br />
@@ -69,6 +103,7 @@
         </div>
 
     </body>
+
 
 </html>
 {{!-- <html>

@@ -1,6 +1,7 @@
 const express = require("express")
 const router = express.Router()
 const Organization = require("../models/organization")
+const User = require("../models/user")
 
 
 const app = express()
@@ -15,8 +16,13 @@ router.get("/", function(req,res){
 
     Organization.getAll().then((orgs)=>{
         console.log(orgs)
-        res.render("login.hbs",{
-            orgs
+        User.getAll().then((users)=>{
+            console.log(users)
+            res.render("login.hbs",{
+                orgs, users
+            })
+        }, (error)=>{
+            res.sendFile(error)
         })
     }, (error)=>{
         res.sendFile(error)

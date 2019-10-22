@@ -1,0 +1,54 @@
+<html>
+    <head>
+        <script src="jQuery.js"></script>
+    </head>
+    <body>
+
+        <table>
+            {{#each docus}}
+                <tr data-id="{{_id}}">
+                    <td data-id="{{_id}}">
+                        <span data-id="{{_id}}">{{actName}}</span>
+                        <button class="delete" data-id="{{_id}}">Delete</button>
+                    </td>
+            </tr>
+            {{/each}}
+            
+        </table>
+
+        <form id="deleteform" action="delete">
+            <input type="hidden" name="id" id="deleteid">
+        </form>
+        
+    </body>
+    <script>
+            $(document).ready(function(){
+                $("span[data-id]").click(function(){
+                    let id = $(this).attr("data-id")
+                    $("#deleteid").val(id)
+                    $("#deleteform").submit()
+                })
+
+                $("button.delete").click(function(){
+                    let id = $(this).attr("data-id")
+                    console.log("NACLICK")
+                    $.ajax({
+                        url: "/docu/delete",
+                        method: "post",
+                        data: {
+                            id:id
+                        },
+                        success: function(result){
+                            //if(result.ok == 1){
+                                alert("Successfully deleted")
+                                $("tr[data-id='" + id + "']").remove()
+                            //}else{
+                            //    alert("Something went wrong")
+                            //}
+                        }
+                    })
+
+                })
+            })
+        </script>
+</html>

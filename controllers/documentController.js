@@ -18,8 +18,13 @@ router.get("/encode", (req, res)=>{
         console.log(users)
         Organization.getAll().then((orgs)=>{
             console.log(orgs)
-            res.render("encode.hbs",{
-                orgs, users
+            User.getOfficers().then((officers)=>{
+                console.log(officers)
+                res.render("encode.hbs", {
+                    orgs, users, officers
+                })
+            },(error)=>{
+                res.sendFile(error)
             })
         }, (error)=>{
             res.sendFile(error)
@@ -51,10 +56,18 @@ router.post("/addDocu", (req, res)=>{
     Document.create(docu).then((docu)=>{
         console.log(docu)
         req.session.actName = docu.actName
-        res.render("dashboard.hbs")
+        res.redirect("/dashboard")
+        // res.render("dashboard.hbs")
     },(error)=>{
         res.sendFile(error)
     })
+})
+
+router.post("/delete", (req,res)=>{
+    let id = req.body.id
+    console.log(id)
+    Document.delete(id);
+    res.render("dashboard.hbs")
 })
 
 module.exports = router
