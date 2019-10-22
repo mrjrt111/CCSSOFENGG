@@ -1,0 +1,77 @@
+.mainCont {
+    display: flex;
+    height: 100;
+    width: 100;
+    background-color: blue;
+    justify-content: space-between;
+    align-content: center;
+    flex-direction: column;
+    position: relative;
+}
+
+.butt {
+    height: 25px;
+    width: 100px;
+}
+
+#head {
+    height: 10%;
+    width: 100%;
+    top: 0%;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    background-color: chartreuse;
+}
+
+.title {
+    font-size: 25px;
+}
+
+#body {
+    background-color: deeppink;
+    height: 90%;
+    width: 100%;
+    position: fixed;
+    top: 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+#tableContainer {
+    background-color: lavenderblush;
+    height: 90%;
+    width: 95%;
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#table {
+    background-color: pink;
+    width: 95%;
+    position: relative;
+    top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 10;
+    overflow: scroll;
+}
+
+#buttonsContainer {
+    background-color: palevioletred;
+    width: 95%;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 1;
+}
+
+tr:nth-child(n) {
+    background-color: peachpuff;
+}
