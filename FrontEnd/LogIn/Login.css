@@ -1,15 +1,16 @@
 .mainCont {
     height: 100%;
     display: flex;
-    background-color: blue;
+    background-color: #8C908C;
     align-content: center;
     justify-content: center;
     flex-wrap: wrap;
+    font-family: 'Signika';
 }
 
 .info {
     display: flex;
-    background-color: darkcyan;
+    background-color: #1D3D19;
     flex-grow: 1;
     flex-direction: column;
     align-self: center;
@@ -19,7 +20,7 @@
 
 .login {
     display: flex;
-    background-color: darkturquoise;
+    background-color: rgb(222, 224, 207);
     flex-grow: 2;
     flex-direction: column;
     align-self: center;
@@ -32,7 +33,6 @@
     flex-direction: column;
     align-self: center;
     justify-content: center;
-    background-color: lightsalmon;
     height: 70%;
     width: 70%;
 }
@@ -62,18 +62,28 @@
 .input {
     flex-grow: 1;
     font-size: 25px;
+    color: #1D3D19;
 }
 
 .loginHead {
     font-size: 50px;
+    color: #1D3D19;
+    font-family: 'Fira Sans';
 }
 
 #prompt {
     font-size: 25px;
+    color: #8C908C;
 }
 
 #icon {
-    background-color: lightcoral;
+    border-radius: 280px;
+    width: 280px;
+    height: 280px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: aliceblue;
 }
 
 #pic {
@@ -86,18 +96,29 @@
 }
 
 #name {
-    background-color: fuchsia;
     font-size: 50px;
     text-align: center;
+    color: #CBCA98;
 }
 
 #desc {
-    background-color: hotpink;
     font-size: 20px;
     text-align: center;
+    color: #B3AE5D;
 }
 
 button {
     height: 25px;
     width: 100px
+}
+
+#loginButt {
+    background-color: #8CA484;
+    color: #CBCA98;
+}
+
+#adminButt {
+    background-color: #8C908C;
+    color: #CBCA98;
+    font-family: 'Signika';
 }
