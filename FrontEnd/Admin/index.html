@@ -1,6 +1,8 @@
 <html>
 
 <head>
+    <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet'>
     <link rel="stylesheet" type="text/css" href="dashboard.css">
 </head>
 
@@ -15,7 +17,8 @@
             </div>
         </div>
         <div class="header" id="header2">
-            <img id="pic" src="Kitten.jpg" alt="orgIcon">
+            <div id="pic"></div>
+            <!-- <img id="pic" src="Kitten.jpg" alt="orgIcon"> -->
             <select id="name">
                 <option> AIESEC </option>
                 <option> AIESEC2 </option>
@@ -23,13 +26,13 @@
             </select>
             <span id="status">Status: Whitelisted</span>
             <div class="buttCont">
-            <button id="addOrgOfficerButt" class="topButt" type="button">Add Org Officer</button>
-            <button id="blackListButt" class="topButt" type="button">Blacklist</button>
-            <button id="deleteButt" class="topButt" type="button">Delete</button>
-            </div>
+                <button id="addOrgOfficerButt" class="topButt" type="button">Add Org Officer</button>
+                <button id="blackListButt" class="topButt" type="button">Blacklist</button>
+                <button id="deleteButt" class="topButt" type="button">Delete</button>
             </div>
         </div>
-        <div id="divider">
+    </div>
+    <div id="divider">
         <div class="body">
             <div class="top">
                 <div id="navi">
@@ -56,7 +59,7 @@
                             </div>
                         </div>
                         <div class="submissions">
-                        <div class="dividerTwo"></div>
+                            <div class="dividerTwo"></div>
                             <span> Required Pre-Activity Submissions</span>
                             <div class="table">
                                 <table id="preactsTable">
@@ -75,7 +78,7 @@
                                             gbhjnkml,;
                                         </td>
                                         <td>
-                                             cjhskcnkasndkasnx
+                                            cjhskcnkasndkasnx
                                         </td>
                                         <td>
                                             zncksnclkasclksjcc
@@ -109,7 +112,7 @@
                                             qwnbwqmeqwen
                                         </td>
                                     </tr>
-                                    
+
                                 </table>
                             </div>
                         </div>
@@ -214,7 +217,7 @@
                 </div>
             </div>
         </div>
-<!--Sorting function for tables LEGS or JUSTIN move this to what file youre using for the scripts-->
+        <!--Sorting function for tables LEGS or JUSTIN move this to what file youre using for the scripts-->
         <script>
             function sortTable(n, id) {
                 var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
