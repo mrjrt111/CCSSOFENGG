@@ -1,21 +1,23 @@
 <html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="Encode.css">
-    </head>
-    <body>
-        <div class="mainCont">
-            <div class="header">
-                <button class="butt" type="button">Back</button>
-                <span id="orgName">DLSU ORG</span>
-            </div>
-            <div class="divider"></div>
-            <div class="body">
-                <div class="containerEncode">
-                    <div id="encoding">
-                        <img class="pic" src="Kitten.jpg">
-                        <span id="function">PREACTS ENCODING</span>
-                    </div>
-                    <div id="encodingDetails">
+
+<head>
+    <link rel="stylesheet" type="text/css" href="Encode.css">
+</head>
+
+<body>
+    <div class="mainCont">
+        <div class="header">
+            <button class="butt" type="button">Back</button>
+            <span id="orgName">DLSU ORG</span>
+        </div>
+        <div class="divider"></div>
+        <div class="body">
+            <div class="containerEncode">
+                <div id="encoding">
+                    <img class="pic" src="Kitten.jpg">
+                    <span id="function">PREACTS ENCODING</span>
+                </div>
+                <div id="encodingDetails">
                     <div id="uploadDirectly">
                         <span class="title">Upload Directly</span>
                         <br/>
@@ -32,7 +34,7 @@
                                 <div class="button">PREACTS</div>
                                 <div class="button">POSTACTS</div>
 
-                                <button class="butt">Encode</button>
+                                <button class="butt" onclick="submitForm();">Encode</button>
                             </div>
                         </div>
                         <form id="activityForm" style="display: none;">
@@ -75,125 +77,144 @@
                             <select class="input">
                                 <option>Officer1</option>
                             </select>
+                            <input id="submitActivity" type="submit" value="submit" style="display: none;">
                         </form>
                         <form id="preactsForm" style="display: none;">
                             <span class="name">Organization</span>
                             <select class="input">
                                 <option>AIESEC</option>
                             </select>
-                                <br />
+                            <br />
                             <span class="name">Term</span>
                             <select class="input">
                                 <option>Term 1</option>
                             </select>
-                                <br />
+                            <br />
                             <span class="name">Activity Name</span>
                             <select class="input">
                                 <option>ARW</option>
                             </select>
-                                <br />
+                            <br />
                             <span class="name">Type of Submission</span>
                             <select class="input">
                                 <option>Document</option>
                             </select>
-                                <br />
+                            <br />
                             <span class="name">Submitted by</span>
                             <select class="input">
                                 <option>Me</option>
                             </select>
-                                <br />
+                            <br />
                             <span class="name">Received by</span>
                             <select class="input">
                                 <option>Not me</option>
                             </select>
                             <span class="name">Date</span>
                             <input class="input" placeholder="date">
-                                <br />
+                            <br />
                             <span class="name">First checked by</span>
                             <select class="input">
                                 <option>Not me</option>
                             </select>
                             <span class="name">Date</span>
                             <input class="input" placeholder="date">
-                                <br />
+                            <br />
                             <span class="name">Second checked by</span>
                             <select class="input">
                                 <option>Not me</option>
                             </select>
                             <span class="name">Date</span>
                             <input class="input" placeholder="date">
-                                <br />
+                            <br />
                             <span class="name">Filed by</span>
                             <select class="input">
                                 <option>Not me</option>
                             </select>
                             <span class="name">Date</span>
                             <input class="input" placeholder="date">
-                                <br />
+                            <br />
                             <span class="name">Remarks</span>
                             <input class="input" id="remarksField">
+                            <input id="submitPreacts" type="submit" value="submit" style="display: none;">
                         </form>
                         <form id="postactsForm>
-                            <span class="name">Organization</span>
-                            <select class="input">
+                            <span class=" name ">Organization</span>
+                            <select class="input ">
                                 <option>AIESEC</option>
                             </select>
                             <br />
-                            <span class="name">Term</span>
-                            <select class="input">
+                            <span class="name ">Term</span>
+                            <select class="input ">
                                 <option>Term 1</option>
                             </select>
                             <br />
-                            <span class="name">Activity Name</span>
-                            <select class="input">
+                            <span class="name ">Activity Name</span>
+                            <select class="input ">
                                 <option>ARW</option>
                             </select>
                             <br />
-                            <span class="name">Type of Submission</span>
-                            <select class="input">
+                            <span class="name ">Type of Submission</span>
+                            <select class="input ">
                                 <option>Document</option>
                             </select>
                             <br />
-                            <span class="name">Submitted by</span>
-                            <select class="input">
+                            <span class="name ">Submitted by</span>
+                            <select class="input ">
                                 <option>Me</option>
                             </select>
                             <br />
-                            <span class="name">Received by</span>
-                            <select class="input">
+                            <span class="name ">Received by</span>
+                            <select class="input ">
                                 <option>Not me</option>
                             </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date">
+                            <span class="name ">Date</span>
+                            <input class="input " placeholder="date ">
                             <br />
-                            <span class="name">First checked by</span>
-                            <select class="input">
+                            <span class="name ">First checked by</span>
+                            <select class="input ">
                                 <option>Not me</option>
                             </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date">
+                            <span class="name ">Date</span>
+                            <input class="input " placeholder="date ">
                             <br />
-                            <span class="name">Second checked by</span>
-                            <select class="input">
+                            <span class="name ">Second checked by</span>
+                            <select class="input ">
                                 <option>Not me</option>
                             </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date">
+                            <span class="name ">Date</span>
+                            <input class="input " placeholder="date ">
                             <br />
-                            <span class="name">Filed by</span>
-                            <select class="input">
+                            <span class="name ">Filed by</span>
+                            <select class="input ">
                                 <option>Not me</option>
                             </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date">
+                            <span class="name ">Date</span>
+                            <input class="input " placeholder="date ">
                             <br />
-                            <span class="name">Remarks</span>
-                            <input class="input" id="remarksField">
+                            <span class="name ">Remarks</span>
+                            <input class="input " id="remarksField ">
+                            <input id="submitPostacts " type="submit " value="submit " style="display: none; ">
                         </form>
                     </div>
                     </div>
                 </div>
             </div>
         </div>
+        <script>
+            function submitForm(){
+                var preActs = document.getElementById("preactsForm ");
+                var postActs = document.getElementById("postactsForm ");
+                var activity = document.getElementById("activityForm ");
+                    if (window.getComputedStyle(preActs).display === "none " & window.getComputedStyle(postActs).display === "none ") {
+                        document.getElementById('submitActivity').click()
+                     }
+                     else if(window.getComputedStyle(preActs).display === "none " & window.getComputedStyle(activity).display === "none "){
+                        document.getElementById('submitPostacts').click()
+                     }
+                     else if(window.getComputedStyle(postActs).display === "none " & window.getComputedStyle(activity).display === "none "){
+                        document.getElementById('submitPreacts').click()
+                     }
+            }
+        </script>
     </body>
 </html>
