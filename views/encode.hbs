@@ -1,6 +1,23 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="/encode.css">    
+        <link rel="stylesheet" type="text/css" href="/encode.css">  
+
+        <script>
+            function submitForm(){
+                var preActs = document.getElementById("preactsForm");
+                var postActs = document.getElementById("postactsForm");
+                var activity = document.getElementById("activityForm");
+                    if (window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(postActs).display == "none") {
+                        document.getElementById('submitActivity').click()
+                     }
+                     else if(window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(activity).display == "none"){
+                        document.getElementById('submitPostacts').click()
+                     }
+                     else if(window.getComputedStyle(postActs).display == "none" && window.getComputedStyle(activity).display == "none"){
+                        document.getElementById('submitPreacts').click()
+                     }
+            }
+        </script>  
     </head>
     <body>
         <div class="mainCont">
@@ -32,6 +49,7 @@
                                 <div class="button">PREACTS</div>
                                 <div class="button">POSTACTS</div>
 
+                                <button class="butt" onclick="submitForm()">Encode</button>
                                 {{!-- <button class="butt">Encode</button> --}}
                             </div>
                         </div>
@@ -77,6 +95,8 @@
                             <select class="input">
                                 <option>Officer1</option>
                             </select>
+
+                            <input id="submitActivity" type="submit" value="submit" style="display: none;">
                         </form>
                         <form id="preactsForm" style="display: none;">
                             <span class="name">Organization</span>
@@ -153,6 +173,8 @@
                                 <br />
                             <span class="name">Remarks</span>
                             <input class="input" id="remarksField" name="remarks">
+
+                            <input id="submitPreacts" type="submit" value="submit" style="display: none;">
                         </form>
                         <form id="postactsForm" action="/docu/addDocu" method="POST">
                             {{!-- <div class="top">
@@ -239,7 +261,7 @@
                             <span class="name">Remarks</span>
                             <input class="input" id="remarksField" name="remarks">
                             
-                            <input class="butt" type="submit" value="Encode"></input>
+                            <input id="submitPostacts" type="submit" value="submit" style="display: none;">
 
                         </form>
                     </div>
@@ -248,7 +270,7 @@
             </div>
         </div>
     </body>
-</html> --}}
+</html> 
 {{!-- 
 <html>
     <body>

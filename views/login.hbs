@@ -7,18 +7,18 @@
         <script>
             let warn = {{error}}
             $(document).ready(function(){
-                    $("#loginButt").click(function(){
-                        if($("#password").val() == "" || $("#email").val() == ""){
-                        console.log("X")
+                    //$("#loginButt").click(function(){
+                    //    if($("#password").val() == "" || $("#email").val() == ""){
+                    //   console.log("X")
 
-                        alert("The username and/or password you entered does not match any of our registered accounts. Please try again or contact a CSO officer to fix this issue.")
-                        }
+                    //    alert("The username and/or password you entered does not match any of our registered accounts. Please try again or contact a CSO officer to fix this issue.")
+                    //    }
 
                         
-                    })
+                    //})
 
                     if( warn == 1){
-                            alert("ACCOUNT INVALID!")
+                            alert("INVALID INPUT! TRY AGAIN")
                         }
                 })
 
@@ -54,7 +54,6 @@
                         <span class="loginHead">Login</span> <br/>
                         <span class="loginHead" style="display: none;">Register</span> <br />
                         <span id="prompt">Please enter your login credentials here</span>
-                        <br><br>
                     </div>
                     <div class="form">
                         <form action="/login" method="POST">

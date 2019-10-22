@@ -36,22 +36,64 @@ router.get("/encode", (req, res)=>{
 })
 
 router.post("/addDocu", (req, res)=>{
-    var docu = {
-        org: req.body.org,
-        term: req.body.term,
-        actName: req.body.actName,
-        subType: req.body.subType,
-        subBy: req.body.subBy,
-        recBy: req.body.recBy,
-        dateRec: req.body.dateRec,
-        firstCheck: req.body.firstCheck,
-        firstDate: req.body.firstDate,
-        secCheck: req.body.secCheck,
-        secDate: req.body.secDate,
-        filedBy: req.body.filedBy,
-        fileDate: req.body.fileDate,
-        remarks: req.body.remarks
+    
+    if(req.body.tieUp){
+        var docu = {
+            org: req.body.org,
+            term: req.body.term,
+            actName: req.body.actName,
+            subType: req.body.subType,
+            subBy: req.body.subBy,
+            recBy: req.body.recBy,
+            dateRec: req.body.dateRec,
+            firstCheck: req.body.firstCheck,
+            firstDate: req.body.firstDate,
+            secCheck: req.body.secCheck,
+            secDate: req.body.secDate,
+            filedBy: req.body.filedBy,
+            fileDate: req.body.fileDate,
+            remarks: req.body.remarks,
+            tieUp: req.body.tieUp,
+            docuType: "Post-Acts"
+        }    
     }
+    else{
+        var docu = {
+            org: req.body.org,
+            term: req.body.term,
+            actName: req.body.actName,
+            subType: req.body.subType,
+            subBy: req.body.subBy,
+            recBy: req.body.recBy,
+            dateRec: req.body.dateRec,
+            firstCheck: req.body.firstCheck,
+            firstDate: req.body.firstDate,
+            secCheck: req.body.secCheck,
+            secDate: req.body.secDate,
+            filedBy: req.body.filedBy,
+            fileDate: req.body.fileDate,
+            remarks: req.body.remarks,
+            docuType: "Pre-Acts"
+        }
+    }
+
+    // var docu = {
+    //     org: req.body.org,
+    //     term: req.body.term,
+    //     actName: req.body.actName,
+    //     subType: req.body.subType,
+    //     subBy: req.body.subBy,
+    //     recBy: req.body.recBy,
+    //     dateRec: req.body.dateRec,
+    //     firstCheck: req.body.firstCheck,
+    //     firstDate: req.body.firstDate,
+    //     secCheck: req.body.secCheck,
+    //     secDate: req.body.secDate,
+    //     filedBy: req.body.filedBy,
+    //     fileDate: req.body.fileDate,
+    //     remarks: req.body.remarks,
+    //     tieIn: req.body.tieIn
+    // }
 
     Document.create(docu).then((docu)=>{
         console.log(docu)

@@ -14,7 +14,9 @@ var documentSchema = mongoose.Schema({
     secDate: Date,
     filedBy: String,
     fileDate: Date,
-    remarks: String
+    remarks: String,
+    tieUp: String,
+    docuType: String
 })
 
 var Document = mongoose.model("docu", documentSchema)
