@@ -1,4 +1,4 @@
-<html>
+{{!-- <html>
     <head>
         <script src="jQuery.js"></script>
     </head>
@@ -51,4 +51,24 @@
                 })
             })
         </script>
-</html>
+</html> --}}
+
+<html>
+    <body>
+        <form action="/org/addOrg" method="post">
+        
+            <span class="input">Organization Name</span> <br/>
+            <input class="field" type="text" placeholder="Name of Organization" name="orgName"> <br/>
+
+            <span class="input">Abbreviation</span> <br/>
+            <input class="field" type="text" placeholder="Abbreviation" name="abbrev"> <br/>
+            
+            <span class="input">Description</span> <br/>
+            <input class="field" type="text" placeholder="Description" name="desc"> <br/>
+                          
+            <div class="buttons">
+                <input id="loginButt" type="submit" value="Submit">
+            </div>
+        </form>    
+    </body>
+</html>  
