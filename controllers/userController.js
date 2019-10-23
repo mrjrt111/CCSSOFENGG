@@ -63,7 +63,7 @@ router.post("/login", function(req, res){
             Organization.getOrgExceptCSO().then((orgs)=>{
                 console.log("LOGGED IN " + orgs)
                 res.render("login.hbs",{orgs,
-                    abbrev,
+
                     error:1
                 })
             })
