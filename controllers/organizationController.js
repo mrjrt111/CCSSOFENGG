@@ -11,6 +11,14 @@ const urlencoder = bodyparser.urlencoded({
 
 router.use(urlencoder)
 
+router.get("/dashboard", function(req,res){
+    console.log("GET under OrgController /")
+    Organization.getAll().then((orgs)=>{
+        console.log(orgs)
+        res.render("dashboard.hbs",{ orgs})
+    })
+})
+
 router.post("/addOrg", (req, res)=>{
     var org = {
         orgName: req.body.orgName, 

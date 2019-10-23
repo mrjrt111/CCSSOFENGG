@@ -20,9 +20,9 @@
                 <div id="pic"></div>
                 <!-- <img id="pic" src="Kitten.jpg" alt="orgIcon"> -->
                 <select id="name">
-                    <option> AIESEC </option>
-                    <option> AIESEC2 </option>
-                    <option> AIESEC3 </option>
+                    {{#each orgs}}
+                        <option>{{abbrev}}</option>
+                    {{/each}}
                 </select>
                 <span id="status">Status: Whitelisted</span>
                 <div class="buttCont">

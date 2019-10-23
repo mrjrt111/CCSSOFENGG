@@ -15,7 +15,8 @@ router.use(urlencoder)
 
 router.post("/register", function(req, res){
     var user = {
-        name: req.body.name,
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
         email : req.body.email,
         password : req.body.password,
         org: req.body.org,

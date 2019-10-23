@@ -4,6 +4,7 @@ const hbs = require('hbs')
 const session = require('express-session')
 const app = express()
 const bodyParser = require('body-parser')
+const cookieparser = require('cookie-parser')
 // Body Parser
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -40,6 +41,7 @@ app.use(session({
     name: "cookie monster"
 }))
 
+app.use(cookieparser())
 app.use(require("./controllers"))
 
 

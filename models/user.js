@@ -2,7 +2,8 @@ const mongoose = require("mongoose")
 const crypto = require("crypto")
 
 var userSchema = mongoose.Schema({
-    name: String,
+    givenname: String,
+    lastname: String,
     password: String,
     email: String,
     org: String,

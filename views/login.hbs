@@ -59,6 +59,7 @@
                     <form action="/login" method="POST">
                         <span class="input">Organization</span> <br />
                         <select class="field" name="org">
+                            <option selected="selected">Select your Organization</option>
                             {{#each orgs}}
                                 <option>{{abbrev}}</option>
                             {{/each}}
