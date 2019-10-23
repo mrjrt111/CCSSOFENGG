@@ -37,6 +37,8 @@ router.get("/encode", (req, res)=>{
 
 router.post("/addDocu", (req, res)=>{
     
+    console.log(req.body.dateRec)
+
     if(req.body.tieUp){
         var docu = {
             org: req.body.org,
@@ -95,14 +97,43 @@ router.post("/addDocu", (req, res)=>{
     //     tieIn: req.body.tieIn
     // }
 
-    Document.create(docu).then((docu)=>{
+    console.log(docu.dateRec)
+    console.log(docu.firstDate)
+    console.log(docu.secDate)
+    console.log(docu.fileDate)
+
+    if(!docu.dateRec || !docu.firstDate || !docu.secDate || !docu.fileDate){
         console.log(docu)
-        req.session.actName = docu.actName
-        res.redirect("/dashboard")
-        // res.render("dashboard.hbs")
-    },(error)=>{
-        res.sendFile(error)
-    })
+        User.getCSO().then((users)=>{
+            console.log(users)
+            Organization.getAll().then((orgs)=>{
+                console.log(orgs)
+                User.getOfficers().then((officers)=>{
+                    console.log(officers)
+                    res.render("encode.hbs", {
+                        orgs, users, officers, error: 1
+                    })
+                },(error)=>{
+                    res.sendFile(error)
+                })
+            }, (error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+            // res.render("dashboard.hbs")    
+    }
+    else{
+        Document.create(docu).then((docu)=>{
+            console.log(docu)
+            req.session.actName = docu.actName
+            res.redirect("/dashboard")
+            // res.render("dashboard.hbs")
+        },(error)=>{
+            res.sendFile(error)
+        })
+    }
 })
 
 router.post("/delete", (req,res)=>{

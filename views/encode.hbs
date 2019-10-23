@@ -255,8 +255,16 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/encode.css">  
+        <script src="/jQuery.js"></script>
 
         <script>
+            let warn = {{error}}
+            $(document).ready(function(){
+                    if( warn == 1){
+                            alert("INVALID DATE! PLEASE INPUT VALID DATE!")
+                        }
+                })
+            
             function submitForm(){
                 var preActs = document.getElementById("preactsForm");
                 var postActs = document.getElementById("postactsForm");
