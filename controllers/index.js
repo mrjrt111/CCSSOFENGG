@@ -34,7 +34,12 @@ router.get("/dashboard", function(req,res){
 })
 
 router.get("/regis", function(req, res){
-    res.render("register.hbs")
+    Organization.getAll().then((orgs)=>{
+        res.render("register.hbs",{
+             orgs
+        })
+    })
+    //res.render("register.hbs")
 })
 
 router.get("/logout", function(req,res){

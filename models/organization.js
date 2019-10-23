@@ -51,3 +51,13 @@ exports.getOrg = function(abbrev){
         })
     })
 }
+
+exports.getOrgExceptCSO = function(abbrev){
+    return new Promise(function(resolve, reject){
+        Organization.find({abbrev:{ $ne: "CSO"}}).then((org)=>{
+            resolve(org)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}

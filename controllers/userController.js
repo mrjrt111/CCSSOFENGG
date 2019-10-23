@@ -26,6 +26,7 @@ router.post("/register", function(req, res){
     User.create(user).then((user)=>{
         console.log(user)
         req.session.email = user.email
+
         res.redirect("/dashboard")
         // res.render("dashboard.hbs")
     }, (error)=>{
@@ -46,8 +47,11 @@ router.post("/login", function(req, res){
             req.session.email = user.email
             console.log(req.session.email)
             Document.getAll().then((docus)=>{
-                res.render("dashboard.hbs",{
-                    docus
+                Organization.getOrgExceptCSO().then((orgs)=>{
+                    res.render("dashboard.hbs",{
+                        docus, orgs
+                })
+
                 })
             }, (error)=>{
                 res.sendFile(error)
@@ -56,10 +60,10 @@ router.post("/login", function(req, res){
             // res.render("dashboard.hbs")
         }
         else{
-            Organization.getAll().then((orgs)=>{
-                console.log(orgs)
-                res.render("login.hbs",{
-                    orgs,
+            Organization.getOrgExceptCSO().then((orgs)=>{
+                console.log("LOGGED IN " + orgs)
+                res.render("login.hbs",{orgs,
+                    abbrev,
                     error:1
                 })
             })
