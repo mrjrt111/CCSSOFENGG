@@ -15,7 +15,7 @@ router.use(urlencoder)
 
 router.post("/register", function(req, res){
     var user = {
-        firstname: req.body.firstname,
+        givenname: req.body.givenname,
         lastname: req.body.lastname,
         email : req.body.email,
         password : req.body.password,
@@ -26,7 +26,7 @@ router.post("/register", function(req, res){
     User.create(user).then((user)=>{
         console.log(user)
         req.session.email = user.email
-        res.redirect("/dashboard")
+        res.render("test.hbs")
         // res.render("dashboard.hbs")
     }, (error)=>{
         res.sendFile(error)

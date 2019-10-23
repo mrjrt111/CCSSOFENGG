@@ -29,6 +29,7 @@ router.post("/addOrg", (req, res)=>{
     Organization.create(org).then((org)=>{
         console.log(org)
         req.session.orgName = org.orgName
+        res.redirect("/")
     }, (error)=>{
         res.sendFile(error)
     })
