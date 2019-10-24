@@ -17,13 +17,15 @@ router.post("/addAct", (req,res) =>{
         docuType: req.body.nameDoc,
         actType: req.body.type,
         actName: req.body.actName,
+        nature: req.body.nature,
         venue: req.body.venue,
         date: req.body.date,
         time: req.body.time,
         enp: req.body.ENPnum,
         enmp: req.body.ENMPnum,
         isOnline: req.body.online,
-        inGOSM: req.body.GOSM
+        inGOSM: req.body.GOSM,
+        oic: req.body.oic
     }
 
     Activity.create(act).then((act)=>{

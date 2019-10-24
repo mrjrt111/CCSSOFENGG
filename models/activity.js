@@ -5,13 +5,15 @@ var activitySchema = mongoose.Schema({
     docuType: String,
     actType: String,
     actName: String,
+    nature: String,
     venue: String,
     date: Date,
     time:String,
     enp:Number,
     enmp:Number,
     isOnline: String,
-    inGOSM: String
+    inGOSM: String,
+    oic: String
 })
 
 var Activity = mongoose.model("act", activitySchema)

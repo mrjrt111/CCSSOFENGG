@@ -9,7 +9,7 @@
     <body>
         <div class="mainCont">
             <div class="header">
-                <span id="name">ADMINNAME</span>
+                <span id="name">ADMIN NAME</span>
                 <div id="butts">
                     <button id="addCSOOfficerButt" class="topButt" type="button">Add CSO Officer</button>
                     <button id="addOrganizationButt" class="topButt" type="button">Add Organization</button>
@@ -46,7 +46,7 @@
                         <div class="submissionsCase">
                             <div class="squares">
                                 <div class="squareThings">
-                                    Total number
+                                    <a href="/docu/viewDocs" style="text-decoration:none">Total Number</a>
                                 </div>
                                 <div class="squareThings">
                                     View document information
@@ -69,50 +69,22 @@
                                             <th onclick="sortTable(2, 'preactsTable')">Officer in Charge</th>
                                             <th>Remarks</th>
                                         </tr>
-
+                                        {{#each docus}}
                                         <tr>
                                             <td>
-                                                azsxdcfvghbjnkm
+                                                {{actName}}
                                             </td>
                                             <td>
-                                                gbhjnkml,;
+                                                {{status}}
                                             </td>
                                             <td>
-                                                cjhskcnkasndkasnx
+                                                {{subBy}}
                                             </td>
                                             <td>
-                                                zncksnclkasclksjcc
+                                                {{remarks}}
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                kjdlkfjslfas
-                                            </td>
-                                            <td>
-                                                oipsoipodsif,;
-                                            </td>
-                                            <td>
-                                                vmnv,mdnlksd
-                                            </td>
-                                            <td>
-                                                ocvpcoxivpoxcv
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                asnfkljsalfjas
-                                            </td>
-                                            <td>
-                                                ivcuibuvcibucovb,;
-                                            </td>
-                                            <td>
-                                                uvibhcuibucvibi
-                                            </td>
-                                            <td>
-                                                qwnbwqmeqwen
-                                            </td>
-                                        </tr>
-
+                                        {{/each}}
                                     </table>
                                 </div>
                             </div>
@@ -133,7 +105,7 @@
                         <div class="submissionsCase">
                             <div class="squares">
                                 <div class="squareThings">
-                                    Total number
+                                    <a href="/docu/viewDocs" style="text-decoration:none">Total Number</a>
                                 </div>
                                 <div class="squareThings">
                                     View document information
@@ -176,7 +148,7 @@
                         <div class="submissionsCase">
                             <div class="squares">
                                 <div class="squareThings">
-                                    Total number
+                                    <a href="/docu/viewDocs" style="text-decoration:none">Total Number</a>
                                 </div>
                                 <div class="squareThings">
                                     View document information

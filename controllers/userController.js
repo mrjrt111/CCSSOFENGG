@@ -60,7 +60,7 @@ router.post("/login", function(req, res){
             // res.render("dashboard.hbs")
         }
         else{
-            Organization.getOrgExceptCSO().then((orgs)=>{
+            Organization.getAll().then((orgs)=>{
                 console.log("LOGGED IN " + orgs)
                 res.render("login.hbs",{orgs,
 

@@ -143,4 +143,26 @@ router.post("/delete", (req,res)=>{
     res.render("dashboard.hbs")
 })
 
+router.get("/viewDocs", (req,res)=>{
+    Document.getAll().then((docus)=>{
+        res.render("viewDocs.hbs", {
+            docus
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
+router.get("/deleteView", (req,res)=>{
+    Document.getAll().then((docus)=>{
+        res.render("delete.hbs", {
+            docus
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
+
+
 module.exports = router
