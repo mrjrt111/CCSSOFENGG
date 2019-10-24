@@ -42,6 +42,16 @@ exports.get = function(id){
       })
 }
 
+exports.getAll = function(){
+  return new Promise(function(resolve, reject){
+    Activity.find().then((acts)=>{
+      resolve(acts)
+    }, (err)=>{
+      reject(err)
+    })
+  })
+}
+
 exports.getAct = function(actName){
     return new Promise(function(resolve, reject){
         Activity.findOne({actName:actName}).then((act)=>{

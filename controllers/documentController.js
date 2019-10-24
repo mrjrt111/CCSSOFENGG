@@ -3,6 +3,7 @@ const router = express.Router()
 const Document = require("../models/document")
 const Organization = require("../models/organization")
 const User = require("../models/user")
+const Activity = require("../models/activity")
 const bodyparser = require("body-parser")
 
 const app = express()
@@ -20,8 +21,12 @@ router.get("/encode", (req, res)=>{
             console.log(orgs)
             User.getOfficers().then((officers)=>{
                 console.log(officers)
-                res.render("encode.hbs", {
-                    orgs, users, officers
+                Activity.getAll().then((acts)=>{
+                    res.render("encode.hbs", {
+                        orgs, users, officers, acts
+                    })
+                }, (error)=>{
+                    res.sendFile(error)
                 })
             },(error)=>{
                 res.sendFile(error)

@@ -365,8 +365,8 @@
                                 {{/each}}
                             </select>
                             <br/>
-                            <span class="name">Document Type</span>
-                            <input class="input" placeholder="doc" name="nameDoc">
+                            <span class="name">Activity Name</span>
+                            <input class="input" placeholder="doc" name="actName">
                             <br/>
                             <span class="name">Date</span>
                             <input class="input" type="date" placeholder="MM/dd" name="date">
@@ -419,7 +419,10 @@
                                 <br />
                             <span class="name">Activity Name</span>
                             <select class="input" name="actName">
-                                <option>ARW</option>
+                                {{#each acts}}
+                                    <option>{{actName}}</option>
+                                {{/each}}
+                                {{!-- <option>ARW</option> --}}
                             </select>
                                 <br />
                             <span class="name">Type of Submission</span>
@@ -506,7 +509,10 @@
                             <br />
                             <span class="name">Activity Name</span>
                             <select class="input" name="actName">
-                                <option>ARW</option>
+                                {{#each acts}}
+                                    <option>{{actName}}</option>
+                                {{/each}}
+                                {{!-- <option>ARW</option> --}}
                             </select>
                             <br />
                             <span class="name">Type of Submission</span>
