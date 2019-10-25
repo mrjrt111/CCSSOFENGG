@@ -110,7 +110,8 @@ th:nth-child(2n) {
     color: #CBCA98;
 }
 
-table {
-    table-layout: fixed;
-    width: 100%;
+table{
+table-layout: fixed;
+width: 150%;
 }
+
