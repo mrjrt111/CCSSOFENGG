@@ -109,3 +109,8 @@ th:nth-child(2n) {
     background-color: #8C908C;
     color: #CBCA98;
 }
+
+table {
+    table-layout: fixed;
+    width: 100%;
+}
