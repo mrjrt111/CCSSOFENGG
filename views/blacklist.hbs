@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>BlackWhiteList</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body class="flex-row flex-grow-1 justify-content-center align-content-center">
+    <div class="m-auto" id="header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12"><button class="btn btn-primary" type="button">Back</button></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Blacklisting and Whitelisting</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="m-auto" id="body">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 d-flex flex-row flex-grow-1"><select id="orgSelect" type="button" style="width: 100px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                    <div
+                        class="ml-auto"><button class="btn btn-primary" id="blacklistButt" type="button" style="width: 100px;">Blacklist</button><button class="btn btn-primary" id="deleteButt">Delete</button></div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Officer Name</th>
+                                <th>Officer Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="officerTable">
+                            {{#each users}}
+                            <tr>
+                                <td>{{givenname}} {{lastname}}</td>
+                                <td><button class="btn btn-primary officerBlacklist" type="button">Blacklist Officer</button></td>
+                            </tr>
+                            {{!-- <tr>
+                                <td>Finish the wireframe</td>
+                                <td><button class="btn btn-primary" type="button">Blacklist Officer</button></td>
+                            </tr> --}}
+                            {{/each}}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
+</html>
