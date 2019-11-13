@@ -44,12 +44,12 @@ router.post("/register", function(req, res){
         email : req.body.email,
         password : req.body.password,
         org: req.body.org,
-        type: "Admin"
     }
 
     Officer.authenticate(user).then((newUser)=>{
 
         if(newUser){
+            user.type = newUser.type;
             User.create(user).then((user)=>{
                 Officer.delete(user.email)
                 console.log(user)
@@ -128,6 +128,21 @@ router.post("/login", function(req, res){
         res.sendFile(error)
     })
 })
+
+router.post("/deleteOfficer", function(req, res){
+
+    var user = {
+        email : req.body.email,
+        org: req.body.org,
+    }
+
+    User.delete(user).then(()=>{
+        res.redirect("/dashboard")
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
 
 //router.get('/login', function(req, res){
 //  res.render('dashboard.hbs');

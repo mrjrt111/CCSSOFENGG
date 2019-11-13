@@ -49,7 +49,6 @@ exports.delete = function (email){
             reject(err)
         })
     })
-
 }
 
 

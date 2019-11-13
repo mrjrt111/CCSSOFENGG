@@ -16,7 +16,7 @@ router.use(urlencoder)
 router.get("/", function(req, res){
     Organization.getAll().then((orgs)=>{
         console.log(orgs)
-        res.render("addOfficer.hbs", {
+        res.render("new.hbs", {
             orgs
         })
     }, (error)=>{
@@ -39,6 +39,10 @@ router.post("/addOfficer", function(req, res){
         res.sendFile(error)
     })
 })
+
+
+
+
 
 
 module.exports = router

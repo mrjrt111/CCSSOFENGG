@@ -58,6 +58,20 @@ exports.get = function(id){
       })
 }
 
+exports.delete = function (user){
+    return new Promise(function(resolve, reject){
+        User.deleteOne({
+            email: user.email,
+            org: user.org
+        }).then((docu)=>{
+            console.log("Deleted: ",  docu)
+        },(err)=>{
+            reject(err)
+        })
+    })
+
+}
+
 exports.getAll = function(){
   return new Promise(function(resolve, reject){
     User.find().then((users)=>{
