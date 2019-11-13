@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Organization = require("../models/organization")
 const User = require("../models/user")
+const Document = require("../models/document")
 
 
 const app = express()
@@ -31,7 +32,17 @@ router.get("/", function(req,res){
 })
 
 router.get("/dashboard", function(req,res){
-    res.render("dashboard.hbs")
+    Document.getAll().then((docus)=>{
+        Organization.getOrgExceptCSO().then((orgs)=>{
+            res.render("dashboard.hbs",{
+                docus, orgs
+        })
+
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+    // res.render("dashboard.hbs")
 })
 
 router.get("/regis", function(req, res){

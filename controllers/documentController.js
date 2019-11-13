@@ -145,7 +145,7 @@ router.post("/delete", (req,res)=>{
     let id = req.body.id
     console.log(id)
     Document.delete(id);
-    res.render("dashboard.hbs")
+    res.redirect("/dashboard")
 })
 
 router.get("/viewDocs", (req,res)=>{

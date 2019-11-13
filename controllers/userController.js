@@ -4,6 +4,7 @@ const User =  require("../models/user")
 const Document = require("../models/document")
 const bodyparser = require("body-parser")
 const Organization = require("../models/organization")
+const BList = require("../models/blacklist")
 
 const app = express()
 
@@ -41,23 +42,41 @@ router.post("/login", function(req, res){
         password: req.body.password,
         org: req.body.org
     }
+
+    var blacklist = {
+        email: req.body.email,
+        org: req.body.org
+    }
         
     User.authenticate(user).then((newUser)=>{
         if(newUser){
-            req.session.email = user.email
-            console.log(req.session.email)
-            Document.getAll().then((docus)=>{
-                Organization.getOrgExceptCSO().then((orgs)=>{
-                    res.render("dashboard.hbs",{
-                        docus, orgs
-                })
-
-                })
-            }, (error)=>{
-                res.sendFile(error)
+            BList.authenticate(blacklist).then((newBList)=>{
+                if(newBList){
+                    Organization.getAll().then((orgs)=>{
+                        console.log("LOGGED IN " + orgs)
+                        res.render("login.hbs",{orgs,
+        
+                            error:2
+                        })
+                    })
+                }
+                else{
+                    req.session.email = user.email
+                    console.log(req.session.email)
+                    Document.getAll().then((docus)=>{
+                        Organization.getOrgExceptCSO().then((orgs)=>{
+                            res.render("dashboard.hbs",{
+                                docus, orgs
+                        })
+        
+                        })
+                    }, (error)=>{
+                        res.sendFile(error)
+                    })
+                    // res.redirect("/dashboard")
+                    // res.render("dashboard.hbs")
+                }
             })
-            // res.redirect("/dashboard")
-            // res.render("dashboard.hbs")
         }
         else{
             Organization.getAll().then((orgs)=>{
