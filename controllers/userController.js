@@ -4,6 +4,7 @@ const User =  require("../models/user")
 const Document = require("../models/document")
 const bodyparser = require("body-parser")
 const Organization = require("../models/organization")
+const Officer = require("../models/tempOff")
 
 const app = express()
 
@@ -13,7 +14,30 @@ const urlencoder = bodyparser.urlencoded({
 
 router.use(urlencoder)
 
+// router.post("/register", function(req, res){
+//     var user = {
+//         givenname: req.body.givenname,
+//         lastname: req.body.lastname,
+//         email : req.body.email,
+//         password : req.body.password,
+//         org: req.body.org,
+//         type: "Admin"
+//     }
+//
+//     User.create(user).then((user)=>{
+//         console.log(user)
+//         req.session.email = user.email
+//
+//         res.redirect("/dashboard")
+//         // res.render("dashboard.hbs")
+//     }, (error)=>{
+//         res.sendFile(error)
+//     })
+// })
+
+
 router.post("/register", function(req, res){
+
     var user = {
         givenname: req.body.givenname,
         lastname: req.body.lastname,
@@ -23,16 +47,40 @@ router.post("/register", function(req, res){
         type: "Admin"
     }
 
-    User.create(user).then((user)=>{
-        console.log(user)
-        req.session.email = user.email
+    Officer.authenticate(user).then((newUser)=>{
 
-        res.redirect("/dashboard")
-        // res.render("dashboard.hbs")
+        if(newUser){
+            User.create(user).then((user)=>{
+                Officer.delete(user.email)
+                console.log(user)
+                req.session.email = user.email
+                res.redirect("/dashboard")
+                // res.render("dashboard.hbs")
+            }, (error)=>{
+                res.sendFile(error)
+            })
+        }
+        else{
+            Organization.getAll().then((orgs)=>{
+                res.render("register.hbs",{orgs,
+                    error:1
+                })
+            })
+            // console.log(user.email, "is not found")
+            // res.render("login.hbs",{
+            //     orgs,
+            //     name: 'INVALID EMAIL OR PASSWORD PLEASE TRY AGAIN!'
+            // })
+            // res.json({success: true})
+            //look for way to send alert
+            // res.redirect("/")
+        }
     }, (error)=>{
         res.sendFile(error)
     })
+
 })
+
 
 router.post("/login", function(req, res){
   
