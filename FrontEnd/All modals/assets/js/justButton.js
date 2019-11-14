@@ -10,6 +10,12 @@ $("#addOrganizationButt").click(function(){
 $("#deleteOfficerButt").click(function(){
     $("#deleteOfficerPopup").modal("show")
 });
+$("#deleteOfficer2Butt").click(function(){
+    $("#deleteOfficer2Popup").modal("show")
+});
 $("#confirmActionButt").click(function(){
     $("#confirmActionPopup").modal("show")
+});
+$("#blackListButt").click(function(){
+    $("#blackListPopup").modal("show")
 });
