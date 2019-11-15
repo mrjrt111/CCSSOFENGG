@@ -1,0 +1,15 @@
+$("#addOfficerButt").click(function(){
+    $("#addOfficerPopup").modal("show")
+});
+$("#addCSOOfficerButt").click(function(){
+    $("#addCSOOfficerPopup").modal("show")
+});
+$("#addOrganizationButt").click(function(){
+    $("#addOrganizationPopup").modal("show")
+});
+$("#deleteOfficerButt").click(function(){
+    $("#deleteOfficerPopup").modal("show")
+});
+$("#confirmActionButt").click(function(){
+    $("#confirmActionPopup").modal("show")
+});

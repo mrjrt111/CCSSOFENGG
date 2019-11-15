@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>officerManage</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<body><button class="btn btn-primary" id="addButt" type="button">Press to see officer popup</button>
+    <div class="modal fade" role="dialog" tabindex="-1" id="addOfficerPopup">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add an Officer</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start"><span>Officer Email</span><input class="flex-grow-1" type="text"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start"><span>Organization</span><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-between align-items-center justify-content-sm-start"><span>Officer Position</span><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">Organization Officer</option><option value="13">Moderator</option><option value="14">Administrator</option></optgroup></select></div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-primary" type="button">Add</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/justButton.js"></script>
+</body>
+
+</html>
