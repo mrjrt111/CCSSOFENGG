@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/css/DocumentsView.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Back</button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">&lt;Activity (Preacts/postacts/activities)&gt;</span></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;Organization Name&gt;</h3>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Document Type</th>
+                                            <th>Type of Activity</th>
+                                            <th>Nature of Activity</th>
+                                            <th>Venue</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>ENP</th>
+                                            <th>ENMP</th>
+                                            <th>Online</th>
+                                            <th>GOSM</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ejt;wjt;weljt</td>
+                                            <td>ryweewyweyew</td>
+                                            <td>qeyqetqwrqwr</td>
+                                            <td>qwrqwrwqr</td>
+                                            <td>qwrwqr</td>
+                                            <td>gfjfgjgfj</td>
+                                            <td>wqrqwrey</td>
+                                            <td>fhkhgmbv</td>
+                                            <td>vbmn,vb</td>
+                                            <td>hsdhfisd</td>
+                                            <td class="d-xl-flex justify-content-xl-center align-items-xl-center"><button class="btn btn-primary" id="editButton" type="button" style="background-color: rgb(50,157,156);">...</button></td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Document Type</strong></td>
+                                            <td><strong>Type of Activity</strong></td>
+                                            <td><strong>Nature of Activity</strong></td>
+                                            <td><strong>Venue</strong></td>
+                                            <td><strong>Date</strong></td>
+                                            <td><strong>Time</strong></td>
+                                            <td><strong>ENP</strong></td>
+                                            <td><strong>ENMP</strong></td>
+                                            <td><strong>Online</strong></td>
+                                            <td><strong>GOSM</strong></td>
+                                            <td><strong></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 69</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"></div>
+                </div>
+            </footer>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><select class="flex-grow-1 form-control-user" id="orgSelect"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                            <input
+                                class="flex-grow-1 form-control-user" type="text" id="activityTitle" placeholder="Activity Title"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1 form-control-user" type="text" id="typeOfActivity" placeholder="Type of Activity"><select class="flex-grow-1 form-control-user" id="natureSelect"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" id="venue" placeholder="Venue">
+                            <div class="form-check flex-grow-1"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Online</label></div>
+                            <div class="form-check flex-grow-1"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">GOSM</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/buttonInteraction.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>
