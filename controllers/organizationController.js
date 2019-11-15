@@ -23,12 +23,11 @@ router.post("/addOrg", (req, res)=>{
     var org = {
         orgName: req.body.orgName, 
         abbrev: req.body.abbrev, 
-        description: req.body.desc
+        description: req.body.description
     }
 
     Organization.create(org).then((org)=>{
-        console.log(org)
-        req.session.orgName = org.orgName
+        res.redirect("/dashboard")
     }, (error)=>{
         res.sendFile(error)
     })

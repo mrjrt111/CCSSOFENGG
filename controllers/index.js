@@ -11,6 +11,8 @@ router.use("/", require("./userController"))
 router.use("/docu", require("./documentController"))
 router.use("/org", require("./organizationController"))
 router.use("/blacklist", require("./blacklistController"))
+router.use("/officer", require("./officerController"))
+
 
 router.get("/", function(req,res){
     console.log("GET /")
