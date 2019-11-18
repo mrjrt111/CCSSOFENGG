@@ -10,3 +10,53 @@ $("#deleteOrgButt").click(function(){
 $("#blacklistOrgButt").click(function(){
    $("#blacklistOrgModal").modal("show"); 
 });
+$("#viewOpen").click(function(){
+    if($("#viewLinks").hasClass("visible")){
+     $("#viewLinks").addClass("hidden");  
+     $("#viewLinks").removeClass("visible");  
+    }
+    else{
+     $("#viewLinks").addClass("visible");  
+     $("#viewLinks").removeClass("hidden");  
+    }
+});
+$("#encodeOpen").click(function(){
+    if($("#encodeLinks").hasClass("visible")){
+     $("#encodeLinks").addClass("hidden");  
+     $("#encodeLinks").removeClass("visible");  
+    }
+    else{
+     $("#encodeLinks").addClass("visible");  
+     $("#encodeLinks").removeClass("hidden");  
+    }
+});
+$("#addOpen").click(function(){
+    if($("#addLinks").hasClass("visible")){
+     $("#addLinks").addClass("hidden");  
+     $("#addLinks").removeClass("visible");  
+    }
+    else{
+     $("#addLinks").addClass("visible");  
+     $("#addLinks").removeClass("hidden");  
+    }
+});
+$("#deleteOpen").click(function(){
+    if($("#deleteLinks").hasClass("visible")){
+     $("#deleteLinks").addClass("hidden");  
+     $("#deleteLinks").removeClass("visible");  
+    }
+    else{
+     $("#deleteLinks").addClass("visible");  
+     $("#deleteLinks").removeClass("hidden");  
+    }
+});
+$("#blacklistOpen").click(function(){
+    if($("#blacklistLinks").hasClass("visible")){
+     $("#blacklistLinks").addClass("hidden");  
+     $("#blacklistLinks").removeClass("visible");  
+    }
+    else{
+     $("#blacklistLinks").addClass("visible");  
+     $("#blacklistLinks").removeClass("hidden");  
+    }
+});

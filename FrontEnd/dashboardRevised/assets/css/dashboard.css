@@ -18,3 +18,13 @@
   color: #d48664;
 }
 
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
