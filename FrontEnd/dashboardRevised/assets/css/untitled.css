@@ -1,0 +1,12 @@
+.bold {
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #329d9c;
+}
+
+.unselected {
+  background-color: gray;
+}
+
