@@ -1,0 +1,12 @@
+$("#addOrgOfficerButt").click(function(){
+   $("#addOrgOfficerModal").modal("show"); 
+});
+$("#addOrgButt").click(function(){
+   $("#addOrgModal").modal("show"); 
+});
+$("#deleteOrgButt").click(function(){
+   $("#deleteOrgModal").modal("show"); 
+});
+$("#blacklistOrgButt").click(function(){
+   $("#blacklistOrgModal").modal("show"); 
+});

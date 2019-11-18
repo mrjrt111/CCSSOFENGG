@@ -10,3 +10,11 @@
   background-color: gray;
 }
 
+.sidebarOptions span:hover {
+  color: rgba(207,244,210,1);
+}
+
+#sidebarOptions .option:hover {
+  color: #d48664;
+}
+
