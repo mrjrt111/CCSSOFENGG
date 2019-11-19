@@ -56,6 +56,13 @@ exports.delete = function (id){
 
 }
 
+exports.edit = function(oldContent, newContent){
+    return new Promise(function(resolve,reject){
+        Document.findOneAndUpdate(oldContent, newContent).then(()=>{
+            console.log("Update: ", docu)
+        })
+    })
+}
 
 exports.get = function(id){
     return new Promise(function(resolve, reject){

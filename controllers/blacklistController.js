@@ -28,18 +28,6 @@ router.post("/add", function(req, res){
     console.log(id)
     BList.add(id)
     res.redirect("/blacklist")
-    // var blacklist = {
-    //     email: req.body.email,
-    //     org: req.body.org
-    // }
-
-    // BList.add(blacklist).then((blacklist)=>{
-    //     console.log(blacklist)
-        
-    //     res.redirect("/dashboard")
-    // }, (error)=>{
-    //     res.sendFile(error)
-    // })
 })
 
 module.exports = router

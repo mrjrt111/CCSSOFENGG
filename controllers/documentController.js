@@ -93,24 +93,6 @@ router.post("/addDocu", (req, res)=>{
         }
     }
 
-    // var docu = {
-    //     org: req.body.org,
-    //     term: req.body.term,
-    //     actName: req.body.actName,
-    //     subType: req.body.subType,
-    //     subBy: req.body.subBy,
-    //     recBy: req.body.recBy,
-    //     dateRec: req.body.dateRec,
-    //     firstCheck: req.body.firstCheck,
-    //     firstDate: req.body.firstDate,
-    //     secCheck: req.body.secCheck,
-    //     secDate: req.body.secDate,
-    //     filedBy: req.body.filedBy,
-    //     fileDate: req.body.fileDate,
-    //     remarks: req.body.remarks,
-    //     tieIn: req.body.tieIn
-    // }
-
     console.log(docu.dateRec)
     console.log(docu.firstDate)
     console.log(docu.secDate)
@@ -155,6 +137,20 @@ router.post("/delete", (req,res)=>{
     console.log(id)
     Document.delete(id);
     res.redirect("/dashboard")
+})
+
+router.post("/editDocs", (req,res)=>{
+    let org = req.body.org;
+    let actName = req.body.actName;
+    let actType = req.body.actType;
+    let nature = req.body.nature;
+    let venue = req.body.venue;
+    let isOnline = req.body.isOnline;
+    let inGOSM = req.body.inGOSM;
+
+    Document.edit({_id:id}, {org:org, actName:actName, actType:actType, nature:nature, venue:venue, isOnline:isOnline, inGOSM:inGOSM}).then((docu)=>{
+        res.redirect("/viewDocs")
+    })
 })
 
 router.get("/viewDocs", (req,res)=>{

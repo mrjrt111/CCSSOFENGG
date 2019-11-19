@@ -24,23 +24,7 @@ exports.add = function(id){
             }, (err)=>{
                 reject(err)
             })
-            // BList.add(b).then((b)=>{
-            //     console.log(b)
-
-            //     res.redirect("/blacklist")
-            // }, (error)=>{
-            //     res.sendFile(error)
-            // })
         })
-        // console.log(blacklist)
-        // var b = new BList(blacklist)
-
-        // b.save().then((newBList)=>{
-        //     console.log(newBList)
-        //     resolve(newBList)
-        // }, (err)=>{
-        //     reject(err)
-        // })
     })
 }
 
