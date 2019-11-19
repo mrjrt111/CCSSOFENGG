@@ -137,7 +137,9 @@ router.post("/deleteOfficer", function(req, res){
     }
 
     User.delete(user).then(()=>{
-        res.redirect("/dashboard")
+        res.render("dashboard.hbs",{
+            docus, orgs
+        })
     }, (error)=>{
         res.sendFile(error)
     })
