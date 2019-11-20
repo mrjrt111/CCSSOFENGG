@@ -22,8 +22,18 @@
                 </div>
             </nav>
             <div class="container-fluid">
-                <h3 class="text-dark mb-4" style="color: #205077;">&lt;{{org}}&gt;<button class="btn btn-primary float-right" id="deleteOrgButt" type="button" style="background-color: #d48664;">Delete</button><button class="btn btn-primary float-right" id="blacklistOrgButt" type="button"
-                                                                                                                                                                                                                                   style="background-color: #d48664;margin-right: 60px;">Blacklist</button><span class="float-right" style="margin-right: 30px;"></span><select class="float-right" style="margin-right: 60px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></h3>
+                <h3 class="text-dark mb-4" style="color: #205077;">&lt;{{org}}&gt
+                    <button class="btn btn-primary float-right" id="deleteOrgButt" type="button" style="background-color: #d48664;">Delete</button>
+                    <button class="btn btn-primary float-right" id="blacklistOrgButt" type="button"
+                            style="background-color: #d48664;margin-right: 60px;">Blacklist</button><span class="float-right" style="margin-right: 30px;"></span>
+                    <select class="float-right" style="margin-right: 60px;">
+                        <optgroup label="This is a group">
+                            <option value="12" selected="">This is item 1</option>
+                            <option value="13">This is item 2</option>
+                            <option value="14">This is item 3</option>
+                        </optgroup>
+                    </select>
+                </h3>
                 <div
                         class="card shadow">
                     <div class="card-body">
@@ -53,13 +63,15 @@
                                     <td>{{lastname}}</td>
                                     <td>{{givenname}}</td>
                                     <td>{{email}}</td>
-                                    <td>qwrqwrwqr</td>
-                                    <td>qwrwqr</td>
+                                    <td>{{contact}}</td>
+                                    <td>{{type}}</td>
                                     <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                         <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
-                                            <div class="dropdown-menu"
-                                                 role="menu"><a class="dropdown-item" role="presentation" id="editButt" href="#">Edit</a><a class="dropdown-item" role="presentation" id="deleteButt" href="#">Delete</a><a class="dropdown-item" role="presentation"
-                                                                                                                                                                                                                            id="blacklistWhitelistButt" href="#">Blacklist/Whitelist</a></div>
+                                            <div class="dropdown-menu" role="menu">
+                                                <a class="dropdown-item" role="presentation" id="editButt" data-id="{{_id}}"href="#">Edit</a>
+                                                <a class="dropdown-item" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</a>
+                                                <a class="dropdown-item" role="presentation" id="blacklistWhitelistButt" href="#">Blacklist/Whitelist</a>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>

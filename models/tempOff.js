@@ -30,7 +30,8 @@ exports.authenticate = function(officer){
         console.log("in promise: " + officer.email)
         Officer.findOne({
             email: officer.email,
-            org: officer.org
+            org: officer.org,
+            type: officer.type
         }).then((officer)=>{
             console.log("callback user: " + officer)
             resolve(officer)

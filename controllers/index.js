@@ -66,12 +66,14 @@ router.get("/logout", function(req,res){
 })
 
 router.get("/manageOfficers", function(req, res){
-    var org = req.session.org;
+
     User.getAll().then((users)=>{
         Organization.getAll().then((orgs)=>{
+            var org = req.session.org;
             res.render("modifyOfficer.hbs",{
                 users,
-                orgs
+                orgs,
+                org
             })
         })
     }, (error)=>{

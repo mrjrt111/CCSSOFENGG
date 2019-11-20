@@ -84,7 +84,7 @@ router.post("/login", function(req, res){
                     req.session.email = user.email
                     console.log(req.session.email)
                     Document.getAll().then((docus)=>{
-                        Organization.getOrgExceptCSO().then((orgs)=>{
+                        Organization.getAll().then((orgs)=>{
                             res.render("dashboard.hbs",{
                                 docus, orgs
                         })
