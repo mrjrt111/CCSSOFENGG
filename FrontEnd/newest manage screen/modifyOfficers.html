@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/css/DocumentsView.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Back</button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">Manage Organization</span></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="color: #205077;">&lt;Organization Name&gt;<button class="btn btn-primary float-right" id="deleteOrgPromptButt" type="button" style="background-color: #d48664;">Delete Organization</button><button class="btn btn-primary float-right" id="blacklistOrgButt"
+                            type="button" style="background-color: #d48664;margin-right: 60px;">Blacklist Organization</button><span class="float-right" style="margin-right: 30px;"></span></h3>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Last Name</th>
+                                            <th>Given Name</th>
+                                            <th>Email Address</th>
+                                            <th>Contact Number</th>
+                                            <th>Status</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>ejt;wjt;weljt</td>
+                                            <td>ryweewyweyew</td>
+                                            <td>qeyqetqwrqwr</td>
+                                            <td>qwrqwrwqr</td>
+                                            <td>qwrwqr</td>
+                                            <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
+                                                    <div class="dropdown-menu"
+                                                        role="menu"><a class="dropdown-item" role="presentation" id="editButt" href="#">Edit</a><a class="dropdown-item" role="presentation" id="deleteButt" href="#">Delete</a><a class="dropdown-item" role="presentation"
+                                                            id="blacklistWhitelistButt" href="#">Blacklist/Whitelist</a></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Last Name&nbsp;</strong></td>
+                                            <td><strong>Given Name</strong></td>
+                                            <td><strong>Email Address&nbsp;</strong></td>
+                                            <td><strong>Contact Number</strong></td>
+                                            <td><strong>Status</strong></td>
+                                            <td><strong></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 69</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editOfficerModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Edit Officer</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1 justify-content-between"><input class="flex-grow-1" type="text" placeholder="Last Name"><input class="flex-grow-1" type="text" placeholder="Given Name"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" placeholder="DLSU Email"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" placeholder="Contact Number"></div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="deleteOfficerModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Delete Officer</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><span style="font-size: 28px;">Are you sure you want to delete this officer?</span></div>
+                    </div>
+                </div>
+                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="blacklistWhitelistOfficerModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">&lt;Blacklist/Whitelist&gt; Officer</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><span style="font-size: 28px;">Are you sure you want to &lt;blacklist/whitelist&gt; this officer?</span></div>
+                    </div>
+                </div>
+                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="blacklistOrgModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                    <h4 class="modal-title">Blacklist Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body"><select><optgroup label="Organization"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select><select><optgroup label="Permanence"><option value="12" selected="">Definite</option><option value="13">Indefinite</option></optgroup></select>
+                    <input
+                        type="text" placeholder="MM/DD/YYYY">
+                        <div class="row">
+                            <div class="col">
+                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">I confirm blacklisting this organization</label></div>
+                            </div>
+                        </div>
+                </div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="deleteOrgPromptModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                    <h4 class="modal-title">Delete Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body d-xl-flex flex-grow-1 justify-content-xl-center"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" id="deleteOrgButt" style="color: rgb(255,255,255);background-color: #329d9c;">Select</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="deleteOrgModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                    <h4 class="modal-title">Delete Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p>Are you sure you want to delete this organization?</p>
+                </div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/buttonInteraction.js"></script>
+    <script src="assets/js/buttonInteractionMO.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

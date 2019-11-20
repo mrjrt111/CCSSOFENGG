@@ -1,0 +1,12 @@
+th:hover {
+  color: #56c596;
+}
+
+td:hover {
+  color: #d48664;
+}
+
+tr:hover {
+  background-color: #cff4d2;
+}
+
