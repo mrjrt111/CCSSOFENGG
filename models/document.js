@@ -1,9 +1,14 @@
 const mongoose = require("mongoose")
 
 var documentSchema = mongoose.Schema({
-    org: String,
-    term: Number,
     actName: String,
+    org: String,
+    actType: String,
+    nature: String,
+    venue: String,
+    isOnline: String,
+    inGOSM: String,
+    term: Number,
     subType: String,
     subBy: String,
     recBy: String,
@@ -12,11 +17,13 @@ var documentSchema = mongoose.Schema({
     firstDate: Date,
     secCheck: String,
     secDate: Date,
+    date: Date,
+    startTime: String,
+    endTime: String,
     filedBy: String,
     fileDate: Date,
     remarks: String,
     tieUp: String,
-    docuType: String,
     status: String
 })
 
@@ -49,6 +56,13 @@ exports.delete = function (id){
 
 }
 
+exports.edit = function(oldContent, newContent){
+    return new Promise(function(resolve,reject){
+        Document.findOneAndUpdate(oldContent, newContent).then(()=>{
+            console.log("Update: ", docu)
+        })
+    })
+}
 
 exports.get = function(id){
     return new Promise(function(resolve, reject){

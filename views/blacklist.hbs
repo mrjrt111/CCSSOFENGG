@@ -41,9 +41,9 @@
                         </thead>
                         <tbody id="officerTable">
                             {{#each users}}
-                            <tr>
-                                <td>{{givenname}} {{lastname}}</td>
-                                <td><button class="btn btn-primary officerBlacklist" type="button">Blacklist Officer</button></td>
+                            <tr data-id="{{_id}}">
+                                <td data-id="{{_id}}"><span data-id="{{_id}}">{{givenname}} {{lastname}}</span></td>
+                                <td data-id="{{_id}}"><button class="btn btn-primary officerBlacklist" type="button" data-id="{{_id}}">Blacklist Officer</button></td>
                             </tr>
                             {{!-- <tr>
                                 <td>Finish the wireframe</td>
@@ -52,6 +52,10 @@
                             {{/each}}
                         </tbody>
                     </table>
+
+                    <form id="blacklistform" action="add">
+                        <input type="hidden" name="id" id="blacklistid">
+                    </form>
                 </div>
             </div>
         </div>
@@ -60,5 +64,31 @@
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
 </body>
+
+<script>
+    $(document).ready(function(){
+        $("span[data-id]").click(function(){
+            let id = $(this).attr("data-id")
+            $("#blacklistid").val(id)
+            $("#blacklistform").submit()
+        })
+
+        $("button.officerBlacklist").click(function(){
+            let id = $(this).attr("data-id")
+            console.log("NACLICK RIN")
+            $.ajax({
+                url: "/blacklist/add",
+                method: "post",
+                data: {
+                    id: id
+                },
+                success: function(result){
+                    alert("Successfully blacklisted")
+                }
+            })
+        })
+    })
+</script>
+
 
 </html>

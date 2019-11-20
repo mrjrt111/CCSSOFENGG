@@ -3,7 +3,6 @@ const router = express.Router()
 const Document = require("../models/document")
 const Organization = require("../models/organization")
 const User = require("../models/user")
-const Activity = require("../models/activity")
 const bodyparser = require("body-parser")
 
 const app = express()
@@ -21,9 +20,9 @@ router.get("/encode", (req, res)=>{
             console.log(orgs)
             User.getOfficers().then((officers)=>{
                 console.log(officers)
-                Activity.getAll().then((acts)=>{
+                Document.getAll().then((docus)=>{
                     res.render("encode.hbs", {
-                        orgs, users, officers, acts
+                        orgs, users, officers, docus
                     })
                 }, (error)=>{
                     res.sendFile(error)
@@ -46,9 +45,14 @@ router.post("/addDocu", (req, res)=>{
 
     if(req.body.tieUp){
         var docu = {
-            org: req.body.org,
-            term: req.body.term,
             actName: req.body.actName,
+            org: req.body.org,
+            actType: req.body.type,
+            nature: req.body.nature,
+            venue: req.body.venue,
+            isOnline: req.body.online,
+            inGOSM: req.body.GOSM,
+            term: req.body.term,
             subType: req.body.subType,
             subBy: req.body.subBy,
             recBy: req.body.recBy,
@@ -66,9 +70,14 @@ router.post("/addDocu", (req, res)=>{
     }
     else{
         var docu = {
-            org: req.body.org,
-            term: req.body.term,
             actName: req.body.actName,
+            org: req.body.org,
+            actType: req.body.type,
+            nature: req.body.nature,
+            venue: req.body.venue,
+            isOnline: req.body.online,
+            inGOSM: req.body.GOSM,
+            term: req.body.term,
             subType: req.body.subType,
             subBy: req.body.subBy,
             recBy: req.body.recBy,
@@ -83,24 +92,6 @@ router.post("/addDocu", (req, res)=>{
             docuType: "Pre-Acts"
         }
     }
-
-    // var docu = {
-    //     org: req.body.org,
-    //     term: req.body.term,
-    //     actName: req.body.actName,
-    //     subType: req.body.subType,
-    //     subBy: req.body.subBy,
-    //     recBy: req.body.recBy,
-    //     dateRec: req.body.dateRec,
-    //     firstCheck: req.body.firstCheck,
-    //     firstDate: req.body.firstDate,
-    //     secCheck: req.body.secCheck,
-    //     secDate: req.body.secDate,
-    //     filedBy: req.body.filedBy,
-    //     fileDate: req.body.fileDate,
-    //     remarks: req.body.remarks,
-    //     tieIn: req.body.tieIn
-    // }
 
     console.log(docu.dateRec)
     console.log(docu.firstDate)
@@ -145,7 +136,21 @@ router.post("/delete", (req,res)=>{
     let id = req.body.id
     console.log(id)
     Document.delete(id);
-    res.render("dashboard.hbs")
+    res.redirect("/dashboard")
+})
+
+router.post("/editDocs", (req,res)=>{
+    let org = req.body.org;
+    let actName = req.body.actName;
+    let actType = req.body.actType;
+    let nature = req.body.nature;
+    let venue = req.body.venue;
+    let isOnline = req.body.isOnline;
+    let inGOSM = req.body.inGOSM;
+
+    Document.edit({_id:id}, {org:org, actName:actName, actType:actType, nature:nature, venue:venue, isOnline:isOnline, inGOSM:inGOSM}).then((docu)=>{
+        res.redirect("/viewDocs")
+    })
 })
 
 router.get("/viewDocs", (req,res)=>{

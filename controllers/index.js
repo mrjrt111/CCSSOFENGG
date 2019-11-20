@@ -8,7 +8,6 @@ const Document = require("../models/document")
 const app = express()
 
 router.use("/", require("./userController"))
-router.use("/act", require("./activityController"))
 router.use("/docu", require("./documentController"))
 router.use("/org", require("./organizationController"))
 router.use("/blacklist", require("./blacklistController"))
@@ -33,6 +32,7 @@ router.get("/", function(req,res){
     })
 })
 
+
 router.get("/dashboard", function(req,res) {
     Document.getAll().then((docus) => {
         User.getAll().then((users) => {
@@ -47,6 +47,7 @@ router.get("/dashboard", function(req,res) {
             res.sendFile(error)
         })
     })
+
 
 })
 
