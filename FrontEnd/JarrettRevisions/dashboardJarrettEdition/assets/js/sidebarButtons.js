@@ -4,12 +4,7 @@ $("#addOrgOfficerButt").click(function(){
 $("#addOrgButt").click(function(){
    $("#addOrgModal").modal("show"); 
 });
-$("#deleteOrgButt").click(function(){
-   $("#deleteOrgModal").modal("show"); 
-});
-$("#blacklistOrgButt").click(function(){
-   $("#blacklistOrgModal").modal("show"); 
-});
+
 $("#viewOpen").click(function(){
     if($("#viewLinks").hasClass("visible")){
      $("#viewLinks").addClass("hidden");  
@@ -40,24 +35,14 @@ $("#addOpen").click(function(){
      $("#addLinks").removeClass("hidden");  
     }
 });
-$("#deleteOpen").click(function(){
-    if($("#deleteLinks").hasClass("visible")){
-     $("#deleteLinks").addClass("hidden");  
-     $("#deleteLinks").removeClass("visible");  
+$("#manageOpen").click(function(){
+    if($("#manageLinks").hasClass("visible")){
+     $("#manageLinks").addClass("hidden");  
+     $("#manageLinks").removeClass("visible");  
     }
     else{
-     $("#deleteLinks").addClass("visible");  
-     $("#deleteLinks").removeClass("hidden");  
-    }
-});
-$("#blacklistOpen").click(function(){
-    if($("#blacklistLinks").hasClass("visible")){
-     $("#blacklistLinks").addClass("hidden");  
-     $("#blacklistLinks").removeClass("visible");  
-    }
-    else{
-     $("#blacklistLinks").addClass("visible");  
-     $("#blacklistLinks").removeClass("hidden");  
+     $("#manageLinks").addClass("visible");  
+     $("#manageLinks").removeClass("hidden");  
     }
 });
 $("#preactsButton").click(function(){
