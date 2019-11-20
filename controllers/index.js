@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const Organization = require("../models/organization")
 const User = require("../models/user")
+const Document = require("../models/document")
 
 
 const app = express()
@@ -32,8 +33,21 @@ router.get("/", function(req,res){
     })
 })
 
-router.get("/dashboard", function(req,res){
-    res.render("dashboard.hbs")
+router.get("/dashboard", function(req,res) {
+    Document.getAll().then((docus) => {
+        User.getAll().then((users) => {
+            Organization.getAll().then((orgs) => {
+                res.render("dashboard.hbs", {
+                    users,
+                    orgs,
+                    docus
+                })
+            })
+        }, (error) => {
+            res.sendFile(error)
+        })
+    })
+
 })
 
 router.get("/regis", function(req, res){
@@ -48,6 +62,20 @@ router.get("/regis", function(req, res){
 router.get("/logout", function(req,res){
     res.redirect("/")
     // res.redirect("/")
+})
+
+router.get("/manageOfficers", function(req, res){
+    var org = req.session.org;
+    User.getAll().then((users)=>{
+        Organization.getAll().then((orgs)=>{
+            res.render("modifyOfficer.hbs",{
+                users,
+                orgs
+            })
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
 })
 
 module.exports = router

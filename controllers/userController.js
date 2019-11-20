@@ -93,6 +93,7 @@ router.post("/login", function(req, res){
     User.authenticate(user).then((newUser)=>{
         if(newUser){
             req.session.email = user.email
+            req.session.org = user.org
             console.log(req.session.email)
             Document.getAll().then((docus)=>{
                 Organization.getAll().then((orgs)=>{
@@ -144,6 +145,8 @@ router.post("/deleteOfficer", function(req, res){
         res.sendFile(error)
     })
 })
+
+
 
 
 //router.get('/login', function(req, res){
