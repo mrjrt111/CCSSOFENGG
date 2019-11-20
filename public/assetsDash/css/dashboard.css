@@ -1,0 +1,38 @@
+.bold {
+  font-weight: bold;
+}
+
+.selected {
+  background-color: #329d9c;
+}
+
+.unselected {
+  background-color: gray;
+}
+
+.sidebarOptions span:hover {
+  color: rgba(207,244,210,1);
+}
+
+#sidebarOptions .option:hover {
+  color: #d48664;
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hiddenBody {
+  display: none;
+}
+
+.visibleBody {
+  display: flex;
+}
+
