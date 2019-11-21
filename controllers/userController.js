@@ -83,18 +83,24 @@ router.post("/login", function(req, res){
                 }
                 else{
                     req.session.email = user.email
-                    console.log(req.session.email)
-                    res.redirect("/dashboard")
-                    // Document.getAll().then((docus)=>{
-                    //     Organization.getOrgExceptCSO().then((orgs)=>{
-                    //         res.render("dashboard.hbs",{
-                    //             docus, orgs
-                    //     })
+                    req.session.org = user.org
+                    // res.redirect("/dashboard")
+                    User.getByEmail(user.email).then((user)=>{
+                        req.session.givenname = user.givenname
+                        Document.getAll().then((docus)=>{
+                            Organization.getAll().then((orgs)=>{
+                                res.render("dashboard.hbs",{
+                                    docus, orgs,
+                                    org:req.session.org,
+                                    name: req.session.givenname
+                                })
 
-                    //     })
-                    // }, (error)=>{
-                    //     res.sendFile(error)
-                    // })
+                            })
+                        }, (error)=>{
+                            res.sendFile(error)
+                        })
+                    })
+
                 }
             })
         }
