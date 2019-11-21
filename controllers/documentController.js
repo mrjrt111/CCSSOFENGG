@@ -39,6 +39,32 @@ router.get("/encode", (req, res)=>{
     
 })
 
+router.get("/encodePost", (req, res)=>{
+    User.getCSO().then((users)=>{
+        console.log(users)
+        Organization.getAll().then((orgs)=>{
+            console.log(orgs)
+            User.getOfficers().then((officers)=>{
+                console.log(officers)
+                Document.getAll().then((docus)=>{
+                    res.render("encodePost.hbs", {
+                        orgs, users, officers, docus
+                    })
+                }, (error)=>{
+                    res.sendFile(error)
+                })
+            },(error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+    
+})
+
 router.post("/addDocu", (req, res)=>{
     
     console.log(req.body.dateRec)
