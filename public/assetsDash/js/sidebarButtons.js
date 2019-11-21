@@ -4,7 +4,9 @@ $("#addOrgOfficerButt").click(function(){
 $("#addOrgButt").click(function(){
    $("#addOrgModal").modal("show"); 
 });
-
+$("#selectOrgButt").click(function(){
+   $("#selectOrgModal").modal("show"); 
+});
 $("#viewOpen").click(function(){
     if($("#viewLinks").hasClass("visible")){
      $("#viewLinks").addClass("hidden");  

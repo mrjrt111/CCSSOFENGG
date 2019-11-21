@@ -39,14 +39,8 @@
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                     <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
-                    <select
-                            id="orgSelectDashboard">
-                        <optgroup label="This is a group">
-                            <option value="12" selected="">This is item 1</option>
-                            <option value="13">This is item 2</option>
-                            <option value="14">This is item 3</option>
-                        </optgroup>
-                    </select>
+                    <button
+                        class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);">Select Organization</button>
                 </div>
             </nav>
             <div class="container-fluid">
@@ -272,6 +266,28 @@
         </div>
     </div>
 </div>
+<div class="modal fade" role="dialog" tabindex="-1" id="selectOrgModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                    <h4 class="modal-title">Select Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1">
+                            <select class="d-flex flex-grow-1">
+                                <optgroup label="Organizations">
+                                    {{#each orgs}}
+                                        <option value="{{abbrev}}">{{abbrev}}</option>
+                                    {{/each}}
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
 <script src="/assetsDash/js/jquery.min.js"></script>
 <script src="/assetsDash/bootstrap/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
