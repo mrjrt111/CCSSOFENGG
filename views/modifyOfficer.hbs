@@ -2,6 +2,8 @@
 <html>
 
 <head>
+    <script src="/jQuery.js"></script>
+    <script src="/public/jQuery.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Table - Brand</title>
@@ -77,21 +79,65 @@
                                     </tfoot>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 69</p>
-                                </div>
-                                <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+                        </div>
+                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                            <table class="table dataTable my-0" id="dataTable">
+                                <thead>
+                                <tr>
+                                    <th>Last Name</th>
+                                    <th>Given Name</th>
+                                    <th>Email Address</th>
+                                    <th>Contact Number</th>
+                                    <th>Status</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                {{#each users}}
+                                <tr data-id="{{_id}}">
+                                    <td data-id="{{_id}}">{{lastname}}</td>
+                                    <td data-id="{{_id}}">{{givenname}}</td>
+                                    <td data-id="{{_id}}">{{email}}</td>
+                                    <td data-id="{{_id}}">{{contact}}</td>
+                                    <td data-id="{{_id}}">{{type}}</td>
+                                    <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
+                                            <div class="dropdown-menu" role="menu">
+                                                <a class="dropdown-item" role="presentation" id="editButt" data-id="{{_id}}"href="#">Edit</a>
+                                                <button class="dropdown-item" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</button>
+                                                <span class="dropdown-item" role="presentation" id="blacklistWhitelistButt" href="#">Blacklist/Whitelist</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {{/each}}
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td><strong>Last Name&nbsp;</strong></td>
+                                    <td><strong>Given Name</strong></td>
+                                    <td><strong>Email Address&nbsp;</strong></td>
+                                    <td><strong>Contact Number</strong></td>
+                                    <td><strong>Status</strong></td>
+                                    <td><strong></strong></td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 align-self-center">
+                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 69</p>
+                            </div>
+                            <div class="col-md-6">
+                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                    <ul class="pagination">
+                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                    </ul>
+                                </nav>
                             </div>
                         </div>
                     </div>
@@ -185,14 +231,50 @@
                 </div>
                 <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
+            <div class="modal-footer d-xl-flex justify-content-xl-center">
+                <button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
         </div>
     </div>
-    <script src="assetsManage/js/jquery.min.js"></script>
-    <script src="assetsManage/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assetsManage/js/buttonInteraction.js"></script>
-    <script src="assetsManage/js/buttonInteractionMO.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
-    <script src="assetsManage/js/theme.js"></script>
+</div>
+<script src="assetsManage/js/jquery.min.js"></script>
+<script src="assetsManage/bootstrap/js/bootstrap.min.js"></script>
+<script src="assetsManage/js/buttonInteraction.js"></script>
+<script src="assetsManage/js/buttonInteractionMO.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="assetsManage/js/theme.js"></script>
+
+<!--<form id="deleteform" action="/user/deleteOfficer" method="post">-->
+<!--    <input type="hidden" name="id" id="deleteid">-->
+<!--</form>-->
 </body>
+
+<script>
+    $(document).ready(function(){
+        // $('button.dropdown-item').click(function(){
+        //     let id = $(this).attr("data-id")
+        //     $("#deleteid").val(id)
+        //     $("#deleteform").submit()
+        // })
+
+        $("button.dropdown-item").click(function(){
+            let id = $(this).attr("data-id")
+            $.ajax({
+                url: "/user/deleteOfficer",
+                method: "post",
+                data: {
+                    id:id
+                },
+                success:function(result){
+                    if(result.ok === 1){
+                    alert("Successfully deleted")
+                    $("tr[data-id='" + id + "']").remove()
+                    }else{
+                       alert("Something went wrong")
+                    }
+                }
+            })
+        })
+    })
+</script>
 
 </html>

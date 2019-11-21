@@ -7,7 +7,7 @@ const Document = require("../models/document")
 
 const app = express()
 
-router.use("/", require("./userController"))
+router.use("/user", require("./userController"))
 router.use("/docu", require("./documentController"))
 router.use("/org", require("./organizationController"))
 router.use("/blacklist", require("./blacklistController"))
@@ -66,17 +66,20 @@ router.get("/logout", function(req,res){
 })
 
 router.get("/manageOfficers", function(req, res){
-    var org = req.session.org;
+
     User.getAll().then((users)=>{
         Organization.getAll().then((orgs)=>{
+            var org = req.session.org;
             res.render("modifyOfficer.hbs",{
                 users,
-                orgs
+                orgs,
+                org
             })
         })
     }, (error)=>{
         res.sendFile(error)
     })
 })
+
 
 module.exports = router
