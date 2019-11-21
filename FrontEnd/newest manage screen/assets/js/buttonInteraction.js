@@ -1,4 +1,4 @@
-$("#editButt").click(function(){
+$(".editButt").click(function(){
   $("#editModal").modal("show");
   });
 
