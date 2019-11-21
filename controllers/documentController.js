@@ -39,6 +39,32 @@ router.get("/encode", (req, res)=>{
     
 })
 
+router.get("/encodePost", (req, res)=>{
+    User.getCSO().then((users)=>{
+        console.log(users)
+        Organization.getAll().then((orgs)=>{
+            console.log(orgs)
+            User.getOfficers().then((officers)=>{
+                console.log(officers)
+                Document.getAll().then((docus)=>{
+                    res.render("encodePost.hbs", {
+                        orgs, users, officers, docus
+                    })
+                }, (error)=>{
+                    res.sendFile(error)
+                })
+            },(error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+    
+})
+
 router.post("/addDocu", (req, res)=>{
     
     console.log(req.body.dateRec)
@@ -61,6 +87,11 @@ router.post("/addDocu", (req, res)=>{
             firstDate: req.body.firstDate,
             secCheck: req.body.secCheck,
             secDate: req.body.secDate,
+            date: req.body.date,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime,
+            ENP: req.body.enp,
+            ENMP: req.body.enmp,
             filedBy: req.body.filedBy,
             fileDate: req.body.fileDate,
             remarks: req.body.remarks,
@@ -86,6 +117,11 @@ router.post("/addDocu", (req, res)=>{
             firstDate: req.body.firstDate,
             secCheck: req.body.secCheck,
             secDate: req.body.secDate,
+            date: req.body.date,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime,
+            ENP: req.body.enp,
+            ENMP: req.body.enmp,
             filedBy: req.body.filedBy,
             fileDate: req.body.fileDate,
             remarks: req.body.remarks,

@@ -20,11 +20,14 @@ var documentSchema = mongoose.Schema({
     date: Date,
     startTime: String,
     endTime: String,
+    ENP: Number,
+    ENMP: Number,
     filedBy: String,
     fileDate: Date,
     remarks: String,
     tieUp: String,
-    status: String
+    status: String,
+    docuType: String
 })
 
 var Document = mongoose.model("docu", documentSchema)

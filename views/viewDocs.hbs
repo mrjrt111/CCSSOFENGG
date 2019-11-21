@@ -1,267 +1,166 @@
+<!DOCTYPE html>
 <html>
 
 <head>
-    <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
-    <style>
-    .mainCont {
-    display: flex;
-    height: 100;
-    width: 100;
-    background-color: #8C908C;
-    justify-content: space-between;
-    align-content: center;
-    flex-direction: column;
-    position: relative;
-    font-family: 'Signika';
-}
-
-.butt {
-    height: 25px;
-    width: 100px;
-}
-
-#head {
-    height: 10%;
-    width: 100%;
-    top: 0%;
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    background-color: #1D3D19;
-}
-
-.title {
-    font-size: 50px;
-    color: #CBCA98;
-    font-family: 'Fira Sans';
-}
-
-#body {
-    background-color: #CBCA98;
-    height: 90%;
-    width: 100%;
-    position: fixed;
-    top: 10%;
-    display: flex;
-    flex-direction: row;
-}
-
-#backButt {
-    background-color: #B3AE5D;
-    color: #1D3D19;
-}
-
-#tableContainer {
-    background-color: rgb(222, 224, 207);
-    height: 90%;
-    width: 95%;
-    position: relative;
-    top: 5%;
-    display: flex;
-    flex-direction: column;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-#table {
-    background-color: rgb(222, 224, 207);
-    width: 95%;
-    position: relative;
-    top: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    flex-grow: 10;
-    overflow: scroll;
-}
-
-#buttonsContainer {
-    background-color: rgb(222, 224, 207);
-    width: 95%;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    margin-left: auto;
-    margin-right: auto;
-    flex-grow: 1;
-}
-
-tr:nth-child(n) {
-    background-color: #CBCA98;
-    color: #1D3D19;
-}
-
-tr:nth-child(2n) {
-    background-color: #8CA484;
-    color: #1D3D19;
-}
-
-th:nth-child(n) {
-    background-color: #1D3D19;
-    color: #B3AE5D;
-}
-
-th:nth-child(2n) {
-    background-color: #B3AE5D;
-    color: #1D3D19;
-}
-
-#editButt {
-    background-color: #8CA484;
-    color: #CBCA98;
-}
-
-#deleteButt {
-    background-color: #8C908C;
-    color: #CBCA98;
-}</style>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="/assetsLog/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="/assetsLog/css/DocumentsView.css">
 </head>
 
-<body>
-    <div class="mainCont">
-        <div id="head">
-            <button class="butt" type="button" onclick="window.location.href = '/dashboard'">Back</button>
-            <span class="title">ALL PREACTS</span>
-            <span class="title" style="display: none;">ALL POSTACTS</span>
-        </div>
-        <div id="body">
-            <div id="tableContainer">
-                <div id="table">
-                    <table id="preacts">
-                        <tr>
-                            <th onclick="sortTable(0, 'preacts')">Organization</th>
-                            <th onclick="sortTable(1, 'preacts')">Term</th>
-                            <th onclick="sortTable(2, 'preacts')" >Activity Name</th>
-                            <th onclick="sortTable(3, 'preacts')" >Type of Submission</th>
-                            <th>Submitted by</th>
-                            <th>Received by</th>
-                            <th onclick="sortTable(6, 'preacts')" >Date</th>
-                            <th onclick="sortTable(7, 'preacts')">First Checked by</th>
-                            <th onclick="sortTable(8, 'preacts')">Date</th>
-                            <th onclick="sortTable(9, 'preacts')">Second Checked by</th>
-                            <th onclick="sortTable(10, 'preacts')">Date</th>
-                            <th onclick="sortTable(11, 'preacts')">Filed by</th>
-                            <th onclick="sortTable(12, 'preacts')">Date</th>
-                            <th>Remarks</th>
-                        </tr>
-                        
-                        {{#each docus}}
-                        <tr>
-                            <td>{{org}}</td>
-                            <td>{{term}}</td>
-                            <td>{{actName}}</td>
-                            <td>{{subType}}</td>
-                            <td>{{subBy}}</td>
-                            <td>{{recBy}}</td>
-                            <td>{{dateRec}}</td>
-                            <td>{{firstCheck}}</td>
-                            <td>{{firstDate}}</td>
-                            <td>{{secCheck}}</td>
-                            <td>{{secDate}}</td>
-                            <td>{{filedBy}}</td>
-                            <td>{{fileDate}}</td>
-                            <td>{{remarks}}</td>
-                        </tr>
-                        {{/each}}
-                    </table>
-                    <table id="postacts" style="display: none;">
-                        <tr>
-                            <th>Organization</th>
-                            <th>Linkage</th>
-                            <th>Term</th>
-                            <th>Activity Name</th>
-                            <th>Type of Submission</th>
-                            <th>Submitted by</th>
-                            <th>First Checked by</th>
-                            <th>Date</th>
-                            <th>Second Checked by</th>
-                            <th>Date</th>
-                            <th>Logged by</th>
-                            <th>Date</th>
-                            <th>Remarks</th>
-                        </tr>
-                        
-                        {{#each docus}}
-                        <tr>
-                            <td>{{org}}</td>
-                            <td>{{status}}</td>
-                            <td>{{term}}</td>
-                            <td>{{actName}}</td>
-                            <td>{{subType}}</td>
-                            <td>{{subBy}}</td>
-                            <td>{{firstCheck}}</td>
-                            <td>{{firstDate}}</td>
-                            <td>{{secCheck}}</td>
-                            <td>{{secDate}}</td>
-                            <td>{{filedBy}}</td>
-                            <td>{{fileDate}}</td>
-                            <td>{{remarks}}</td>
-                        </tr>
-                        {{/each}}
-                    </table>
-                </div>
-                <div id="buttonsContainer">
-                    <form action="/docu/test" method="post">
-                     <input id="deleteB" type="submit" value="Delete" style="display: none;">
-                    </form>
-                    <button id="editButt" class="butt">Edit</button>
-                    <button id="deleteButt" class="butt"><a href="/docu/deleteView" style="text-decoration:none">Delete</a></button>
-                </div>
-            </div>
-            <!--
-            <div id="requirementsContainer">
-                <div id="requirementsTable">
-                    <table id="requirements">
-                        <tr>
-                            <th>Document</th>
-                            <th>Date Needed</th>
-                            <th>Officer</th>
-                        </tr>
-                    </table>
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">&lt;All Documents&gt;</span></li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;Organization Name&gt;</h3>
+                    <div class="card shadow">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Document Type</th>
+                                            <th>Type of Activity</th>
+                                            <th>Nature of Activity</th>
+                                            <th>Venue</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>ENP</th>
+                                            <th>ENMP</th>
+                                            <th>Online</th>
+                                            <th>GOSM</th>
+                                            <th></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {{#each docus}}
+                                        <tr>
+                                            <td>{{docuType}}</td>
+                                            <td>{{actType}}</td>
+                                            <td>{{nature}}</td>
+                                            <td>{{venue}}</td>
+                                            <td>{{date}}</td>
+                                            <td>{{startTime}} - {{endTime}}</td>
+                                            <td>{{ENP}}</td>
+                                            <td>{{ENMP}}</td>
+                                            <td>{{isOnline}}</td>
+                                            <td>{{inGOSM}}</td>
+                                            <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                                <div class="dropdown show"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
+                                                    <div class="dropdown-menu show"
+                                                        role="menu"><a class="dropdown-item" role="presentation" id="editButt" href="#">Edit</a><a class="dropdown-item" role="presentation" id="deleteButt" href="#">Delete</a></div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        {{/each}}
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Document Type</strong></td>
+                                            <td><strong>Type of Activity</strong></td>
+                                            <td><strong>Nature of Activity</strong></td>
+                                            <td><strong>Venue</strong></td>
+                                            <td><strong>Date</strong></td>
+                                            <td><strong>Time</strong></td>
+                                            <td><strong>ENP</strong></td>
+                                            <td><strong>ENMP</strong></td>
+                                            <td><strong>Online</strong></td>
+                                            <td><strong>GOSM</strong></td>
+                                            <td><strong></strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 69</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-            -->
+            <footer class="bg-white sticky-footer">
+                <div class="container my-auto">
+                    <div class="text-center my-auto copyright"></div>
+                </div>
+            </footer>
         </div>
     </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><select class="flex-grow-1 form-control-user" id="orgSelect"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                            <input
+                                class="flex-grow-1 form-control-user" type="text" id="activityTitle" placeholder="Activity Title"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1 form-control-user" type="text" id="typeOfActivity" placeholder="Type of Activity"><select class="flex-grow-1 form-control-user" id="natureSelect"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" id="venue" placeholder="Venue">
+                            <div class="form-check flex-grow-1"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Online</label></div>
+                            <div class="form-check flex-grow-1"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">GOSM</label></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="deleteModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Delete Document</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><span style="font-size: 28px;">Are you sure you want to delete this document?</span></div>
+                    </div>
+                </div>
+                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <script src="/assetsLog/js/jquery.min.js"></script>
+    <script src="/assetsLog/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assetsLog/js/buttonInteraction.js"></script>
+    <script src="/assetsLog/js/buttonInteractionMO.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="/assetsLog/js/theme.js"></script>
 </body>
-    
-    <script>
-                function sortTable(n, id) {
-                    var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-                    table = document.getElementById(id);
-                    switching = true;
-                    dir = "asc";
-                    while (switching) {
-                        switching = false;
-                        rows = table.rows;
-                        for (i = 1; i < (rows.length - 1); i++) {
-                            shouldSwitch = false;
-                            x = rows[i].getElementsByTagName("TD")[n];
-                            y = rows[i + 1].getElementsByTagName("TD")[n];
-                            if (dir == "asc") {
-                                if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                                    shouldSwitch = true;
-                                    break;
-                                }
-                            } else if (dir == "desc") {
-                                if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                                    shouldSwitch = true;
-                                    break;
-                                }
-                            }
-                        }
-                        if (shouldSwitch) {
-                            rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                            switching = true;
-                            switchcount++;
-                        } else {
-                            if (switchcount == 0 && dir == "asc") {
-                                dir = "desc";
-                                switching = true;
-                            }
-                        }
-                    }
-                }
-            </script>
 
 </html>

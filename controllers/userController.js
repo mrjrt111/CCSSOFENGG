@@ -23,7 +23,8 @@ router.post("/register", function(req, res){
         email : req.body.email,
         number: req.body.number,
         password : req.body.password,
-        org: req.body.org,
+        type: req.body.position,
+        org: req.body.org
     }
 
     Officer.authenticate(user).then((newUser)=>{
@@ -83,16 +84,17 @@ router.post("/login", function(req, res){
                 else{
                     req.session.email = user.email
                     console.log(req.session.email)
-                    Document.getAll().then((docus)=>{
-                        Organization.getAll().then((orgs)=>{
-                            res.render("dashboard.hbs",{
-                                docus, orgs
-                        })
-        
-                        })
-                    }, (error)=>{
-                        res.sendFile(error)
-                    })
+                    res.redirect("/dashboard")
+                    // Document.getAll().then((docus)=>{
+                    //     Organization.getOrgExceptCSO().then((orgs)=>{
+                    //         res.render("dashboard.hbs",{
+                    //             docus, orgs
+                    //     })
+
+                    //     })
+                    // }, (error)=>{
+                    //     res.sendFile(error)
+                    // })
                 }
             })
         }
