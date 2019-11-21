@@ -61,3 +61,15 @@ exports.getOrgExceptCSO = function(abbrev){
         })
     })
 }
+
+exports.delete = function (abbrev){
+    return new Promise(function(resolve, reject){
+        //console.log("in promise : " + tag + " "+ username)
+        Organization.deleteOne({abbrev: abbrev
+        }).then((docu)=>{
+            console.log("Deleted: ",  docu)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}
