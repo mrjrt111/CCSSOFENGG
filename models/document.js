@@ -15,8 +15,6 @@ var documentSchema = mongoose.Schema({
     dateRec: Date,
     firstCheck: String,
     firstDate: Date,
-    secCheck: String,
-    secDate: Date,
     date: Date,
     startTime: String,
     endTime: String,

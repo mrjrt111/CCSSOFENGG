@@ -85,8 +85,6 @@ router.post("/addDocu", (req, res)=>{
             dateRec: req.body.dateRec,
             firstCheck: req.body.firstCheck,
             firstDate: req.body.firstDate,
-            secCheck: req.body.secCheck,
-            secDate: req.body.secDate,
             date: req.body.date,
             startTime: req.body.startTime,
             endTime: req.body.endTime,
@@ -106,8 +104,8 @@ router.post("/addDocu", (req, res)=>{
             actType: req.body.type,
             nature: req.body.nature,
             venue: req.body.venue,
-            isOnline: req.body.online,
-            inGOSM: req.body.GOSM,
+            // isOnline: req.body.online,
+            // inGOSM: req.body.GOSM,
             term: req.body.term,
             subType: req.body.subType,
             subBy: req.body.subBy,
@@ -115,8 +113,6 @@ router.post("/addDocu", (req, res)=>{
             dateRec: req.body.dateRec,
             firstCheck: req.body.firstCheck,
             firstDate: req.body.firstDate,
-            secCheck: req.body.secCheck,
-            secDate: req.body.secDate,
             date: req.body.date,
             startTime: req.body.startTime,
             endTime: req.body.endTime,
@@ -134,7 +130,7 @@ router.post("/addDocu", (req, res)=>{
     console.log(docu.secDate)
     console.log(docu.fileDate)
 
-    if(!docu.dateRec || !docu.firstDate || !docu.secDate || !docu.fileDate){
+    if(!docu.dateRec || !docu.firstDate || !docu.fileDate){
         console.log(docu)
         User.getCSO().then((users)=>{
             console.log(users)
