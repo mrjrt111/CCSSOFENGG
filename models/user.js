@@ -60,6 +60,16 @@ exports.get = function(id){
       })
 }
 
+exports.getByEmail = function(email){
+    return new Promise(function(resolve, reject){
+        User.findOne({email:email}).then((user)=>{
+            resolve(user)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
 // exports.delete = function (user){
 //     return new Promise(function(resolve, reject){
 //         User.deleteOne({
