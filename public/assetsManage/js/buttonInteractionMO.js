@@ -1,13 +1,13 @@
-$("#editButt").click(function(){
+$(".editButt").click(function(){
   $("#editOfficerModal").modal("show");
   });
 
-$("#deleteButt").click(function(){
+$(".deleteButt").click(function(){
   $("#deleteOfficerModal").modal("show");
   });
 
 
-$("#blacklistWhitelistButt").click(function(){
+$(".blacklistWhitelistButt").click(function(){
   $("#blacklistWhitelistOfficerModal").modal("show");
   });
 

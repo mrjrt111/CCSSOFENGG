@@ -33,7 +33,13 @@
                                     <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
                                 </div>
                                 <div class="col-md-6">
-                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label></div>
+                                    <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label>
+                                        <form class="d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button" style="background-color: rgb(50,157,156);"><i class="fas fa-search"></i></button></div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -60,9 +66,9 @@
                                     <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                         <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
                                             <div class="dropdown-menu" role="menu">
-                                                <a class="dropdown-item" role="presentation" id="editButt" data-id="{{_id}}"href="#">Edit</a>
-                                                <button class="dropdown-item" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</button>
-                                                <span class="dropdown-item" role="presentation" id="blacklistWhitelistButt" href="#">Blacklist/Whitelist</span>
+                                                <a class="dropdown-item editButt" role="presentation" data-id="{{_id}}"href="#">Edit</a>
+                                                <button class="dropdown-item deleteButt" role="presentation"  data-id="{{_id}}" href="#">Delete</button>
+                                                <button class="dropdown-item blacklistWhitelistButt" role="presentation" data-id="{{_id}}" href="#">Blacklist/Whitelist</button>
                                             </div>
                                         </div>
                                     </td>
@@ -146,7 +152,7 @@
                         <div class="col d-flex flex-grow-1"><span style="font-size: 28px;">Are you sure you want to &lt;blacklist/whitelist&gt; this officer?</span></div>
                     </div>
                 </div>
-                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light confirmBlacklist" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
     </div>
@@ -239,7 +245,7 @@
         //     $("#deleteform").submit()
         // })
 
-        $("button.dropdown-item").click(function(){
+        $("button.deleteButt").click(function(){
             let id = $(this).attr("data-id")
             $.ajax({
                 url: "/user/deleteOfficer",
@@ -255,6 +261,27 @@
                        alert("Something went wrong")
                     }
                 }
+            })
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("button.blacklistWhitelistButt").click(function(){
+            let id = $(this).attr("data-id")
+            console.log("NACLICK RIN")
+            $("button.confirmBlacklist").click(function(){
+                $.ajax({
+                url: "/blacklist/add",
+                method: "post",
+                data: {
+                    id: id
+                },
+                success: function(result){
+                    alert("Blacklist status updated!")
+                    }
+                })
             })
         })
     })

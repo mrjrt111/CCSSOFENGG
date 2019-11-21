@@ -26,8 +26,25 @@ router.get("/", function(req, res){
 router.post("/add", function(req, res){
     let id = req.body.id
     console.log(id)
-    BList.add(id)
-    res.redirect("/blacklist")
+
+    User.get(id).then((user)=>{
+        let userEmail = user.email
+        BList.getEmail(userEmail).then((blacklist)=>{
+            if(blacklist){
+                let bId = blacklist.id
+                BList.remove(bId)
+                res.redirect("/manageOfficers")
+            }
+            else{
+                BList.add(id)
+                res.redirect("/manageOfficers")
+            }
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
 })
 
 module.exports = router

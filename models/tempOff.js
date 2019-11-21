@@ -31,7 +31,7 @@ exports.authenticate = function(officer){
         Officer.findOne({
             email: officer.email,
             org: officer.org,
-            type: officer.type
+            // type: officer.type
         }).then((officer)=>{
             console.log("callback user: " + officer)
             resolve(officer)

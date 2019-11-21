@@ -84,6 +84,18 @@
                         style="margin-right: 15px;">Date</span><input type="date" name="firstDate"></div>
             </div>
             <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Filed by</span>
+                <select style="margin-right: 15px;" name="filedBy">
+                    <optgroup label="Filed By">
+                        {{#each users}}
+                            <option>{{givenname}} {{lastname}}</option>
+                        {{/each}}
+                    </optgroup>
+                </select>
+                <span
+                    style="margin-right: 15px;">Date</span><input type="date" name="fileDate"></div>
+            </div>
+            <div class="row growRow">
                 <div class="col"><span style="margin-right: 15px;">Date</span><input type="date" style="margin-right: 15px;" name="date"><span style="margin-right: 15px;">Start Time</span><input type="time" class="timeInput" style="margin-right: 15px;" name="startTime"><span style="margin-right: 15px;">End Time</span>
                     <input
                         type="time" class="timeInput" style="margin-right: 15px;" name="endTime"><span style="margin-right: 15px;">Venue</span><input type="text" name="venue"></div>

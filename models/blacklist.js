@@ -52,3 +52,23 @@ exports.authenticate = function(blacklist){
         })
     })
 }
+
+exports.get = function(id){
+    return new Promise(function(resolve, reject){
+        BList.findOne({_id:id}).then((blacklist)=>{
+            resolve(blacklist)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getEmail = function(email){
+    return new Promise(function(resolve, reject){
+        BList.findOne({email:email}).then((blacklist)=>{
+            resolve(blacklist)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
