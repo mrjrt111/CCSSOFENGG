@@ -58,6 +58,22 @@ router.post("/addOfficer", function(req, res){
     }
 })
 
+router.post("/deleteOfficer", function(req, res){
+
+    var user = {
+        email : req.body.email,
+        org: req.body.org,
+    }
+
+    User.delete(user).then(()=>{
+        res.render("dashboard.hbs",{
+            docus, orgs
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
 
 
 module.exports = router

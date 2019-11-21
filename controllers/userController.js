@@ -111,19 +111,33 @@ router.post("/login", function(req, res){
 })
 
 router.post("/deleteOfficer", function(req, res){
+    let id = req.body.id
+    console.log(id)
 
-    var user = {
-        email : req.body.email,
-        org: req.body.org,
-    }
+    User.delete(id)
+    //     .then(()=>{
+    //     User.getAll().then((users)=>{
+    //         res.render("modifyOfficer.hbs",{
+    //             users
+    //         })
+    //
+    //     })
+    // }, (error)=>{
+    //     res.sendFile(error)
+    // })
 
-    User.delete(user).then(()=>{
-        res.render("dashboard.hbs",{
-            docus, orgs
-        })
-    }, (error)=>{
-        res.sendFile(error)
-    })
+    // var user = {
+    //     email : req.body.email,
+    //     org: req.body.org,
+    // }
+    //
+    // User.delete(user).then(()=>{
+    //     res.render("dashboard.hbs",{
+    //         docus, orgs
+    //     })
+    // }, (error)=>{
+    //     res.sendFile(error)
+    // })
 })
 
 
