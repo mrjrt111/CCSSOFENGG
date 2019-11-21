@@ -54,7 +54,7 @@
                                             <td>{{lastname}}</td>
                                             <td>{{givenname}}</td>
                                             <td>{{email}}</td>
-                                            <td>{{contact}}</td>
+                                            <td>{{number}}</td>
                                             <td>{{type}}</td>
                                             <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                                 <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
@@ -79,50 +79,6 @@
                                     </tfoot>
                                 </table>
                             </div>
-                        </div>
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table dataTable my-0" id="dataTable">
-                                <thead>
-                                <tr>
-                                    <th>Last Name</th>
-                                    <th>Given Name</th>
-                                    <th>Email Address</th>
-                                    <th>Contact Number</th>
-                                    <th>Status</th>
-                                    <th></th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                {{#each users}}
-                                <tr data-id="{{_id}}">
-                                    <td data-id="{{_id}}">{{lastname}}</td>
-                                    <td data-id="{{_id}}">{{givenname}}</td>
-                                    <td data-id="{{_id}}">{{email}}</td>
-                                    <td data-id="{{_id}}">{{contact}}</td>
-                                    <td data-id="{{_id}}">{{type}}</td>
-                                    <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
-                                        <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
-                                            <div class="dropdown-menu" role="menu">
-                                                <a class="dropdown-item" role="presentation" id="editButt" data-id="{{_id}}"href="#">Edit</a>
-                                                <button class="dropdown-item" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</button>
-                                                <span class="dropdown-item" role="presentation" id="blacklistWhitelistButt" href="#">Blacklist/Whitelist</span>
-                                            </div>
-                                        </div>
-                                    </td>
-                                </tr>
-                                {{/each}}
-                                </tbody>
-                                <tfoot>
-                                <tr>
-                                    <td><strong>Last Name&nbsp;</strong></td>
-                                    <td><strong>Given Name</strong></td>
-                                    <td><strong>Email Address&nbsp;</strong></td>
-                                    <td><strong>Contact Number</strong></td>
-                                    <td><strong>Status</strong></td>
-                                    <td><strong></strong></td>
-                                </tr>
-                                </tfoot>
-                            </table>
                         </div>
                         <div class="row">
                             <div class="col-md-6 align-self-center">

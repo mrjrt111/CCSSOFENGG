@@ -32,43 +32,73 @@
         </div>
     </div>
 
-    <div class="border rounded-0 shadow flex-column flex-grow-1 justify-content-between hidden" id="encodePostactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*display: none;*/">
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 16px;">Organization</span><select id="page-top" style="margin-right: 16px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Term</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+    <form action="/docu/addDocu" method="POST">
+        <div class="border rounded-0 shadow flex-column flex-grow-1 justify-content-between visible" id="encodePostactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*display: none;*/">
+            <div class="row growRow">
+                <div class="col"><span style="margin-right: 16px;">Organization</span>
+                <select id="page-top" style="margin-right: 16px;" name="org">
+                    <optgroup label="Organizations">
+                        {{#each orgs}}
+                            <option>{{abbrev}}</option>
+                        {{/each}}
+                    </optgroup>
+                </select>
                     <span
-                        style="margin-right: 15px;">Activity Name</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Type of Submission</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Submitted by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                        style="margin-right: 15px;">Term</span>
+                        <select style="margin-right: 15px;" name="term">
+                            <optgroup label="Term">
+                                <option value="1" selected="">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                            </optgroup>
+                        </select>
+                        <span
+                            style="margin-right: 15px;">Activity Name</span><input type="text" name="actName"></div>
+            </div>
+            <div class="row growRow">
+                <div class="col"><span style="margin-right: 15px;">Type of Submission</span>
+                <input style="margin-right: 15px;" type="text" name="subType">
+                    {{!-- <optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select> --}}
                     <span
-                        style="margin-right: 15px;">Linkage</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">First Checked by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Date</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">Time</span><input type="text" class="timeInput" style="margin-right: 15px;"><span style="margin-right: 15px;">:</span>
-                <input
-                    type="text" class="timeInput" style="margin-right: 15px;"><select id="page-top" class="timeInput" style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                        style="margin-right: 15px;">Submitted by</span>
+                        <select style="margin-right: 15px;" name="subBy">
+                            <optgroup label="Submitted By">
+                                {{#each officers}}
+                                    <option>{{givenname}} {{lastname}}</option>
+                                {{/each}}
+                            </optgroup>
+                        </select>
+                        <span
+                            style="margin-right: 15px;">Linkage</span><input type="text" name="tieUp"></div>
+            </div>
+            <div class="row growRow">
+                <div class="col"><span style="margin-right: 15px;">First Checked by</span>
+                <select style="margin-right: 15px;" name="firstCheck">
+                    <optgroup label="This is a group">
+                        {{#each users}}
+                            <option>{{givenname}} {{lastname}}</option>
+                        {{/each}}
+                    </optgroup>
+                </select>
                     <span
-                        style="margin-right: 15px;">Venue</span><input type="text"></div>
+                        style="margin-right: 15px;">Date</span><input type="date" name="firstDate"></div>
+            </div>
+            <div class="row growRow">
+                <div class="col"><span style="margin-right: 15px;">Date</span><input type="date" style="margin-right: 15px;" name="date"><span style="margin-right: 15px;">Start Time</span><input type="time" class="timeInput" style="margin-right: 15px;" name="startTime"><span style="margin-right: 15px;">End Time</span>
+                    <input
+                        type="time" class="timeInput" style="margin-right: 15px;" name="endTime"><span style="margin-right: 15px;">Venue</span><input type="text" name="venue"></div>
+            </div>
+            <div class="row growRow">
+                <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;" name="enp"><span style="margin-right: 15px;">ENMP</span><input type="text" name="enmp"></div>
+            </div>
+            <div class="row growRow">
+                <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" style="margin-right: 15px;" name="remarks"></div>
+            </div>
         </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">ENMP</span><input type="text"></div>
+        <div class="row" style="margin: 0px;">
+            <div class="col" style="padding: 0px 30px;"><input type="submit" value="Encode" class="btn btn-primary float-right" type="button" style="margin-left: 0px;margin-right: 0px;margin-bottom: 30px;background-color: #329d9c;"></input></div>
         </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" style="margin-right: 15px;"></div>
-        </div>
-    </div>
-    <div class="row" style="margin: 0px;">
-        <div class="col" style="padding: 0px 30px;"><button class="btn btn-primary float-right" type="button" style="margin-left: 0px;margin-right: 0px;margin-bottom: 30px;background-color: #329d9c;">Encode</button></div>
-    </div>
+    </form>>
     <script src="/assetsEncode/js/jquery.min.js"></script>
     <script src="/assetsEncode/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assetsEncode/js/hiding%20form%20div.js"></script>

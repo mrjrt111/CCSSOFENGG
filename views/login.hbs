@@ -37,11 +37,11 @@
                                 <div class="p-5">
                                     <div class="text-center d-lg-flex flex-column justify-content-lg-center align-items-lg-center">
                                         <h4 class="text-dark mb-4" style="margin-bottom: 0px;">Login</h4><span style="margin-bottom: 24px;">Enter your login credentials here</span></div>
-                                    <form class="user" action="/login" method="POST">
+                                    <form class="user" action="/user/login" method="POST">
                                         <div class="form-group"><input class="form-control small form-control-user" type="email" id="emailLogin" style="padding-right: 10px;padding-left: 10px;" placeholder="DLSU email" name="email"></div>
                                         <div class="form-group"><input class="form-control form-control-user" type="password" id="passwordLogin" placeholder="Password" name="password"></div>
                                         <div class="form-group" id="organizationLogin">
-                                            <select class="form-control" id="emailLogin" name="org" placeholder="DLSU email">
+                                            <select class="form-control roundBorder" id="emailLogin" name="org" placeholder="DLSU email">
                                                 <optgroup label="Organizations">
                                                     {{#each orgs}}
                                                         <option>{{abbrev}}</option>

@@ -10,3 +10,7 @@ tr:hover {
   background-color: #cff4d2;
 }
 
+.roundBorder {
+  border-radius: 50px;
+}
+
