@@ -1,656 +1,172 @@
-{{!-- <html>
+<!DOCTYPE html>
+<html>
 
 <head>
-    <link href='https://fonts.googleapis.com/css?family=Signika' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Fira+Sans' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="/encode.css">
-
-    <script>
-            function submitForm(){
-                var preActs = document.getElementById("preactsForm");
-                var postActs = document.getElementById("postactsForm");
-                var activity = document.getElementById("activityForm");
-                    if (window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(postActs).display == "none") {
-                        document.getElementById('submitActivity').click()
-                     }
-                     else if(window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(activity).display == "none"){
-                        document.getElementById('submitPostacts').click()
-                     }
-                     else if(window.getComputedStyle(postActs).display == "none" && window.getComputedStyle(activity).display == "none"){
-                        document.getElementById('submitPreacts').click()
-                     }
-            }
-        </script>  
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="/assetsEncode/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="/assetsEncode/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assetsEncode/css/Contact-Form-Clean.css">
 </head>
 
-<body>
-    <div class="mainCont">
-        <div class="header">
-            <button class="butt" type="button" id="backButt">Back</button>
-            <span id="orgName">DLSU ORG</span>
-        </div>
-        <div class="divider"></div>
-        <div class="body">
-            <div class="containerEncode">
-                <div id="encoding">
-                    <div class="pic"></div>
-                    <!-- <img class="pic" src="Kitten.jpg"> -->
-                    <span id="function">PREACTS ENCODING</span>
-                </div>
-                <div id="encodingDetails">
-                    <div id="uploadDirectly">
-                        <span class="title">Upload Directly</span>
-                        <br/>
-                        <span class=name>Name of File</span>
-                        <br/>
-                        <button class="butt">Select File</button>
-                        <button class="butt">Upload</button>
-                    </div>
-                    <div id="form">
-                        <span class="title">Upload Manually</span><br />
-                        <div class="top">
-                            <div id="navi">
-                                <div class="button">ACTIVITY</div>
-                                <div class="button">PREACTS</div>
-                                <div class="button">POSTACTS</div>
-
-                                <button class="butt" onclick="submitForm()">Encode</button>
-                            </div>
-                        </div>
-                        <form id="activityForm" style="display: none;">
-                            <span class="name">Organization</span>
-                            <select class="input">
-                                {{#each orgs}}
-                                    <option>{{abbrev}}</option>
-                                {{/each}}
-                            </select>
-                            <br/>
-                            <span class="name">Document Type</span>
-                            <input class="input" placeholder="doc">
-                            <br/>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="MM/dd">
-                            <br/>
-                            <span class="name">Time</span>
-                            <input class="input" placeholder="HH:MM-HH:MM">
-                            <br/>
-                            <span class="name">Type of Activity</span>
-                            <input class="input" placeholder="type">
-                            <br/>
-                            <span class="name">ENP</span>
-                            <input class="input" placeholder="number">
-                            <br/>
-                            <span class="name">Nature of Activity</span>
-                            <input class="input" placeholder="nature">
-                            <br/>
-                            <span class="name">ENMP</span>
-                            <input class="input" placeholder="number">
-                            <br/>
-                            <span class="name">Venue</span>
-                            <input class="input" placeholder="venue">
-                            <br/>
-                            <input type="checkbox">
-                            <span class="smallText">Online activity</span>
-                            <br/>
-                            <input type="checkbox">
-                            <span class="smallText">Activity is in GOSM</span>
-                            <br/>
-                            <span class="name">Officer in charge</span>
-                            <select class="input">
-                                <option>Officer1</option>
-                            </select>
-                            <input id="submitActivity" type="submit" value="submit" style="display: none;">
+<body id="page-top">
+    <div id="wrapper">
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button></div>
                         </form>
-                        <form id="preactsForm" style="display: none;">
-                            <span class="name">Organization</span>
-                            <select class="input" name="org">
-                                {{#each orgs}}
-                                    <option>{{abbrev}}</option>
-                                {{/each}}
-                            </select>
-                            <br />
-                            <span class="name">Term</span>
-                            <select class="input" name="term">
-                                <option value="1">Term 1</option>
-                                <option value="2">Term 2</option>
-                                <option value="3">Term 3</option>
-                            </select>
-                            <br />
-                            <span class="name">Activity Name</span>
-                            <select class="input" name="actName">
-                                <option>ARW</option>
-                            </select>
-                            <br />
-                            <span class="name">Type of Submission</span>
-                            <select class="input" name="subType">
-                                <option>Document</option>
-                            </select>
-                            <br />
-                            <span class="name">Submitted by</span>
-                            <select class="input" name="subBy">
-                                {{#each officers}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <br />
-                            <span class="name">Received by</span>
-                            <select class="input" name="recBy">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="dateRec">
-                            <br />
-                            <span class="name">First checked by</span>
-                            <select class="input" name="firstCheck">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="firstDate">
-                            <br />
-                            <span class="name">Second checked by</span>
-                            <select class="input" name="secCheck">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="secDate">
-                            <br />
-                            <span class="name">Filed by</span>
-                            <select class="input" name="filedBy">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="fileDate">
-                            <br />
-                            <span class="name">Remarks</span>
-                            <input class="input" id="remarksField" name="remarks">
-                            <input id="submitPreacts" type="submit" value="submit" style="display: none;">
-                        </form>
-                        <form id="postactsForm">
-                            <span class="name">Organization</span>
-                            <select class="input" name="org">
-                                {{#each orgs}}
-                                    <option>{{abbrev}}</option>
-                                {{/each}}
-                            </select>
-                            <br />
-                            <span class="name">Term</span>
-                            <select class="input" name="term">
-                                <option value="1">Term 1</option>
-                                <option value="2">Term 2</option>
-                                <option value="3">Term 3</option>
-                            </select>
-                            <br />
-                            <span class="name">Activity Name</span>
-                            <select class="input" name="actName">
-                                <option>ARW</option>
-                            </select>
-                            <br />
-                            <span class="name">Type of Submission</span>
-                            <select class="input" name="subType">
-                                <option>Document</option>
-                            </select>
-                            <br />
-                            <span class="name">Submitted by</span>
-                            <select class="input" name="subBy">
-                                {{#each officers}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <br />
-                            <span class="name">Received by</span>
-                            <select class="input" name="recBy">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="dateRec">
-                            <br />
-                            <span class="name">First checked by</span>
-                            <select class="input" name="firstCheck">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="firstDate">
-                            <br />
-                            <span class="name">Second checked by</span>
-                            <select class="input" name="secCheck">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="secDate">
-                            <br />
-                            <span class="name">Filed by</span>
-                            <select class="input" name="filedBy">
-                                {{#each users}}
-                                    <option>{{name}}</option>
-                                {{/each}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="fileDate">
-                            <br />
-                            <span class="name">Remarks</span>
-                            <input class="input" id="remarksField" name="remarks">
-                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span id="orgNameTitle" style="font-size: 28px;color: #205072;">&lt;ORG NAME HERE&gt;</span></li>
+                        </ul>
                     </div>
-                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-1" id="encodePreactsHeader">Encode PREACTS</h3>
+                    <h3 class="text-dark" id="encodePostactsHeader" style="font-size: 28px; display: none;">Encode POSTACTS</h3>
                 </div>
             </div>
         </div>
-    </body>
-</html> --}}
-
-<html>
-    <head>
-        <link rel="stylesheet" type="text/css" href="/encode.css">  
-        <script src="/jQuery.js"></script>
-
-        <script>
-            let warn = {{error}}
-            $(document).ready(function(){
-                    if( warn == 1){
-                            alert("INVALID DATE! PLEASE INPUT VALID DATE!")
-                        }
-                })
-            
-            function submitForm(){
-                var preActs = document.getElementById("preactsForm");
-                var postActs = document.getElementById("postactsForm");
-                var activity = document.getElementById("activityForm");
-                    if (window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(postActs).display == "none") {
-                        document.getElementById('submitActivity').click()
-                     }
-                     else if(window.getComputedStyle(preActs).display == "none" && window.getComputedStyle(activity).display == "none"){
-                        document.getElementById('submitPostacts').click()
-                     }
-                     else if(window.getComputedStyle(postActs).display == "none" && window.getComputedStyle(activity).display == "none"){
-                        document.getElementById('submitPreacts').click()
-                     }
-            }
-
-            function activityOn(){
-                //alert("AYAW GUMANA")
-                var postActs = document.getElementById('postactsForm')
-                //document.getElementById("activityForm").style.visibility("visible")
-                postActs.style.display = 'none'
-
-                var preActs = document.getElementById('preactsForm')
-                preActs.style.display = 'none'
-
-                var activity = document.getElementById('activityForm')
-                activity.style.display = 'block'
-                //document.getElementById("preactsForm").style.visibility("hidden")
-            }
-
-            function preactsOn(){
-                //alert("AYAW GUMANA")
-                var postActs = document.getElementById('postactsForm')
-                //document.getElementById("activityForm").style.visibility("visible")
-                postActs.style.display = 'none'
-
-                var preActs = document.getElementById('preactsForm')
-                preActs.style.display = 'block'
-
-                var activity = document.getElementById('activityForm')
-                activity.style.display = 'none'
-                //document.getElementById("preactsForm").style.visibility("hidden")
-            }
-
-            function postOn(){
-                //alert("AYAW GUMANA")
-                var postActs = document.getElementById('postactsForm')
-                //document.getElementById("activityForm").style.visibility("visible")
-                postActs.style.display = 'block'
-
-                var preActs = document.getElementById('preactsForm')
-                preActs.style.display = 'none'
-
-                var activity = document.getElementById('activityForm')
-                activity.style.display = 'none'
-                //document.getElementById("preactsForm").style.visibility("hidden")
-            }
-        </script>  
-    </head>
-    <body>
-        <div class="mainCont">
-            <div class="header">
-                <button class="butt" type="button" onclick="window.location.href = '/dashboard'">Back</button>
-                <span id="orgName">DLSU ORG</span>
-            </div>
-            <div class="divider"></div>
-            <div class="body">
-                <div class="containerEncode">
-                    <div id="encoding">
-                        <img class="pic" src="/Kitten.jpg">
-                        <span id="function">PREACTS ENCODING</span>
-                    </div>
-                    <div id="encodingDetails">
-                    <div id="uploadDirectly">
-                        <span class="title">Upload Directly</span>
-                        <br/>
-                        <span class=name>Name of File</span>
-                        <br/>
-                        <button class="butt">Select File</button>
-                        <button class="butt">Upload</button>
-                    </div>
-                    <div id="form">
-                        <span class="title">Upload Manually</span><br />
-                        <div class="top">
-                            <div id="navi">
-                                <div id = "actButt" class="button" onclick="activityOn()">ACTIVITY</div>
-                                <div id = "preButt" class="button" onclick="preactsOn()">PREACTS</div>
-                                <div id = "postButt" class="button" onclick="postOn()">POSTACTS</div>
-
-                                <button class="butt" onclick="submitForm()">Encode</button>
-                                {{!-- <button class="butt">Encode</button> --}}
-                            </div>
-                        </div>
-                        <form action="/act/addAct" method="POST" id="activityForm" style="display: none;">
-                            <span class="name">Organization</span>
-                            <select class="input" name="org">
-                                {{#each orgs}}
-                                <option>{{abbrev}}</option>
-                                {{/each}}
-                            </select>
-                            <br/>
-                            <span class="name">Activity Name</span>
-                            <input class="input" placeholder="doc" name="actName">
-                            <br/>
-                            <span class="name">Date</span>
-                            <input class="input" type="date" placeholder="MM/dd" name="date">
-                            <br/>
-                            <span class="name">Time</span>
-                            <input class="input" placeholder="HH:MM-HH:MM" name="time">
-                            <br/>
-                            <span class="name">Type of Activity</span>
-                            <input class="input" placeholder="type" name="type">
-                            <br/>
-                            <span class="name">ENP</span>
-                            <input class="input" placeholder="number" name="ENPnum">
-                            <br/>
-                            <span class="name">Nature of Activity</span>
-                            <input class="input" placeholder="nature" name="nature">
-                            <br/>
-                            <span class="name">ENMP</span>
-                            <input class="input" placeholder="number" name="ENMPnum">
-                            <br/>
-                            <span class="name">Venue</span>
-                            <input class="input" placeholder="venue" name="venue">
-                            <br/>
-                            <input type="checkbox" name="online">
-                            <span class="smallText">Online activity</span>
-                            <br/>
-                            <input type="checkbox" name="GOSM">
-                            <span class="smallText">Activity is in GOSM</span>
-                            <br/>
-                            <span class="name">Officer in charge</span>
-                            <select class="input" name="oic">
-                                <option>Officer1</option>
-                            </select>
-
-                            <input id="submitActivity" type="submit" value="submit">
-                        </form>
-                        <form id="preactsForm" action="/docu/addDocu" method="POST" style="display: none;">
-                            <span class="name">Organization</span>
-                            <select class="input" name="org">
-                                {{#each orgs}}
-                                    <option>{{abbrev}}</option>
-                                {{/each}}
-                            </select>
-                                <br />
-                            <span class="name">Term</span>
-                            <select class="input" name="term">
-                                <option value="1">Term 1</option>
-                                <option value="2">Term 2</option>
-                                <option value="3">Term 3</option>
-                            </select>
-                                <br />
-                            <span class="name">Activity Name</span>
-                            <select class="input" name="actName">
-                                {{#each acts}}
-                                    <option>{{actName}}</option>
-                                {{/each}}
-                                {{!-- <option>ARW</option> --}}
-                            </select>
-                                <br />
-                            <span class="name">Type of Submission</span>
-                            <select class="input" name="subType">
-                                <option>Document</option>
-                            </select>
-                                <br />
-                            <span class="name">Submitted by</span>
-                            <select class="input" name="subBy">
-                                {{#each officers}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Me</option> --}}
-                            </select>
-                                <br />
-                            <span class="name">Received by</span>
-                            <select class="input" name="recBy">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="dateRec">
-                                <br />
-                            <span class="name">First checked by</span>
-                            <select class="input" name="firstCheck">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="firstDate">
-                                <br />
-                            <span class="name">Second checked by</span>
-                            <select class="input" name="secCheck">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="secDate">
-                                <br />
-                            <span class="name">Filed by</span>
-                            <select class="input" name="filedBy">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="fileDate">
-                                <br />
-                            <span class="name">Remarks</span>
-                            <input class="input" id="remarksField" name="remarks">
-
-                            <input id="submitPreacts" type="submit" value="submit" style="display: none;">
-                        </form>
-                        <form id="postactsForm" action="/docu/addDocu" method="POST">
-                            {{!-- <div class="top">
-                                <div id="navi">
-                                    <div class="button">ACTIVITY</div>
-                                    <div class="button">PREACTS</div>
-                                    <div class="button">POSTACTS</div>
-
-                                    <button class="butt">Encode</button>
-                                </div>
-                            </div>   --}}
-                            <span class="name">Organization</span>
-                            <select class="input" name="org">
-                                {{#each orgs}}
-                                    <option>{{abbrev}}</option>
-                                {{/each}}
-                            </select>
-                            <br />
-                            <span class="name">Term</span>
-                            <select class="input" name="term">
-                                <option value="1">Term 1</option>
-                                <option value="2">Term 2</option>
-                                <option value="3">Term 3</option>
-                            </select>
-                            <br />
-                            <span class="name">Activity Name</span>
-                            <select class="input" name="actName">
-                                {{#each acts}}
-                                    <option>{{actName}}</option>
-                                {{/each}}
-                                {{!-- <option>ARW</option> --}}
-                            </select>
-                            <br />
-                            <span class="name">Type of Submission</span>
-                            <select class="input" name="subType">
-                                <option>Document</option>
-                            </select>
-                            <br />
-                            <span class="name">Submitted by</span>
-                            <select class="input" name="subBy">
-                                {{#each officers}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Me</option> --}}
-                            </select>
-                            <br />
-                            <span class="name">Received by</span>
-                            <select class="input" name="recBy">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="dateRec">
-                            <br />
-                            <span class="name">First checked by</span>
-                            <select class="input" name="firstCheck">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="firstDate">
-                            <br />
-                            <span class="name">Second checked by</span>
-                            <select class="input" name="secCheck">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="secDate">
-                            <br />
-                            <span class="name">Filed by</span>
-                            <select class="input" name="filedBy">
-                                {{#each users}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                                {{!-- <option>Not me</option> --}}
-                            </select>
-                            <span class="name">Date</span>
-                            <input class="input" placeholder="date" type="date" name="fileDate">
-                            <br />
-                            <span class="name">Remarks</span>
-                            <input class="input" id="remarksField" name="remarks">
-                            
-                            <input id="submitPostacts" type="submit" value="submit" style="display: none;">
-
-                        </form>
-                    </div>
-                    </div>
-                </div>
+    </div>
+    <div class="border rounded shadow d-flex flex-column flex-grow-1 justify-content-between flex" id="encodePreactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*border-radius: 10px;*/">
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 16px;">Organization</span>
+                <select id="page-top" style="margin-right: 15px;" name="org">
+                    <optgroup label="Organizations">
+                        {{#each orgs}}
+                            <option>{{abbrev}}</option>
+                        {{/each}}
+                    </optgroup>
+                </select>
+                <span
+                    style="margin-right: 15px;">Term</span>
+                    <select style="margin-right: 15px;" name="term">
+                        <optgroup label="Term">
+                            <option value="1" selected="">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                        </optgroup>
+                    </select>
+                    <span
+                        style="margin-right: 15px;">Activity Name</span><input type="text" name="actName"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Type of Submission</span>
+                <input style="margin-right: 15px;" type="text" name="subType">
+                <!-- <select style="margin-right: 15px;" sub>
+                    <optgroup label="This is a group">
+                        <option value="12" selected="">This is item 1</option>
+                        <option value="13">This is item 2</option>
+                        <option value="14">This is item 3</option>
+                    </optgroup>
+                </select> -->
+                <span
+                    style="margin-right: 15px;">Submitted by</span>
+                    <select style="margin-right: 15px;" name="subBy">
+                        <optgroup label="Submitted By">
+                            {{#each officers}}
+                                <option>{{givenname}} {{lastname}}</option>
+                            {{/each}}
+                        </optgroup>
+                    </select>
             </div>
         </div>
-    </body>
-</html> 
-{{!-- 
-<html>
-    <body>
-        <form action="/docu/addDocu" method="post">
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Received by</span>
+                <select style="margin-right: 15px;" name="recBy">
+                    <optgroup label="Received By">
+                        {{#each users}}
+                            <option>{{givenname}} {{lastname}}  </option>
+                        {{/each}}
+                    </optgroup>
+                </select>
+                <span
+                    style="margin-right: 15px;">Date</span><input type="text" name="dateRec"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">First Checked by</span>
+                <select style="margin-right: 15px;" name="firstCheck">
+                    <optgroup label="First Checked By">
+                        {{#each users}}
+                            <option>{{givenname}} {{lastname}}</option>
+                        {{/each}}
+                    </optgroup>
+                </select>
+                <span
+                    style="margin-right: 15px;">Date</span><input type="text" name="firstDate"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Filed by</span>
+                <select style="margin-right: 15px;" name="filedBy">
+                    <optgroup label="Filed By">
+                        {{#each users}}
+                            <option>{{givenname}} {{lastname}}</option>
+                        {{/each}}
+                    </optgroup>
+                </select>
+                <span
+                    style="margin-right: 15px;">Date</span><input type="text" name="fileDate"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Date</span><input type="text" style="margin-right: 15px;" name="date"><span style="margin-right: 15px;">Time</span><input type="text" class="timeInput" style="margin-right: 15px;" name="startTime"><span style="margin-right: 15px;">:</span>
+                <input
+                    type="text" class="timeInput" style="margin-right: 15px;"><select id="page-top" class="timeInput" style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                    <span
+                        style="margin-right: 15px;">Venue</span><input type="text" name="venue"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;" name="enp"><span style="margin-right: 15px;">ENMP</span><input type="text" name="enmp"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" id="remarksText" style="margin-right: 15px;" name="remarks"></div>
+        </div>
+    </div>
+    <div class="border rounded-0 shadow flex-column flex-grow-1 justify-content-between hidden" id="encodePostactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*display: none;*/">
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 16px;">Organization</span><select id="page-top" style="margin-right: 16px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                <span
+                    style="margin-right: 15px;">Term</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                    <span
+                        style="margin-right: 15px;">Activity Name</span><input type="text"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Type of Submission</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                <span
+                    style="margin-right: 15px;">Submitted by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                    <span
+                        style="margin-right: 15px;">Linkage</span><input type="text"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">First Checked by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                <span
+                    style="margin-right: 15px;">Date</span><input type="text"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Date</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">Time</span><input type="text" class="timeInput" style="margin-right: 15px;"><span style="margin-right: 15px;">:</span>
+                <input
+                    type="text" class="timeInput" style="margin-right: 15px;"><select id="page-top" class="timeInput" style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
+                    <span
+                        style="margin-right: 15px;">Venue</span><input type="text"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">ENMP</span><input type="text"></div>
+        </div>
+        <div class="row growRow">
+            <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" style="margin-right: 15px;"></div>
+        </div>
+    </div>
+    <div class="row" style="margin: 0px;">
+        <div class="col" style="padding: 0px 30px;"><button class="btn btn-primary float-right" type="button" style="margin-left: 0px;margin-right: 0px;margin-bottom: 30px;background-color: #329d9c;">Encode</button></div>
+    </div>
+    <script src="/assetsEncode/js/jquery.min.js"></script>
+    <script src="/assetsEncode/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/assetsEncode/js/hiding%20form%20div.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="/assetsEncode/js/theme.js"></script>
+</body>
 
-            <span class="input">Organization</span> <br/>
-            <input class="field" type="text" placeholder="organization" name="org"> <br/>
-
-            <span class="input">Term</span> <br/>
-            <input class="field" type="text" placeholder="term" name="term"> <br/>
-            
-            <span class="input">Name of Activity</span> <br/>
-            <input class="field" type="text" placeholder="Activity Name" name="actName"> <br/>
-            
-            <span class="input">Submission Type</span> <br/>
-            <input class="field" type="text" placeholder="JSON / CSV" name="subType"> <br/>
-                        
-            <span class="input">Submitted By</span> <br/>
-            <input class="field" type="text" placeholder="Submitted by" name="subBy"> <br/>
-                        
-            <span class="input">Received By</span> <br/>
-            <input class="field" type="text" placeholder="Received by" name="recBy"> <br/>
-            
-            <span class="input">Date Received</span> <br/>
-            <input class="field" type="text" placeholder="MM/DD/YY" name="dateRec"> <br/>
-                        
-            <span class="input">First Checked by</span> <br/>
-            <input class="field" type="text" placeholder="Checked by" name="firstCheck"> <br/>    
-
-            <span class="input">First Checked Date</span> <br/>
-            <input class="field" type="text" placeholder="MM/DD/YY" name="firstDate"> <br/>    
-                    
-            <span class="input">Second Checked by</span> <br/>
-            <input class="field" type="text" placeholder="Checked by" name="secCheck"> <br/>    
-
-            <span class="input">Second Checked Date</span> <br/>
-            <input class="field" type="text" placeholder="MM/DD/YY" name="secDate"> <br/>    
-            
-            <span class="input">Filed by</span> <br/>
-            <input class="field" type="text" placeholder="Filed by" name="filedBy"> <br/>    
-
-            <span class="input">File Date</span> <br/>
-            <input class="field" type="text" placeholder="MM/DD/YY" name="fileDate"> <br/>    
-
-            <span class="input">Remarks</span> <br/>
-            <input class="field" type="text" placeholder="Remarks" name="remarks"> <br/>    
-                                                            
-            <div class="buttons">
-                <input id="loginButt" type="submit" value="Submit">
-            </div>
-        </form>    
-    </body>
 </html>
-
-{{!-- <html>
-    <body>
-        <form action="/org/addOrg" method="post">
-        
-            <span class="input">Organization Name</span> <br/>
-            <input class="field" type="text" placeholder="Name of Organization" name="orgName"> <br/>
-
-            <span class="input">Abbreviation</span> <br/>
-            <input class="field" type="text" placeholder="Abbreviation" name="abbrev"> <br/>
-            
-            <span class="input">Description</span> <br/>
-            <input class="field" type="text" placeholder="Description" name="desc"> <br/>
-                          
-            <div class="buttons">
-                <input id="loginButt" type="submit" value="Submit">
-            </div>
-        </form>    
-    </body>
-</html>  --}}
