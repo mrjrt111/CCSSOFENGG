@@ -197,10 +197,14 @@
 </body>
 
 <script>
+    let edit_id;
+    
     $(document).ready(function(){
         $("button.editButt").click(function(){
-            let id = $(this).attr("data-id")
+            edit_id = $(this).attr("data-id")
             console.log("NACLICK RIN")
+
+
             $("input.hiddenInput").append(id)
         })
     })
