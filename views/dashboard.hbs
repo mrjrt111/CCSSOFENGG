@@ -124,12 +124,22 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                <tr>
-                                    <td>kfhlaskjflksjfls</td>
-                                    <td>sklafjlsakflksajf</td>
-                                    <td>ksafhlkashflksjaf</td>
-                                    <td>asfjlsakjflksjafajsfhkashfkjas</td>
-                                </tr>
+                                {{#each docus}}
+                                    <tr>
+                                        <td>
+                                            {{actName}}
+                                        </td>
+                                        <td>
+                                            {{status}}
+                                        </td>
+                                        <td>
+                                            {{subBy}}
+                                        </td>
+                                        <td>
+                                            {{remarks}}
+                                        </td>
+                                    </tr>
+                                {{/each}}
                                 </tbody>
                                 <tfoot>
                                 <tr>

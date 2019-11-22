@@ -1,8 +1,8 @@
-$("#editButt").click(function(){
+$(".editButt").click(function(){
   $("#editModal").modal("show");
   });
 
-$("#deleteButt").click(function(){
+$(".deleteButt").click(function(){
   $("#deleteModal").modal("show");
   });
 

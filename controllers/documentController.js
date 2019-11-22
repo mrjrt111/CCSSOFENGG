@@ -104,8 +104,8 @@ router.post("/addDocu", (req, res)=>{
             actType: req.body.type,
             nature: req.body.nature,
             venue: req.body.venue,
-            // isOnline: req.body.online,
-            // inGOSM: req.body.GOSM,
+            isOnline: req.body.online,
+            inGOSM: req.body.GOSM,
             term: req.body.term,
             subType: req.body.subType,
             subBy: req.body.subBy,
@@ -130,29 +130,29 @@ router.post("/addDocu", (req, res)=>{
     console.log(docu.secDate)
     console.log(docu.fileDate)
 
-    if(!docu.dateRec || !docu.firstDate || !docu.fileDate){
-        console.log(docu)
-        User.getCSO().then((users)=>{
-            console.log(users)
-            Organization.getAll().then((orgs)=>{
-                console.log(orgs)
-                User.getOfficers().then((officers)=>{
-                    console.log(officers)
-                    res.render("encode.hbs", {
-                        orgs, users, officers, error: 1
-                    })
-                },(error)=>{
-                    res.sendFile(error)
-                })
-            }, (error)=>{
-                res.sendFile(error)
-            })
-        }, (error)=>{
-            res.sendFile(error)
-        })
-            // res.render("dashboard.hbs")    
-    }
-    else{
+    // if(!docu.dateRec || !docu.firstDate || !docu.fileDate){
+    //     console.log(docu)
+    //     User.getCSO().then((users)=>{
+    //         console.log(users)
+    //         Organization.getAll().then((orgs)=>{
+    //             console.log(orgs)
+    //             User.getOfficers().then((officers)=>{
+    //                 console.log(officers)
+    //                 res.render("encode.hbs", {
+    //                     orgs, users, officers, error: 1
+    //                 })
+    //             },(error)=>{
+    //                 res.sendFile(error)
+    //             })
+    //         }, (error)=>{
+    //             res.sendFile(error)
+    //         })
+    //     }, (error)=>{
+    //         res.sendFile(error)
+    //     })
+    //         // res.render("dashboard.hbs")    
+    // }
+    // else{
         Document.create(docu).then((docu)=>{
             console.log(docu)
             req.session.actName = docu.actName
@@ -161,7 +161,7 @@ router.post("/addDocu", (req, res)=>{
         },(error)=>{
             res.sendFile(error)
         })
-    }
+    // }
 })
 
 router.post("/delete", (req,res)=>{
@@ -172,6 +172,7 @@ router.post("/delete", (req,res)=>{
 })
 
 router.post("/editDocs", (req,res)=>{
+    let id = req.body.id;
     let org = req.body.org;
     let actName = req.body.actName;
     let actType = req.body.actType;
@@ -187,8 +188,12 @@ router.post("/editDocs", (req,res)=>{
 
 router.get("/viewDocs", (req,res)=>{
     Document.getAll().then((docus)=>{
-        res.render("viewDocs.hbs", {
-            docus
+        Organization.getAll().then((orgs)=>{
+            res.render("viewDocs.hbs", {
+                docus, orgs
+            })
+        }, (error)=>{
+            res.sendFile(error)
         })
     }, (error)=>{
         res.sendFile(error)
