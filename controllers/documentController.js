@@ -186,9 +186,10 @@ router.post("/editDocs", (req,res)=>{
 })
 
 router.get("/viewDocs", (req,res)=>{
+    var org = req.session.org
     Document.getAll().then((docus)=>{
         res.render("viewDocs.hbs", {
-            docus
+            docus, org
         })
     }, (error)=>{
         res.sendFile(error)

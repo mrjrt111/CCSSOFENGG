@@ -34,13 +34,17 @@ router.get("/", function(req,res){
 
 
 router.get("/dashboard", function(req,res) {
+    var name = req.session.givenname
+    var org = req.session.org
     Document.getAll().then((docus) => {
         User.getAll().then((users) => {
             Organization.getAll().then((orgs) => {
                 res.render("dashboard.hbs", {
                     users,
                     orgs,
-                    docus
+                    docus,
+                    org,
+                    name
                 })
             })
         }, (error) => {
