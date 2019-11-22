@@ -187,6 +187,7 @@ router.post("/editDocs", (req,res)=>{
 })
 
 router.get("/viewDocs", (req,res)=>{
+    var org = req.session.org
     Document.getAll().then((docus)=>{
         Organization.getAll().then((orgs)=>{
             res.render("viewDocs.hbs", {
