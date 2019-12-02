@@ -33,82 +33,257 @@
         </div>
     </div>
     <div class="border rounded shadow d-flex flex-column flex-grow-1 justify-content-between flex" id="encodePreactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*border-radius: 10px;*/">
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 16px;">Organization</span><select id="page-top" style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Term</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                    <span
-                        style="margin-right: 15px;">Activity Name</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Type of Submission</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Submitted by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Received by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">First Checked by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Filed by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Date</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">Start time</span><input type="text" class="timeInput" style="margin-right: 15px;"><span style="margin-right: 15px;">End Time</span>
-                <input
-                    type="text" class="timeInput" style="margin-right: 15px;"><span style="margin-right: 15px;">Venue</span><input type="text" style="margin-right: 15px;"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">ENMP</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">Online Activity</span>
-                <input
-                    type="checkbox" style="margin-right: 15px;"><span style="margin-right: 15px;">GOSM</span><input type="checkbox"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" id="remarksText" style="margin-right: 15px;"></div>
+        <div class="table-responsive table-borderless">
+            <table class="table table-bordered table-sm">
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <td>Organization</td>
+                        <td>Term</td>
+                        <td>Activity Name</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Type of Submission</td>
+                        <td>Nature of Activity</td>
+                        <td>Type of Activity</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="margin-right: 50px;">Date</span><span>Time</span></td>
+                        <td class="justify-content-around">
+                            <div><span style="margin-right: 200px;">ENP</span><span>ENMP</span></div>
+                        </td>
+                        <td>Venue</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><input type="text" style="margin-right: 50px;"><input type="text"></div>
+                        </td>
+                        <td>
+                            <div><input type="text" style="margin-right: 50px;"><input type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Received by</td>
+                        <td>Date Received</td>
+                        <td>Linkages/ Tie-ups</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>First Checked by</td>
+                        <td>Date Checked</td>
+                        <td>Submitted by</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Second Checked by</td>
+                        <td>Date Checked</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Filed by</td>
+                        <td>Date Filed</td>
+                        <td>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">Online Activity</label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Activity is in GOSM</label></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Remarks</td>
+                    </tr>
+                    <tr>
+                        <td class="flex-grow-1 flex-fill" colspan="3">
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="border rounded-0 shadow flex-column flex-grow-1 justify-content-between visible" id="encodePostactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*display: none;*/">
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 16px;">Organization</span><select id="page-top" style="margin-right: 16px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Term</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                    <span
-                        style="margin-right: 15px;">Activity Name</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Type of Submission</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Submitted by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                    <span
-                        style="margin-right: 15px;">Linkage</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Filed by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">First Checked by</span><select style="margin-right: 15px;"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Date</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">Start Time</span><input type="text" class="timeInput" style="margin-right: 15px;"><span style="margin-right: 15px;">End Time</span>
-                <input
-                    type="text" class="timeInput" style="margin-right: 15px;"><span style="margin-right: 15px;">Venue</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;"><span style="margin-right: 15px;">ENMP</span><input type="text"></div>
-        </div>
-        <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" style="margin-right: 15px;"></div>
+        <div class="table-responsive table-borderless">
+            <table class="table table-bordered table-sm">
+                <tbody>
+                    <tr></tr>
+                    <tr>
+                        <td>Organization</td>
+                        <td>Term</td>
+                        <td>Activity Name</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Type of Submission</td>
+                        <td>Nature of Activity</td>
+                        <td>Type of Activity</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span style="margin-right: 50px;">Date</span><span>Time</span></td>
+                        <td>Venue</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div><input type="text" style="margin-right: 50px;"><input type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Received by</td>
+                        <td>Date Received</td>
+                        <td>Linkages/ Tie-ups</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>First Checked by</td>
+                        <td>Date Checked</td>
+                        <td>Submitted by</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Second Checked by</td>
+                        <td>Date Checked</td>
+                        <td>Status</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Filed by</td>
+                        <td>Date Filed</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                        </td>
+                        <td>
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Remarks</td>
+                    </tr>
+                    <tr>
+                        <td class="flex-grow-1 flex-fill" colspan="3">
+                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
     <div class="row" style="margin: 0px;">

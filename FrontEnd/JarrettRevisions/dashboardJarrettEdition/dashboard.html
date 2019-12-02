@@ -23,143 +23,144 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar"></ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
                 <div class="d-flex flex-column align-items-xl-center" id="sidebarOptions"><span id="viewOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">VIEW</span>
-                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer">View all documents</span></div><span id="encodeOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ENCODE</span>
-                    <div
-                        id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Encode PREACTS</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer">Encode POSTACTS</span></div>
-                <span
-                    id="addOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ADD</span>
-                    <div id="addLinks" class="hidden"><span id="addOrgOfficerButt" class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Add Org Officer</span><span id="addOrgButt" class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer">Add Organization</span></div>
+                    <div id="viewLinks" class="visible"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;">View all documents</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer">View all officers</span></div>
                     <span
-                        id="manageOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">MANAGE</span>
-                        <div id="manageLinks" class="hidden"><span style="color: rgb(255,255,255);margin-bottom: 32px;">Manage Organization</span></div><button class="btn btn-primary" type="button" style="margin-bottom: 30px;background-color: #d48664;">Logout</button></div>
-    </div>
-    </nav>
-    <div class="d-flex flex-column" id="content-wrapper">
-        <div id="content">
-            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
-                <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                    <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
-                    <button
-                        class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);">Select Organization</button>
+                        id="encodeOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ENCODE</span>
+                        <div id="encodeLinks" class="visible"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Encode PREACTS</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer">Encode POSTACTS</span></div>
+                        <span
+                            id="manageOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">MANAGE</span>
+                            <div id="manageLinks" class="visible"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Manage Organization</span><span id="addOrgOfficerButt" class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Add Org Officer</span>
+                                <span
+                                    id="addOrgButt" class="option" style="color: rgb(255,255,255);margin: 0px 0px 15px;margin-bottom: 30px;cursor: pointer;">Add Organization</span>
+                            </div>
                 </div>
-            </nav>
-            <div class="container-fluid">
-                <h3 class="text-dark mb-4">&lt;Organization Name&gt; : Status &lt;Whitelisted/Blacklisted&gt;</h3>
-                <div class="card shadow visibleBody" id="preactsPreview">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Recent Pre-Activity Submissions</p>
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
+                        <div><button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button><button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;">Logout</button></div>
                     </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                            </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">&lt;Organization Name&gt; : Status &lt;Whitelisted/Blacklisted&gt;</h3>
+                    <div class="card shadow visibleBody" id="preactsPreview">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Recent Pre-Activity Submissions</p>
                         </div>
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table dataTable my-0" id="dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Activity Name</th>
-                                        <th>Activity Status</th>
-                                        <th>Officer in Charge</th>
-                                        <th>Remarks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>kfhlaskjflksjfls</td>
-                                        <td>sklafjlsakflksajf</td>
-                                        <td>ksafhlkashflksjaf</td>
-                                        <td>asfjlsakjflksjafajsfhkashfkjas</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong>Activity Name</strong></td>
-                                        <td><strong>Activity Status</strong></td>
-                                        <td><strong>Officer in Charge</strong></td>
-                                        <td><strong>Remarks</strong></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Activity Name</th>
+                                            <th>Activity Status</th>
+                                            <th>Officer in Charge</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>kfhlaskjflksjfls</td>
+                                            <td>sklafjlsakflksajf</td>
+                                            <td>ksafhlkashflksjaf</td>
+                                            <td>asfjlsakjflksjafajsfhkashfkjas</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Activity Name</strong></td>
+                                            <td><strong>Activity Status</strong></td>
+                                            <td><strong>Officer in Charge</strong></td>
+                                            <td><strong>Remarks</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="card shadow hiddenBody" id="postactsPreview">
-                    <div class="card-header py-3">
-                        <p class="text-primary m-0 font-weight-bold">Recent Post-Activity Submissions</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-6 text-nowrap">
-                                <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
-                            </div>
+                    <div class="card shadow hiddenBody" id="postactsPreview">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Recent Post-Activity Submissions</p>
                         </div>
-                        <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
-                            <table class="table dataTable my-0" id="dataTable">
-                                <thead>
-                                    <tr>
-                                        <th>Activity Name</th>
-                                        <th>Activity Status</th>
-                                        <th>Officer in Charge</th>
-                                        <th>Remarks</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>kfhlaskjflksjfls</td>
-                                        <td>sklafjlsakflksajf</td>
-                                        <td>ksafhlkashflksjaf</td>
-                                        <td>asfjlsakjflksjafajsfhkashfkjas</td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <td><strong>Activity Name</strong></td>
-                                        <td><strong>Activity Status</strong></td>
-                                        <td><strong>Officer in Charge</strong></td>
-                                        <td><strong>Remarks</strong></td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-6 align-self-center">
-                                <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 text-nowrap">
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                </div>
                             </div>
-                            <div class="col-md-6">
-                                <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                    <ul class="pagination">
-                                        <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                        <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                    </ul>
-                                </nav>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                                <table class="table dataTable my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Activity Name</th>
+                                            <th>Activity Status</th>
+                                            <th>Officer in Charge</th>
+                                            <th>Remarks</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>kfhlaskjflksjfls</td>
+                                            <td>sklafjlsakflksajf</td>
+                                            <td>ksafhlkashflksjaf</td>
+                                            <td>asfjlsakjflksjafajsfhkashfkjas</td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td><strong>Activity Name</strong></td>
+                                            <td><strong>Activity Status</strong></td>
+                                            <td><strong>Officer in Charge</strong></td>
+                                            <td><strong>Remarks</strong></td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 align-self-center">
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="addOrgOfficerModal">
         <div class="modal-dialog" role="document">
