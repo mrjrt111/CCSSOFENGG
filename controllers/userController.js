@@ -148,5 +148,18 @@ router.post("/deleteOfficer", function(req, res){
     // })
 })
 
+router.post("/editUser", function(req,res){
+    let id = req.body.id;
+    let lName = req.body.lName;
+    let fName = req.body.fName;
+    let eMail = req.body.eMail;
+    let cellNum = req.body.cellNum;
+    
+
+    User.edit({_id:id}, {givenname:fName, lastname:lName, email:eMail, number:cellNum})
+    // .then((user)=>{
+    //     res.redirect("/manageOfficers")
+    // })
+})
 
 module.exports = router

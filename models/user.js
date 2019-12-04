@@ -137,3 +137,11 @@ exports.getUser = function(email){
         })
       })
 }
+
+exports.edit = function(oldContent, newContent){
+  return new Promise(function(resolve,reject){
+      User.findOneAndUpdate(oldContent, newContent).then(()=>{
+          console.log("Update: ", user)
+      })
+  })
+}
