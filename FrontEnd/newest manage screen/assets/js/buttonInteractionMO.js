@@ -2,13 +2,21 @@ $(".editButt").click(function(){
   $("#editOfficerModal").modal("show");
   });
 
-$("#deleteButt").click(function(){
+$(".deleteButt").click(function(){
   $("#deleteOfficerModal").modal("show");
   });
 
 
-$("#blacklistWhitelistButt").click(function(){
+$(".blacklistWhitelistButt").click(function(){
   $("#blacklistWhitelistOfficerModal").modal("show");
+  });
+
+$("#addOrgButt").click(function(){
+  $("#addOrgModal").modal("show");
+  });
+
+$("#addOfficerButt").click(function(){
+  $("#addOrgOfficerModal").modal("show");
   });
 
 $("#deleteOrgButt").click(function(){
