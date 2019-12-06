@@ -19,17 +19,20 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">&lt;All Documents&gt;</span></li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">&lt;List of Documents/Preacts/Postacts&gt;</span></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;{{org}}&gt;</h3>
+                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;{{org}}&gt;<button class="btn btn-primary float-right" type="button" style="background-color: #7be495;margin-right: 15px;" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</button><button class="btn btn-primary float-right" type="button" style="background-color: #56c596;margin-right: 15px;" onclick="window.location.href = '/docu/encode'">Encode PREACTS</button>
+                        <button
+                            class="btn btn-primary float-right" id="selectOrgButt" type="button" style="background-color: #329d9c;margin-right: 15px;">Select Org</button>
+                    </h3>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label>
@@ -45,6 +48,7 @@
                                 <table class="table dataTable my-0" id="dataTable">
                                     <thead>
                                         <tr>
+                                            <th>Document Name</th>
                                             <th>Document Type</th>
                                             <th>Type of Activity</th>
                                             <th>Nature of Activity</th>
@@ -53,14 +57,13 @@
                                             <th>Time</th>
                                             <th>ENP</th>
                                             <th>ENMP</th>
-                                            <th>Online</th>
-                                            <th>GOSM</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {{#each docus}}
                                         <tr data-id="{{_id}}">
+                                            <td data-id="{{_id}}">{{actName}}</td>
                                             <td data-id="{{_id}}">{{docuType}}</td>
                                             <td data-id="{{_id}}">{{actType}}</td>
                                             <td data-id="{{_id}}">{{nature}}</td>
@@ -69,8 +72,6 @@
                                             <td data-id="{{_id}}">{{startTime}} - {{endTime}}</td>
                                             <td data-id="{{_id}}">{{ENP}}</td>
                                             <td data-id="{{_id}}">{{ENMP}}</td>
-                                            <td data-id="{{_id}}">{{isOnline}}</td>
-                                            <td data-id="{{_id}}">{{inGOSM}}</td>
                                             <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                                 <div class="dropdown show"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
                                                     <div class="dropdown-menu"
@@ -83,6 +84,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <td><strong>Document Name</strong></td>
                                             <td><strong>Document Type</strong></td>
                                             <td><strong>Type of Activity</strong></td>
                                             <td><strong>Nature of Activity</strong></td>
@@ -91,8 +93,6 @@
                                             <td><strong>Time</strong></td>
                                             <td><strong>ENP</strong></td>
                                             <td><strong>ENMP</strong></td>
-                                            <td><strong>Online</strong></td>
-                                            <td><strong>GOSM</strong></td>
                                             <td><strong></strong></td>
                                         </tr>
                                     </tfoot>
@@ -191,7 +191,7 @@
                     </div>
                 </div>
                 <div class="modal-footer d-lg-flex justify-content-lg-center">
-                    <button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button>
+                    <button class="btn btn-light confirmDelete" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button>
                     <button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
@@ -213,7 +213,8 @@
 
         $("button.deleteButt").click(function(){
             let id = $(this).attr("data-id")
-            $.ajax({
+            $("button.confirmDelete").click(function(){
+                $.ajax({
                 url: "/docu/delete",
                 method: "post",
                 data: {
@@ -227,6 +228,7 @@
                     //     alert("Something went wrong")
                     // }
                 }
+            })
             })
         })
     })

@@ -32,6 +32,16 @@ exports.getAll = function(){
     })
 }
 
+exports.getAllOrgs = function(){
+    return new Promise(function(resolve, reject){
+        Organization.find().then((orgs)=>{
+            resolve(orgs)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
 exports.get = function(id){
     return new Promise(function(resolve, reject){
         Organization.findOne({_id:id}).then((org)=>{
@@ -65,6 +75,7 @@ exports.getOrgExceptCSO = function(abbrev){
 exports.delete = function (abbrev){
     return new Promise(function(resolve, reject){
         //console.log("in promise : " + tag + " "+ username)
+        // console.log(abbrev)
         Organization.deleteOne({abbrev: abbrev
         }).then((docu)=>{
             console.log("Deleted: ",  docu)
@@ -73,3 +84,11 @@ exports.delete = function (abbrev){
         })
     })
 }
+
+exports.edit = function(oldContent, newContent){
+    return new Promise(function(resolve,reject){
+        Organization.findOneAndUpdate(oldContent, newContent).then((org)=>{
+            console.log("Update: ", org)
+        })
+    })
+  }

@@ -23,7 +23,7 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar"></ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
                 <div class="d-flex flex-column align-items-xl-center" id="sidebarOptions"><span id="viewOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">VIEW</span>
-                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/docu/viewDocs'">View all documents</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer">View all officers</span></div>
+                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/docu/viewDocs'">View all documents</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">View all officers</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/org/viewOrgs'">View all organizations</span></div>
                     <span
                         id="encodeOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ENCODE</span>
                         <div id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/docu/encode'">Encode PREACTS</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</span></div>
@@ -119,7 +119,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
                                 </div>
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">

@@ -11,6 +11,14 @@ $(".blacklistWhitelistButt").click(function(){
   $("#blacklistWhitelistOfficerModal").modal("show");
   });
 
+$("#addOrgButt").click(function(){
+  $("#addOrgModal").modal("show");
+  });
+
+$("#addOfficerButt").click(function(){
+  $("#addOrgOfficerModal").modal("show");
+  });
+
 $("#deleteOrgButt").click(function(){
    $("#deleteOrgModal").modal("show"); 
 });

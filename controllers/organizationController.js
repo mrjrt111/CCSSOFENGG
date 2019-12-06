@@ -30,6 +30,14 @@ router.get("/modify", function (req,res) {
     })
 })
 
+router.get("/viewOrgs", function (req,res) {
+    Organization.getAllOrgs().then((orgs)=>{
+            res.render("viewOrgs.hbs",{
+                orgs
+            })
+    })
+})
+
 router.post("/addOrg", (req, res)=>{
     var org = {
         orgName: req.body.orgName, 
@@ -51,13 +59,24 @@ router.post("/addOrg", (req, res)=>{
 })
 
 router.post("/deleteOrg", function(req, res) {
-    let abbrev = req.body.orgDelete
+    let abbrev = req.body.abbrev
     console.log(abbrev)
     Organization.delete(abbrev)
     //     .then(()=>{
     //    res.redirect("/dashboard")
     // },(error)=>{
     //     res.sendFile(error)
+    // })
+})
+
+router.post("/editOrg", function(req,res){
+    let id = req.body.id;
+    let orgName = req.body.orgName;
+    let orgAbb = req.body.orgAbb;
+    
+    Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb})
+    // .then((user)=>{
+    //     res.redirect("/manageOfficers")
     // })
 })
 
