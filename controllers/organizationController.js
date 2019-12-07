@@ -51,13 +51,27 @@ router.post("/addOrg", (req, res)=>{
 })
 
 router.post("/deleteOrg", function(req, res) {
-    let abbrev = req.body.orgDelete
-    console.log(abbrev)
+    // let abbrev = req.body.orgDelete
+    // let abbrev = req.body.orgID
+    let abbrev = req.body.org
+    // console.log(abbrev)
+    // Organization.delete(abbrev).then
+    // //     .then(()=>{
+    // //    res.redirect("/dashboard")
+    // // },(error)=>{
+    // //     res.sendFile(error)
+    // // })
     Organization.delete(abbrev)
+    res.redirect("/dashboard")
+
     //     .then(()=>{
-    //    res.redirect("/dashboard")
-    // },(error)=>{
-    //     res.sendFile(error)
+    //     User.getAll().then((users)=>{
+    //         Organization.getAll().then((orgs)=>{
+    //         res.render("dashboard.hbs",{
+    //             orgs, users
+    //         })
+    //     })
+    //     })
     // })
 })
 
