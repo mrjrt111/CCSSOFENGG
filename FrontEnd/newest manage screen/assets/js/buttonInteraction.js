@@ -1,6 +1,3 @@
-$(".editDocButt").click(function(){
-  $("#editDocModal").modal("show");
-  });
 
 $(".deleteDocButt").click(function(){
   $("#deleteDocModal").modal("show");

@@ -22,9 +22,7 @@ $("#addOfficerButt").click(function(){
 $("#deleteOrgButt").click(function(){
    $("#deleteOrgModal").modal("show"); 
 });
-$("#blacklistOrgButt").click(function(){
-   $("#blacklistOrgModal").modal("show"); 
-});
+
 $("#deleteOrgPromptButt").click(function(){
    $("#deleteOrgPromptModal").modal("show"); 
 });

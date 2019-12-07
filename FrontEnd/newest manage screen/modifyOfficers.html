@@ -125,6 +125,28 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="blacklistOrgPromptModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                    <h4 class="modal-title">Blacklist Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body d-xl-flex flex-grow-1 justify-content-xl-center"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" id="blacklistOrgConfButt" style="color: rgb(255,255,255);background-color: #329d9c;">Select</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="blacklistOrgModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                    <h4 class="modal-title">Blacklist Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <p>Are you sure you want to blacklist this organization?</p>
+                </div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+            </div>
+        </div>
+    </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="addOrgOfficerModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -193,24 +215,6 @@
                     </div>
                 </div>
                 <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
-            </div>
-        </div>
-    </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="blacklistOrgModal">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
-                    <h4 class="modal-title">Blacklist Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body"><select><optgroup label="Organization"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select><select><optgroup label="Permanence"><option value="12" selected="">Definite</option><option value="13">Indefinite</option></optgroup></select>
-                    <input
-                        type="text" placeholder="MM/DD/YYYY">
-                        <div class="row">
-                            <div class="col">
-                                <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">I confirm blacklisting this organization</label></div>
-                            </div>
-                        </div>
-                </div>
-                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
     </div>
