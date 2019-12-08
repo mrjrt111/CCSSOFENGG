@@ -1,0 +1,113 @@
+<html>
+    <head>
+        <script src="/jQuery.js"></script>
+        <style>
+        #body {
+    background-color: #CBCA98;
+    height: 90%;
+    width: 100%;
+    position: fixed;
+    top: 10%;
+    display: flex;
+    flex-direction: row;
+}
+
+#backButt {
+    background-color: #B3AE5D;
+    color: #1D3D19;
+}
+
+#tableContainer {
+    background-color: rgb(222, 224, 207);
+    height: 90%;
+    width: 95%;
+    position: relative;
+    top: 5%;
+    display: flex;
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#table {
+    background-color: rgb(222, 224, 207);
+    width: 95%;
+    position: relative;
+    top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    flex-grow: 10;
+    overflow: scroll;
+}
+        </style>
+    </head>
+    <body id="body">
+
+        <table id="tableContainer">
+            {{#each docus}}
+                <tr data-id="{{_id}}">
+                    <td data-id="{{_id}}">
+                        <span data-id="{{_id}}">{{actName}}</span>
+                        <button class="delete" data-id="{{_id}}">Delete</button>
+                    </td>
+            </tr>
+            {{/each}}
+            
+        </table>
+
+        <form id="deleteform" action="delete">
+            <input type="hidden" name="id" id="deleteid">
+        </form>
+        
+    </body>
+    <script>
+        
+//        $(document).ready(function(){
+//        $('button.delete').on('click', function(e){
+//            $target = $(e.target)
+//            const id = $target.attr('data-id')
+//            console.log($target.attr('data-id'))
+////    $.ajax({
+////      type:'DELETE',
+////      url: '/articles/'+id,
+////      success: function(response){
+////        alert('Deleting Article');
+////        window.location.href='/';
+////      },
+////      error: function(err){
+////        console.log(err);
+////      }
+////    });
+//  })
+//})
+        
+            $(document).ready(function(){
+                $("span[data-id]").click(function(){
+                    let id = $(this).attr("data-id")
+                    $("#deleteid").val(id)
+                    $("#deleteform").submit()
+                })
+
+                $("button.delete").click(function(){
+                    let id = $(this).attr("data-id")
+                    console.log("NACLICK")
+                    $.ajax({
+                        url: "/docu/delete",
+                        method: "post",
+                        data: {
+                            id:id
+                        },
+                        success: function(result){
+                            //if(result.ok == 1){
+                                alert("Successfully deleted")
+                                $("tr[data-id='" + id + "']").remove()
+                            //}else{
+                            //    alert("Something went wrong")
+                            //}
+                        }
+                    })
+
+                })
+            })
+        </script>
+</html>

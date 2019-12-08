@@ -1,0 +1,202 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>officerManage</title>
+    <link rel="stylesheet" href="/assetsMods/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assetsMods/css/styles.css">
+</head>
+
+<body><button class="btn btn-primary" id="addOrganizationButt" type="button">Press to see add organization popup</button><button class="btn btn-primary" id="addOfficerButt" type="button">Press to see add officer popup</button><button class="btn btn-primary"
+                                                                                                                                                                                                                                          id="deleteOfficerButt" type="button">Press to see delete officer popup</button><button class="btn btn-primary" id="addCSOOfficerButt" type="button">Press to see add CSO officer popup</button><button class="btn btn-primary" id="confirmActionButt" type="button">Press to see confirm action popup</button>
+<div
+        class="modal fade" role="dialog" tabindex="-1" id="addOrganizationPopup">
+    <div class="modal-dialog" role="document">
+        <form action="/org/addOrg" method="POST">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Add an Organization</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                        <span>Name of Organization</span>
+                        <input class="flex-grow-1" type="text" name="orgName">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                        <span>Organization Abbreviation</span>
+                        <input class="flex-grow-1" type="text" name="abbrev">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col d-sm-flex flex-row flex-grow-1 justify-content-between align-items-center justify-content-sm-start">
+                        <span>Organization Description</span>
+                        <input class="flex-grow-1" type="text" name="description">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-sm-flex justify-content-sm-center">
+                <input class="btn btn-primary" type="submit" value="Confirm">
+            </div>
+        </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" role="dialog" tabindex="-1" id="addOfficerPopup">
+    <div class="modal-dialog" role="document">
+        <form action="/officer/addofficer" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add an Officer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                            <span>Officer Email</span>
+                            <input class="flex-grow-1" type="text" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                            <span>Organization</span>
+                            <select class="flex-grow-1" name="org">
+                                <optgroup label="Organizations">
+                                    {{#each orgs}}
+                                        <option value="{{abbrev}}">{{abbrev}}</option>
+                                    {{/each}}
+                                    <!--                                <option value="12" selected="">This is item 1</option>-->
+                                    <!--                                <option value="13">This is item 2</option>-->
+                                    <!--                                <option value="14">This is item 3</option>-->
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-between align-items-center justify-content-sm-start">
+                            <span>Officer Position</span>
+                            <select class="flex-grow-1" name="type">
+                                <optgroup label="This is a group">
+                                    <option value="orgOfficer" selected="">Organization Officer</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary" type="submit" value="Add">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" role="dialog" tabindex="-1" id="addCSOOfficerPopup">
+    <div class="modal-dialog" role="document">
+        <form action="/officer/addofficer" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Add an Officer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                            <span>Officer Email</span>
+                            <input class="flex-grow-1" type="text" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                            <span>Organization</span>
+                            <select class="flex-grow-1" name="org">
+                                <optgroup label="Organizations">
+                                        <option value="CSO">CSO</option>
+                                    <!--                                <option value="12" selected="">This is item 1</option>-->
+                                    <!--                                <option value="13">This is item 2</option>-->
+                                    <!--                                <option value="14">This is item 3</option>-->
+                                </optgroup></select></div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-between align-items-center justify-content-sm-start">
+                            <span>Officer Position</span>
+                            <select class="flex-grow-1" name="type">
+                                <optgroup label="Officer Positions">
+                                    <option value="moderator" selected="">Moderator</option>
+                                    <option value="admin">Administrator</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-primary" type="submit" value="Add">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" role="dialog" tabindex="-1" id="deleteOfficerPopup">
+    <div class="modal-dialog" role="document">
+        <form action="/deleteOfficer" method="POST">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Delete an Officer</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-sm-start">
+                            <span>Officer Email</span>
+                            <input class="flex-grow-1" type="text" name="email">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col d-sm-flex flex-row flex-grow-1 justify-content-between align-items-center justify-content-sm-start">
+                            <span>Officer Organization</span>
+                            <select class="flex-grow-1" name="org">
+                                <optgroup label="Organizations">
+                                    {{#each orgs}}
+                                        <option value="{{abbrev}}">{{abbrev}}</option>
+                                    {{/each}}
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer d-sm-flex justify-content-sm-center">
+                    <input class="btn btn-primary" type="submit" value="Delete">
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="modal fade" role="dialog" tabindex="-1" id="confirmActionPopup">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Are you sure you want to &lt;action&gt;?</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-footer d-sm-flex justify-content-sm-center align-items-sm-center">
+                <button class="btn btn-primary" type="button">Confirm</button>
+                <button class="btn btn-primary" type="button">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="/assetsMods/js/jquery.min.js"></script>
+<script src="/assetsMods/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assetsMods/js/justButton.js"></script>
+</body>
+
+</html>
