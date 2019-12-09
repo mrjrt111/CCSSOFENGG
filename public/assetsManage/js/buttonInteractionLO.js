@@ -10,6 +10,9 @@ $("#deleteOrgButt").click(function(){
    $("#deleteOrgModal").modal("show"); 
 });
 $("#blacklistOrgButt").click(function(){
+   $("#blacklistOrgPromptModal").modal("show"); 
+});
+$("#blacklistOrgConfButt").click(function(){
    $("#blacklistOrgModal").modal("show"); 
 });
 $("#deleteOrgPromptButt").click(function(){
