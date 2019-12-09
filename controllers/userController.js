@@ -146,6 +146,7 @@ router.post("/deleteOfficer", function(req, res){
     // }, (error)=>{
     //     res.sendFile(error)
     // })
+    res.redirect("/dashboard")
 })
 
 router.post("/editUser", function(req,res){
