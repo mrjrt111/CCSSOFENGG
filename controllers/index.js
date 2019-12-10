@@ -36,20 +36,29 @@ router.get("/", function(req,res){
 router.get("/dashboard", function(req,res) {
     var name = req.session.givenname
     var org = req.session.org
-    Document.getAll().then((docus) => {
-        User.getAll().then((users) => {
-            Organization.getAll().then((orgs) => {
-                res.render("dashboard.hbs", {
-                    users,
-                    orgs,
-                    docus,
-                    org,
-                    name
+    Document.getPre().then((pres) => {
+        Document.getPost().then((posts)=>{
+            User.getAll().then((users) => {
+                Organization.getAll().then((orgs) => {
+                    res.render("dashboard.hbs", {
+                        users,
+                        orgs,
+                        pres,
+                        posts,
+                        org,
+                        name
+                    })
+                },(error)=>{
+                    res.sendFile(error)
                 })
+            }, (error) => {
+                res.sendFile(error)
             })
-        }, (error) => {
+        }, (error)=>{
             res.sendFile(error)
         })
+    },(error)=>{
+        res.sendFile(error)
     })
 
 

@@ -94,3 +94,23 @@ exports.getDocu = function(actName){
         })
     })
 }
+
+exports.getPre = function(){
+    return new Promise(function(resolve,reject){
+        Document.find({docuType:'Pre-Acts'}).then((pres)=>{
+            resolve(pres)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getPost = function(){
+    return new Promise(function(resolve,reject){
+        Document.find({docuType:'Post-Acts'}).then((posts)=>{
+            resolve(posts)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}

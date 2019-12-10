@@ -89,14 +89,18 @@ router.post("/login", function(req, res){
                     // res.redirect("/dashboard")
                     User.getByEmail(user.email).then((user)=>{
                         req.session.givenname = user.givenname
-                        Document.getAll().then((docus)=>{
-                            Organization.getAll().then((orgs)=>{
-                                res.render("dashboard.hbs",{
-                                    docus, orgs,
-                                    org:req.session.org,
-                                    name: req.session.givenname
+                        Document.getPre().then((pres)=>{
+                            Document.getPost().then((posts)=>{
+                                Organization.getAll().then((orgs)=>{
+                                    res.render("dashboard.hbs",{
+                                        orgs, pres, posts,
+                                        org:req.session.org,
+                                        name: req.session.givenname
+                                    })
+                                    // res.redirect("/dashboard")
                                 })
-
+                            }, (error)=>{
+                                res.sendFile(error)
                             })
                         }, (error)=>{
                             res.sendFile(error)
