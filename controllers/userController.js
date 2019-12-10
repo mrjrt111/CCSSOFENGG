@@ -23,8 +23,10 @@ router.post("/register", function(req, res){
         email : req.body.email,
         number: req.body.number,
         password : req.body.password,
-        type: req.body.position,
-        org: req.body.org
+        type: "",
+        position: req.body.position,
+        org: req.body.org,
+        status: "Whitelisted"
     }
 
     Officer.authenticate(user).then((newUser)=>{

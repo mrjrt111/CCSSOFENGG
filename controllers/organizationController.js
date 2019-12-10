@@ -61,7 +61,7 @@ router.post("/addOrg", (req, res)=>{
 router.post("/deleteOrg", function(req, res) {
     // let abbrev = req.body.orgDelete
     // let abbrev = req.body.orgID
-    let abbrev = req.body.org
+    let abbrev = req.body.abbrev
     // console.log(abbrev)
     // Organization.delete(abbrev).then
     // //     .then(()=>{

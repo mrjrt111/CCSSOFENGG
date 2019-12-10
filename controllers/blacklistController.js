@@ -33,11 +33,13 @@ router.post("/add", function(req, res){
         BList.getEmail(userEmail).then((blacklist)=>{
             if(blacklist){
                 let bId = blacklist.id
+                User.edit({_id:id}, {status: "Whitelisted"})
                 BList.remove(bId)
                 res.redirect("/manageOfficers")
             }
             else{
                 BList.add(id)
+                User.edit({_id:id}, {status: "Blacklisted"})
                 res.redirect("/manageOfficers")
             }
         }, (error)=>{

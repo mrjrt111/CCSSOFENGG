@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
     number: String,
     org: String,
     type: String,
-    rank: String
+    position: String,
+    status: String
 })
 
 userSchema.pre("save", function(next){
