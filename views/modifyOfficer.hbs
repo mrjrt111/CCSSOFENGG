@@ -65,8 +65,8 @@
                                             <td data-id="{{_id}}" class="cellNum">{{number}}</td>
                                             <td data-id="{{_id}}" class="stat">{{status}}</td>
                                             <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
-                                                <div class="dropdown"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
-                                                    <div class="dropdown-menu" role="menu">
+                                                <div class="dropdown" data-id="{{_id}}"><button class="btn btn-primary dropdown-toggle dotdotButt" data-id="{{_id}}" data-toggle="dropdown" aria-expanded="false" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
+                                                    <div class="dropdown-menu" role="menu" data-id="{{_id}}">
                                                         <button class="dropdown-item editButt" role="presentation" data-id="{{_id}}"href="#">Edit</button>
                                                         <button class="dropdown-item deleteButt" id="deleteOff" role="presentation"  data-id="{{_id}}" href="#">Delete</button>
                                                         <button class="dropdown-item blacklistWhitelistButt" role="presentation" data-id="{{_id}}" href="#">Blacklist/Whitelist</button>
@@ -320,6 +320,21 @@
 </form>
 
 </body>
+
+<script>
+    $(document).ready(function(){
+        $("button.dotdotButt").click(function(){
+            let id = $(this).attr("data-id")
+            if($("td[data-id='" + id + "'].stat").text() == "Whitelisted"){
+                console.log("Aguy")
+                $("button.blacklistWhitelistButt").html("Blacklist")
+            }
+            else{
+                $("button.blacklistWhitelistButt").html("Whitelist")
+            }
+        })
+    })
+</script>
 
 <script>
     $(document).ready(function(){

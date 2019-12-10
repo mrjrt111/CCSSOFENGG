@@ -42,7 +42,8 @@ router.post("/addOrg", (req, res)=>{
     var org = {
         orgName: req.body.orgName, 
         abbrev: req.body.abbrev, 
-        description: req.body.description
+        description: req.body.description,
+        status: "Whitelisted"
     }
     if(!(req.body.orgName === "" || req.body.abbrev === ""))
     {
@@ -88,7 +89,7 @@ router.post("/editOrg", function(req,res){
     let orgName = req.body.orgName;
     let orgAbb = req.body.orgAbb;
     
-    Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb})
+    Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb, })
     // .then((user)=>{
     //     res.redirect("/manageOfficers")
     // })

@@ -3,7 +3,8 @@ const mongoose = require("mongoose")
 var orgSchema = mongoose.Schema({
     orgName: String, 
     abbrev: String, 
-    description: String
+    description: String,
+    status: String
 })
 
 var Organization = mongoose.model("org", orgSchema)
@@ -87,7 +88,7 @@ exports.delete = function (abbrev){
 
 exports.edit = function(oldContent, newContent){
     return new Promise(function(resolve,reject){
-        Organization.findOneAndUpdate(oldContent, newContent).then((org)=>{
+        Organization.findOneAndUpdate(oldContent, newContent).then(()=>{
             console.log("Update: ", org)
         })
     })

@@ -2,6 +2,7 @@ const express = require("express")
 const router = express.Router()
 const BList = require("../models/blacklist")
 const BlOrg = require("../models/blacklistOrg")
+const Organization = require("../models/organization")
 const User = require("../models/user")
 const bodyparser = require("body-parser")
 
@@ -51,18 +52,21 @@ router.post("/add", function(req, res){
 })
 
 router.post("/addOrg", function(req,res){
+    let id = req.body.id
     let org = req.body.org
     console.log(org)
 
     BlOrg.getOrg(org).then((blacklist)=>{
         if(blacklist){
             let bId = blacklist.id
+            Organization.edit({_id:id}, {status: "Whitelisted"})
             BlOrg.remove(bId)
-            res.redirect("/manageOfficers")
+            res.redirect("/org/viewOrgs")
         }
         else{
             BlOrg.add(org)
-            res.redirect("/manageOfficers")
+            Organization.edit({_id:id}, {status: "Blacklisted"})
+            res.redirect("/org/viewOrgs")
         }
     }, (error)=>{
         res.sendFile(error)
