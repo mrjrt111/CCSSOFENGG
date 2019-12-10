@@ -43,6 +43,16 @@ exports.getAllOrgs = function(){
     })
 }
 
+exports.getWOrgs = function(){
+    return new Promise(function(resolve, reject){
+        Organization.find({status:"Whitelisted"}).then((orgs)=>{
+            resolve(orgs)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
 exports.get = function(id){
     return new Promise(function(resolve, reject){
         Organization.findOne({_id:id}).then((org)=>{

@@ -42,3 +42,17 @@ exports.getOrg = function(org){
         })
     })
 }
+
+exports.authenticate = function(blacklist){
+    return new Promise(function(resolve, reject){
+        console.log("in promise: " + blacklist.orgAbb)
+        BlOrg.findOne({
+          orgAbb: blacklist.orgAbb
+        }).then((blacklist)=>{
+          console.log("callback user: " + blacklist)
+          resolve(blacklist)
+        },(err)=>{
+          reject(err)
+        })
+    })
+}

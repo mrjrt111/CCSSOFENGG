@@ -169,7 +169,7 @@
                 <div class="modal-body">
                     <p>Are you sure you want to blacklist this organization?</p>
                 </div>
-                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" data-dismiss="modal" style="background-color: #d48664;">Cancel</button></div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light confirmBOrg" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" data-dismiss="modal" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
     </div>
@@ -179,15 +179,15 @@
                 <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
                     <h4 class="modal-title">Blacklist Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body d-xl-flex flex-grow-1 justify-content-xl-center">
-                    <select class="flex-grow-1">
+                    <select class="flex-grow-1" id="selectedBOrg">
                         <optgroup label="Organizations">
-                        {{#each orgs}}
-                            <option value="{{abbrev}}">{{abbrev}}</option>
+                        {{#each worgs}}
+                            <option data-id="{{_id}}" value="{{abbrev}}">{{abbrev}}</option>
                         {{/each}}
                         </optgroup>
                     </select>
                 </div>
-                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light" id="blacklistOrgConfButt" data-dismiss="modal" style="color: rgb(255,255,255);background-color: #329d9c;">Select</button><button class="btn btn-primary"  data-dismiss="modal" type="button" style="background-color: #d48664;">Cancel</button></div>
+                <div class="modal-footer d-xl-flex justify-content-xl-center"><button class="btn btn-light selectBL" id="blacklistOrgConfButt" data-dismiss="modal" style="color: rgb(255,255,255);background-color: #329d9c;">Select</button><button class="btn btn-primary"  data-dismiss="modal" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
     </div>
@@ -376,6 +376,32 @@
                     org: orgAbb
                 },
                 success:function(result){
+                    alert("Organization status updated!")
+                    window.location.href  = "/org/viewOrgs"
+                    }
+                })
+            })
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("button.selectBL").click(function(){
+            let bOrg = $('#selectedBOrg :selected').text()
+            let id = $('#selectedBOrg').find(':selected').data('id')
+            console.log(bOrg)
+            console.log(id)
+            $("button.confirmBOrg").click(function(){
+                console.log("aguy")
+                $.ajax({
+                url: "/blacklist/addOrg",
+                method: "post",
+                data: {
+                    id: id,
+                    org: bOrg
+                },
+                success: function(result){
                     alert("Organization status updated!")
                     window.location.href  = "/org/viewOrgs"
                     }

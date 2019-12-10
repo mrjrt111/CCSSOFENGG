@@ -21,7 +21,7 @@ router.get("/dashboard", function(req,res){
 })
 
 router.get("/modify", function (req,res) {
-    Organization.getAll().then((orgs)=>{
+    Organization.getAllOrgs().then((orgs)=>{
         User.getAll().then((users)=>{
             res.render("modifyOfficer.hbs",{
                 orgs, users
@@ -32,9 +32,11 @@ router.get("/modify", function (req,res) {
 
 router.get("/viewOrgs", function (req,res) {
     Organization.getAllOrgs().then((orgs)=>{
+        Organization.getWOrgs().then((worgs)=>{
             res.render("viewOrgs.hbs",{
-                orgs
+                orgs,worgs
             })
+        })
     })
 })
 
