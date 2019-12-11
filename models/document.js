@@ -114,3 +114,13 @@ exports.getPost = function(){
         })
     })
 }
+
+exports.getOrgDocu = function(orgName){
+    return new Promise(function(resolve,reject){
+        Document.find({org:orgName}).then((docus)=>{
+            resolve(docus)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}

@@ -92,28 +92,39 @@ router.post("/login", function(req, res){
                         req.session.email = user.email
                         req.session.org = user.org
                         // res.redirect("/dashboard")
-                        User.getByEmail(user.email).then((user)=>{
-                            req.session.givenname = user.givenname
-                            Document.getPre().then((pres)=>{
-                                Document.getPost().then((posts)=>{
-                                    Organization.getAll().then((orgs)=>{
-                                        res.render("dashboard.hbs",{
-                                            orgs, pres, posts,
-                                            org:req.session.org,
-                                            name: req.session.givenname
+                        if(newUser.type == "admin"){
+                            console.log(newUser.type)
+                            User.getByEmail(user.email).then((user)=>{
+                                req.session.givenname = user.givenname
+                                Document.getPre().then((pres)=>{
+                                    Document.getPost().then((posts)=>{
+                                        Organization.getAll().then((orgs)=>{
+                                            res.render("dashboard.hbs",{
+                                                orgs, pres, posts,
+                                                org:req.session.org,
+                                                name: req.session.givenname
+                                            })
+                                            // res.redirect("/dashboard")
+                                        }, (error)=>{
+                                            res.sendFile(error)
                                         })
-                                        // res.redirect("/dashboard")
                                     }, (error)=>{
                                         res.sendFile(error)
                                     })
                                 }, (error)=>{
                                     res.sendFile(error)
                                 })
-                            }, (error)=>{
-                                res.sendFile(error)
                             })
-                        })
-    
+                        }
+                        else if(newUser.type == "aps"){
+
+                        }
+                        else if(newUser.type == "adm"){
+                            
+                        }
+                        else if(newUser.type == "orgOfficer"){
+                            
+                        }
                     }
                 }, (error)=>{
                     res.sendFile(error)

@@ -32,7 +32,7 @@ router.post("/addOfficer", function(req, res){
         org: req.body.org,
         type: req.body.type
     }
-    if(officer.org !== "CSO" && officer.type === "orgOfficer" || officer.org === "CSO" && officer.type === "admin" || officer.org === "CSO" && officer.type === "moderator")
+    if(officer.org !== "CSO" && officer.type === "orgOfficer" || officer.org === "CSO" && officer.type === "admin" || officer.org === "CSO" && officer.type === "aps" || officer.org === "CSO" && officer.type === "adm")
     {
         console.log(officer.org)
         Officer.create(officer).then((officer)=>{
