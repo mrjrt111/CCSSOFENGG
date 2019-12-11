@@ -91,6 +91,7 @@ router.post("/login", function(req, res){
                     else{
                         req.session.email = user.email
                         req.session.org = user.org
+                        req.session.type = newUser.type
                         // res.redirect("/dashboard")
                         if(newUser.type == "admin"){
                             console.log(newUser.type)
@@ -123,12 +124,12 @@ router.post("/login", function(req, res){
                             
                         }
                         else if(newUser.type == "orgOfficer"){
-
                             User.getByEmail(user.email).then((user)=>{
                                 req.session.givenname = user.givenname
                                 Document.getPreOrg(newUser.org).then((pres)=>{
                                     Document.getPostOrg(newUser.org).then((posts)=>{
                                         Organization.getAll().then((orgs)=>{
+                                            console.log(newUser.org)
                                             res.render("dashboardOrg.hbs",{
                                                 orgs, pres, posts,
                                                 org:req.session.org,
@@ -166,6 +167,18 @@ router.post("/login", function(req, res){
         }
     }, (error)=>{
         res.sendFile(error)
+    })
+})
+
+router.post("/getOfficers", function (req,res) {
+    User.getByEmail(user.email).then((user)=>{
+        req.session.givenname = user.givenname
+        User.getOfficerOrg(req.session.org).then((users)=>{
+            res.render("viewOfficers.hbs",{users
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
     })
 })
 

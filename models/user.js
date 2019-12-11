@@ -129,6 +129,16 @@ exports.getCSO = function(){
   })
 }
 
+exports.getOfficerOrg = function(org){
+    return new Promise(function(resolve, reject){
+        User.find({"org":org}).then((users)=>{
+            resolve(users)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
 exports.getUser = function(email){
     return new Promise(function(resolve, reject){
         User.findOne({email:email}).then((user)=>{

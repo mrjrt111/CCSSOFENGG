@@ -34,7 +34,9 @@
             <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                 <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                     <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
-                    <div><button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button><button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
+                    <div>
+<!--                        <button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button>-->
+                        <button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
                 </div>
             </nav>
             <div class="container-fluid">
@@ -60,7 +62,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{#each docus}}
+                                {{#each pres}}
                                     <tr>
                                         <td>
                                             {{actName}}
@@ -126,7 +128,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                {{#each docus}}
+                                {{#each posts}}
                                     <tr>
                                         <td>
                                             {{actName}}
