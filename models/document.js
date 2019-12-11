@@ -18,8 +18,8 @@ var documentSchema = mongoose.Schema({
     date: Date,
     startTime: String,
     endTime: String,
-    ENP: Number,
-    ENMP: Number,
+    ENP: String,
+    ENMP: String,
     filedBy: String,
     fileDate: Date,
     remarks: String,
@@ -90,6 +90,36 @@ exports.getDocu = function(actName){
         Document.findOne({actName:actName}).then((docu)=>{
             resolve(docu)
         }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getPre = function(){
+    return new Promise(function(resolve,reject){
+        Document.find({docuType:'Pre-Acts'}).then((pres)=>{
+            resolve(pres)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getPost = function(){
+    return new Promise(function(resolve,reject){
+        Document.find({docuType:'Post-Acts'}).then((posts)=>{
+            resolve(posts)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getOrgDocu = function(orgName){
+    return new Promise(function(resolve,reject){
+        Document.find({org:orgName}).then((docus)=>{
+            resolve(docus)
+        },(err)=>{
             reject(err)
         })
     })

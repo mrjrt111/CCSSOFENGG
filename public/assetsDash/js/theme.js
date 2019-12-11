@@ -6,6 +6,12 @@
     $("body").toggleClass("sidebar-toggled");
     $(".sidebar").toggleClass("toggled");
     $("#sidebarOptions").toggleClass("invisible");
+    $("#viewLinks").addClass("hidden");
+    $("#viewLinks").removeClass("visible");
+    $("#encodeLinks").addClass("hidden");
+    $("#encodeLinks").removeClass("visible");
+    $("#manageLinks").addClass("hidden");
+    $("#manageLinks").removeClass("visible");
     if ($(".sidebar").hasClass("toggled")) {
       $('.sidebar .collapse').collapse('hide');
     };

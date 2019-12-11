@@ -36,20 +36,29 @@ router.get("/", function(req,res){
 router.get("/dashboard", function(req,res) {
     var name = req.session.givenname
     var org = req.session.org
-    Document.getAll().then((docus) => {
-        User.getAll().then((users) => {
-            Organization.getAll().then((orgs) => {
-                res.render("dashboard.hbs", {
-                    users,
-                    orgs,
-                    docus,
-                    org,
-                    name
+    Document.getPre().then((pres) => {
+        Document.getPost().then((posts)=>{
+            User.getAll().then((users) => {
+                Organization.getAll().then((orgs) => {
+                    res.render("dashboard.hbs", {
+                        users,
+                        orgs,
+                        pres,
+                        posts,
+                        org,
+                        name
+                    })
+                },(error)=>{
+                    res.sendFile(error)
                 })
+            }, (error) => {
+                res.sendFile(error)
             })
-        }, (error) => {
+        }, (error)=>{
             res.sendFile(error)
         })
+    },(error)=>{
+        res.sendFile(error)
     })
 
 
@@ -72,12 +81,15 @@ router.get("/logout", function(req,res){
 router.get("/manageOfficers", function(req, res){
 
     User.getAll().then((users)=>{
-        Organization.getAll().then((orgs)=>{
-            var org = req.session.org;
-            res.render("modifyOfficer.hbs",{
-                users,
-                orgs,
-                org
+        Organization.getAllOrgs().then((orgs)=>{
+            Organization.getWOrgs().then((worgs)=>{
+                var org = req.session.org;
+                res.render("modifyOfficer.hbs",{
+                    worgs,
+                    users,
+                    orgs,
+                    org
+                })
             })
         })
     }, (error)=>{

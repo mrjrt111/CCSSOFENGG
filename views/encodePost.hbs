@@ -26,7 +26,7 @@
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1" id="encodePreactsHeader">Encode POSTACTS</h3>
+                    <h3 class="text-dark" id="encodePostactsHeader" style="font-size: 28px;">Encode POSTACTS</h3>
                 </div>
             </div>
         </div>
@@ -34,79 +34,224 @@
 
     <form action="/docu/addDocu" method="POST">
         <div class="border rounded-0 shadow flex-column flex-grow-1 justify-content-between visible" id="encodePostactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*display: none;*/">
-            <div class="row growRow">
-                <div class="col"><span style="margin-right: 16px;">Organization</span>
-                <select id="page-top" style="margin-right: 16px;" name="org">
-                    <optgroup label="Organizations">
-                        {{#each orgs}}
-                            <option>{{abbrev}}</option>
-                        {{/each}}
-                    </optgroup>
-                </select>
-                    <span
-                        style="margin-right: 15px;">Term</span>
-                        <select style="margin-right: 15px;" name="term">
-                            <optgroup label="Term">
-                                <option value="1" selected="">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                            </optgroup>
-                        </select>
-                        <span
-                            style="margin-right: 15px;">Activity Name</span><input type="text" name="actName"></div>
+        <div class="table-responsive table-borderless">
+                <table class="table table-bordered table-sm">
+                    <tbody>
+                        <tr></tr>
+                        <tr>
+                            <td>Organization</td>
+                            <td>Term</td>
+                            <td>Activity Name</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                    <select class="flex-grow-1" name="org">
+                                        <optgroup label="Organizations">
+                                            {{#each orgs}}
+                                                <option>{{abbrev}}</option>
+                                            {{/each}}
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                    <select class="flex-grow-1" name="term">
+                                        <optgroup label="Term">
+                                            <option value="1" selected="">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">Termlong</option>
+                                            <option value="5">Yearlong</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="actName"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Date</td>
+                            <td>Start Time</td>
+                            <td>End Time</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"></div>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" name="date"></div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="time" name="startTime"></div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="time" name="endTime"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Type of Submission</td>
+                            <td>Nature of Activity</td>
+                            <td>Type of Activity</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                    <select class="flex-grow-1" name="subType">
+                                        <optgroup label="Type of Submission">
+                                            <option selected="">Initial</option>
+                                            <option>Pended</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                    <select class="flex-grow-1" name="nature">
+                                        <optgroup label="Nature">
+                                            <option selected="">Academic</option>
+                                            <option>Special Interest</option>
+                                            <option>Departmental Initiative</option>
+                                            <option>Fundraising</option>
+                                            <option>Community Development</option>
+                                            <option>Organizational Development</option>
+                                            <option>Issue Advocacy</option>
+                                            <option>Lasallian Formation / Spiritual Growth</option>
+                                            <option>Outreach</option>
+                                        </optgroup>
+                                    </select>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="actType"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Received by</td>
+                            <td>Date Received</td>
+                            <td>Linkages/ Tie-ups</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                    <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" name="recBy">
+                                                <optgroup label="Received By">
+                                                    {{#each users}}
+                                                        <option>{{givenname}} {{lastname}}  </option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" name="dateRec"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="tieUp"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>First Checked by</td>
+                            <td>Date Checked</td>
+                            <td>Submitted by</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                    <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" name="firstCheck">
+                                                <optgroup label="First Checked By">
+                                                    {{#each users}}
+                                                        <option>{{givenname}} {{lastname}}</option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" name="firstDate"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" name="subBy">
+                                                <optgroup label="Submitted By">
+                                                    {{#each officers}}
+                                                        <option>{{givenname}} {{lastname}}</option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Second Checked by</td>
+                            <td>Date Checked</td>
+                            <td>Status</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                    <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" name="secondCheck">
+                                                <optgroup label="Second Checked By">
+                                                    {{#each users}}
+                                                        <option>{{givenname}} {{lastname}}</option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" name="secondDate"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" name="status">
+                                                <optgroup label="Status">
+                                                    <option selected="">Approved</option>
+                                                    <option>Pended</option>
+                                                    <option>This is item 3</option>
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Filed by</td>
+                            <td>Date Filed</td>
+                            <td>Venue</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                    <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" name="filedBy">
+                                                <optgroup label="Filed By">
+                                                    {{#each users}}
+                                                        <option>{{givenname}} {{lastname}}</option>
+                                                    {{/each}}
+                                                </optgroup>
+                                            </select>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" name="fileDate"></div>
+                            </td>
+                            <td>
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="venue"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="3">Remarks</td>
+                        </tr>
+                        <tr>
+                            <td class="flex-grow-1 flex-fill" colspan="3">
+                                <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="remarks"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-            <div class="row growRow">
-                <div class="col"><span style="margin-right: 15px;">Type of Submission</span>
-                <input style="margin-right: 15px;" type="text" name="subType">
-                    {{!-- <optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select> --}}
-                    <span
-                        style="margin-right: 15px;">Submitted by</span>
-                        <select style="margin-right: 15px;" name="subBy">
-                            <optgroup label="Submitted By">
-                                {{#each officers}}
-                                    <option>{{givenname}} {{lastname}}</option>
-                                {{/each}}
-                            </optgroup>
-                        </select>
-                        <span
-                            style="margin-right: 15px;">Linkage</span><input type="text" name="tieUp"></div>
-            </div>
-            <div class="row growRow">
-                <div class="col"><span style="margin-right: 15px;">First Checked by</span>
-                <select style="margin-right: 15px;" name="firstCheck">
-                    <optgroup label="This is a group">
-                        {{#each users}}
-                            <option>{{givenname}} {{lastname}}</option>
-                        {{/each}}
-                    </optgroup>
-                </select>
-                    <span
-                        style="margin-right: 15px;">Date</span><input type="date" name="firstDate"></div>
-            </div>
-            <div class="row growRow">
-            <div class="col"><span style="margin-right: 15px;">Filed by</span>
-                <select style="margin-right: 15px;" name="filedBy">
-                    <optgroup label="Filed By">
-                        {{#each users}}
-                            <option>{{givenname}} {{lastname}}</option>
-                        {{/each}}
-                    </optgroup>
-                </select>
-                <span
-                    style="margin-right: 15px;">Date</span><input type="date" name="fileDate"></div>
-            </div>
-            <div class="row growRow">
-                <div class="col"><span style="margin-right: 15px;">Date</span><input type="date" style="margin-right: 15px;" name="date"><span style="margin-right: 15px;">Start Time</span><input type="time" class="timeInput" style="margin-right: 15px;" name="startTime"><span style="margin-right: 15px;">End Time</span>
-                    <input
-                        type="time" class="timeInput" style="margin-right: 15px;" name="endTime"><span style="margin-right: 15px;">Venue</span><input type="text" name="venue"></div>
-            </div>
-            <div class="row growRow">
-                <div class="col"><span style="margin-right: 15px;">ENP</span><input type="text" style="margin-right: 15px;" name="enp"><span style="margin-right: 15px;">ENMP</span><input type="text" name="enmp"></div>
-            </div>
-            <div class="row growRow">
-                <div class="col"><span style="margin-right: 15px;">Remarks</span><input type="text" style="margin-right: 15px;" name="remarks"></div>
-            </div>
-        </div>
+    </div>
+        <input type="hidden" name="docuType" value="Post-Acts">
+
         <div class="row" style="margin: 0px;">
             <div class="col" style="padding: 0px 30px;"><input type="submit" value="Encode" class="btn btn-primary float-right" type="button" style="margin-left: 0px;margin-right: 0px;margin-bottom: 30px;background-color: #329d9c;"></input></div>
         </div>

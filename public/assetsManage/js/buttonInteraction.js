@@ -1,8 +1,10 @@
-$("#editButt").click(function(){
-  $("#editModal").modal("show");
+$(".editDocButt").click(function(){
+  $("#editDocModal").modal("show");
   });
 
-$("#deleteButt").click(function(){
-  $("#deleteModal").modal("show");
+$(".deleteDocButt").click(function(){
+  $("#deleteDocModal").modal("show");
   });
-
+$("#selectOrgButt").click(function(){
+  $("#selectOrgModal").modal("show");
+  });

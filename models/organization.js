@@ -3,7 +3,8 @@ const mongoose = require("mongoose")
 var orgSchema = mongoose.Schema({
     orgName: String, 
     abbrev: String, 
-    description: String
+    description: String,
+    status: String
 })
 
 var Organization = mongoose.model("org", orgSchema)
@@ -25,6 +26,26 @@ exports.create = function(org){
 exports.getAll = function(){
     return new Promise(function(resolve, reject){
         Organization.find({}, {abbrev:1, _id:0}).then((orgs)=>{
+            resolve(orgs)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getAllOrgs = function(){
+    return new Promise(function(resolve, reject){
+        Organization.find().then((orgs)=>{
+            resolve(orgs)
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getWOrgs = function(){
+    return new Promise(function(resolve, reject){
+        Organization.find({status:"Whitelisted"}).then((orgs)=>{
             resolve(orgs)
         }, (err)=>{
             reject(err)
@@ -65,6 +86,7 @@ exports.getOrgExceptCSO = function(abbrev){
 exports.delete = function (abbrev){
     return new Promise(function(resolve, reject){
         //console.log("in promise : " + tag + " "+ username)
+        // console.log(abbrev)
         Organization.deleteOne({abbrev: abbrev
         }).then((docu)=>{
             console.log("Deleted: ",  docu)
@@ -73,3 +95,11 @@ exports.delete = function (abbrev){
         })
     })
 }
+
+exports.edit = function(oldContent, newContent){
+    return new Promise(function(resolve,reject){
+        Organization.findOneAndUpdate(oldContent, newContent).then(()=>{
+            console.log("Update: ", org)
+        })
+    })
+  }

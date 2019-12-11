@@ -21,10 +21,20 @@ router.get("/dashboard", function(req,res){
 })
 
 router.get("/modify", function (req,res) {
-    Organization.getAll().then((orgs)=>{
+    Organization.getAllOrgs().then((orgs)=>{
         User.getAll().then((users)=>{
             res.render("modifyOfficer.hbs",{
                 orgs, users
+            })
+        })
+    })
+})
+
+router.get("/viewOrgs", function (req,res) {
+    Organization.getAllOrgs().then((orgs)=>{
+        Organization.getWOrgs().then((worgs)=>{
+            res.render("viewOrgs.hbs",{
+                orgs,worgs
             })
         })
     })
@@ -34,7 +44,8 @@ router.post("/addOrg", (req, res)=>{
     var org = {
         orgName: req.body.orgName, 
         abbrev: req.body.abbrev, 
-        description: req.body.description
+        description: req.body.description,
+        status: "Whitelisted"
     }
     if(!(req.body.orgName === "" || req.body.abbrev === ""))
     {
@@ -53,7 +64,7 @@ router.post("/addOrg", (req, res)=>{
 router.post("/deleteOrg", function(req, res) {
     // let abbrev = req.body.orgDelete
     // let abbrev = req.body.orgID
-    let abbrev = req.body.org
+    let abbrev = req.body.abbrev
     // console.log(abbrev)
     // Organization.delete(abbrev).then
     // //     .then(()=>{
@@ -72,6 +83,17 @@ router.post("/deleteOrg", function(req, res) {
     //         })
     //     })
     //     })
+    // })
+})
+
+router.post("/editOrg", function(req,res){
+    let id = req.body.id;
+    let orgName = req.body.orgName;
+    let orgAbb = req.body.orgAbb;
+    
+    Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb, })
+    // .then((user)=>{
+    //     res.redirect("/manageOfficers")
     // })
 })
 

@@ -9,7 +9,8 @@ var userSchema = mongoose.Schema({
     number: String,
     org: String,
     type: String,
-    rank: String
+    position: String,
+    status: String
 })
 
 userSchema.pre("save", function(next){
@@ -136,4 +137,12 @@ exports.getUser = function(email){
           reject(err)
         })
       })
+}
+
+exports.edit = function(oldContent, newContent){
+  return new Promise(function(resolve,reject){
+      User.findOneAndUpdate(oldContent, newContent).then(()=>{
+          console.log("Update: ", user)
+      })
+  })
 }

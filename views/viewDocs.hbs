@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/assetsLog/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsLog/css/DocumentsView.css">
+    {{!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="assetsManage/js/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 </head>
 
 <body id="page-top">
@@ -19,17 +22,20 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">&lt;All Documents&gt;</span></li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">&lt;List of Documents/Preacts/Postacts&gt;</span></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;{{org}}&gt;</h3>
+                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;{{org}}&gt;<button class="btn btn-primary float-right" type="button" style="background-color: #7be495;margin-right: 15px;" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</button><button class="btn btn-primary float-right" type="button" style="background-color: #56c596;margin-right: 15px;" onclick="window.location.href = '/docu/encode'">Encode PREACTS</button>
+                        <button
+                            class="btn btn-primary float-right" id="selectOrgButt" type="button" style="background-color: #329d9c;margin-right: 15px;">Select Org</button>
+                    </h3>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6 text-nowrap">
-                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                                    <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"></div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="text-md-right dataTables_filter" id="dataTable_filter"><label></label>
@@ -45,36 +51,34 @@
                                 <table class="table dataTable my-0" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th onclick="sortTable(0, 'dataTable')">Document Type</th>
-                                            <th onclick="sortTable(1, 'dataTable')">Type of Activity</th>
-                                            <th onclick="sortTable(2, 'dataTable')">Nature of Activity</th>
-                                            <th onclick="sortTable(3, 'dataTable')">Venue</th>
-                                            <th onclick="sortTable(0, 'dataTable')">Date</th>
-                                            <th onclick="sortTable(5, 'dataTable')">Time</th>
-                                            <th onclick="sortTable(6, 'dataTable')">ENP</th>
-                                            <th onclick="sortTable(7, 'dataTable')">ENMP</th>
-                                            <th onclick="sortTable(8, 'dataTable')">Online</th>
-                                            <th onclick="sortTable(9, 'dataTable')">GOSM</th>
+                                            <th>Document Name</th>
+                                            <th>Document Type</th>
+                                            <th>Type of Activity</th>
+                                            <th>Nature of Activity</th>
+                                            <th>Venue</th>
+                                            <th>Date</th>
+                                            <th>Time</th>
+                                            <th>ENP</th>
+                                            <th>ENMP</th>
                                             <th></th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {{#each docus}}
                                         <tr data-id="{{_id}}">
-                                            <td>{{docuType}}</td>
-                                            <td>{{actType}}</td>
-                                            <td>{{nature}}</td>
-                                            <td>{{venue}}</td>
-                                            <td>{{date}}</td>
-                                            <td>{{startTime}} - {{endTime}}</td>
-                                            <td>{{ENP}}</td>
-                                            <td>{{ENMP}}</td>
-                                            <td>{{isOnline}}</td>
-                                            <td>{{inGOSM}}</td>
+                                            <td data-id="{{_id}}">{{actName}}</td>
+                                            <td data-id="{{_id}}">{{docuType}}</td>
+                                            <td data-id="{{_id}}">{{actType}}</td>
+                                            <td data-id="{{_id}}">{{nature}}</td>
+                                            <td data-id="{{_id}}">{{venue}}</td>
+                                            <td data-id="{{_id}}">{{date}}</td>
+                                            <td data-id="{{_id}}">{{startTime}} - {{endTime}}</td>
+                                            <td data-id="{{_id}}">{{ENP}}</td>
+                                            <td data-id="{{_id}}">{{ENMP}}</td>
                                             <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                                 <div class="dropdown show"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
-                                                    <div class="dropdown-menu show"
-                                                        role="menu"><a class="dropdown-item" role="presentation" id="editButt" href="#">Edit</a>
+                                                    <div class="dropdown-menu"
+                                                        role="menu"><a class="dropdown-item editButt" role="presentation" href="#">Edit</a>
                                                         <button class="dropdown-item deleteButt" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</button></div>
                                                 </div>
                                             </td>
@@ -95,7 +99,7 @@
                                                             </div>
                                                         </div>
                                                         <div class="modal-footer d-lg-flex justify-content-lg-center">
-                                                            <button id="conDel" class="btn btn-light"  data-dismiss="modal" data-id="{{_id}}" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button>
+                                                            <button id="conDel" class="btn btn-light confirmDelete"  data-dismiss="modal" data-id="{{_id}}" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button>
                                                             <button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
                                                     </div>
                                                 </div>
@@ -105,6 +109,7 @@
                                     </tbody>
                                     <tfoot>
                                         <tr>
+                                            <td><strong>Document Name</strong></td>
                                             <td><strong>Document Type</strong></td>
                                             <td><strong>Type of Activity</strong></td>
                                             <td><strong>Nature of Activity</strong></td>
@@ -113,8 +118,6 @@
                                             <td><strong>Time</strong></td>
                                             <td><strong>ENP</strong></td>
                                             <td><strong>ENMP</strong></td>
-                                            <td><strong>Online</strong></td>
-                                            <td><strong>GOSM</strong></td>
                                             <td><strong></strong></td>
                                         </tr>
                                     </tfoot>
@@ -147,28 +150,350 @@
             </footer>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="editModal">
+    <div class="modal fade" role="dialog" tabindex="-1" id="editDocADMModal">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
                 <div class="modal-body">
-                    <div class="row">
-                        <div class="col d-flex flex-grow-1"><select class="flex-grow-1 form-control-user" id="orgSelect"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select>
-                            <input
-                                class="flex-grow-1 form-control-user" type="text" id="activityTitle" placeholder="Activity Title"></div>
-                    </div>
-                    <div class="row">
-                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1 form-control-user" type="text" id="typeOfActivity" placeholder="Type of Activity"><select class="flex-grow-1 form-control-user" id="natureSelect"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                    </div>
-                    <div class="row">
-                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" id="venue" placeholder="Venue">
-                            <div class="form-check flex-grow-1"><input class="form-check-input" type="checkbox" id="formCheck-1"><label class="form-check-label" for="formCheck-1">Online</label></div>
-                            <div class="form-check flex-grow-1"><input class="form-check-input" type="checkbox" id="formCheck-2"><label class="form-check-label" for="formCheck-2">GOSM</label></div>
-                        </div>
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>First Checked by</td>
+                                    <td>Date Checked</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Second Checked by</td>
+                                    <td>Date Checked</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Filed by</td>
+                                    <td>Date Filed</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Status</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Remarks</td>
+                                </tr>
+                                <tr>
+                                    <td class="flex-grow-1 flex-fill" colspan="3">
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="encodeAPSModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Encode PREACTS</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">What activity will you encode?</td>
+                                </tr>
+                                <tr>
+                                    <td class="flex-grow-1 flex-fill" colspan="3">
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="encodeADMModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Encode POSTACTS</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">What activity will you encode?</td>
+                                </tr>
+                                <tr>
+                                    <td class="flex-grow-1 flex-fill" colspan="3">
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editPostactsOfficerModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">Linkages/Tie-ups</td>
+                                </tr>
+                                <tr>
+                                    <td class="flex-grow-1 flex-fill" colspan="3">
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editPreactsOfficerModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr></tr>
+                                <tr>
+                                    <td>Organization</td>
+                                    <td>Term</td>
+                                    <td>Activity Name</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Type of Submission</td>
+                                    <td>Nature of Activity</td>
+                                    <td>Type of Activity</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Date</td>
+                                    <td>Start Time</td>
+                                    <td>End Time</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"></div>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"><select class="flex-grow-1"><option value="14">AM</option><option value="14">PM</option></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"><select class="flex-grow-1"><option value="13">AM</option><option value="14">PM</option></select></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>ENP</td>
+                                    <td>ENMP</td>
+                                    <td>Venue</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"></div>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Submitted by</td>
+                                    <td>Date Submitted</td>
+                                    <td>Linkages/ Tie-ups</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Remarks</td>
+                                </tr>
+                                <tr>
+                                    <td class="flex-grow-1 flex-fill" colspan="3">
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="editDocAPSModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="table-responsive table-borderless">
+                        <table class="table table-bordered table-sm">
+                            <tbody>
+                                <tr>
+                                    <td>Received by</td>
+                                    <td>Date Received</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>First Checked by</td>
+                                    <td>Date Checked</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Second Checked by</td>
+                                    <td>Date Checked</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Filed by</td>
+                                    <td>Date Filed</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Status</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="3">Remarks</td>
+                                </tr>
+                                <tr>
+                                    <td class="flex-grow-1 flex-fill" colspan="3">
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="deleteDocModal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                    <h4 class="modal-title" style="color: #205072;">Delete Document</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col d-flex flex-grow-1"><span style="font-size: 28px;">Are you sure you want to delete this document?</span></div>
+                    </div>
+                </div>
+                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light confirmDelete" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
     </div>
@@ -189,7 +514,8 @@
 
         $("button.deleteButt").click(function(){
             let id = $(this).attr("data-id")
-            $.ajax({
+            $("button.confirmDelete").click(function(){
+                $.ajax({
                 url: "/docu/delete",
                 method: "post",
                 data: {
@@ -203,9 +529,18 @@
                     // }
                 }
             })
+            })
         })
     })
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>
+
 
 <script>
     function sortTable(n, id) {
