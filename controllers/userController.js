@@ -123,6 +123,28 @@ router.post("/login", function(req, res){
                             
                         }
                         else if(newUser.type == "orgOfficer"){
+
+                            User.getByEmail(user.email).then((user)=>{
+                                req.session.givenname = user.givenname
+                                Document.getPreOrg(newUser.org).then((pres)=>{
+                                    Document.getPostOrg(newUser.org).then((posts)=>{
+                                        Organization.getAll().then((orgs)=>{
+                                            res.render("dashboardOrg.hbs",{
+                                                orgs, pres, posts,
+                                                org:req.session.org,
+                                                name: req.session.givenname
+                                            })
+                                            // res.redirect("/dashboard")
+                                        }, (error)=>{
+                                            res.sendFile(error)
+                                        })
+                                    }, (error)=>{
+                                        res.sendFile(error)
+                                    })
+                                }, (error)=>{
+                                    res.sendFile(error)
+                                })
+                            })
                             
                         }
                     }
