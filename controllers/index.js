@@ -74,7 +74,7 @@ router.get("/manageOfficers", function(req, res){
     User.getAll().then((users)=>{
         Organization.getAll().then((orgs)=>{
             var org = req.session.org;
-            res.render("testTable.hbs",{
+            res.render("modifyOfficer.hbs",{
                 users,
                 orgs,
                 org
