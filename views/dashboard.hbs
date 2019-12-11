@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsDash/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/assetsDash/css/dashboard.css">
+    {{!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="assetsManage/js/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 </head>
 
 <body id="page-top">
@@ -307,6 +310,14 @@
             </div>
         </div>
     </div>
+
+    <script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    } );
+
+    </script>
+
     <script src="/assetsDash/js/jquery.min.js"></script>
     <script src="/assetsDash/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>

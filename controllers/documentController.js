@@ -70,6 +70,7 @@ router.post("/addDocu", (req, res)=>{
     console.log(req.body.dateRec)
 
     // if(req.body.tieUp){
+    if(req.body.ENMP && req.body.ENP){
         var docu = {
             actName: req.body.actName,
             org: req.body.org,
@@ -97,6 +98,36 @@ router.post("/addDocu", (req, res)=>{
             docuType: req.body.docuType,
             status: req.body.status
         }    
+    }
+    else{
+        var docu = {
+            actName: req.body.actName,
+            org: req.body.org,
+            actType: req.body.actType,
+            nature: req.body.nature,
+            venue: req.body.venue,
+            isOnline: req.body.online,
+            inGOSM: req.body.GOSM,
+            term: req.body.term,
+            subType: req.body.subType,
+            subBy: req.body.subBy,
+            recBy: req.body.recBy,
+            dateRec: req.body.dateRec,
+            firstCheck: req.body.firstCheck,
+            firstDate: req.body.firstDate,
+            date: req.body.date,
+            startTime: req.body.startTime,
+            endTime: req.body.endTime,
+            ENP: "N/A",
+            ENMP: "N/A",
+            filedBy: req.body.filedBy,
+            fileDate: req.body.fileDate,
+            remarks: req.body.remarks,
+            tieUp: req.body.tieUp,
+            docuType: req.body.docuType,
+            status: req.body.status
+        }
+    }
     // }
     // else{
     //     var docu = {

@@ -10,6 +10,9 @@
     <link rel="stylesheet" href="/assetsLog/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsLog/css/DocumentsView.css">
+    {{!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
+    <script src="assetsManage/js/jquery.min.js"></script>
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 </head>
 
 <body id="page-top">
@@ -530,6 +533,14 @@
         })
     })
 </script>
+
+<script>
+    $(document).ready(function() {
+        $('#example').DataTable();
+    } );
+
+</script>
+
 
 <script>
     function sortTable(n, id) {
