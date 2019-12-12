@@ -7,6 +7,7 @@ $("#addOrgButt").click(function(){
 $("#selectOrgButt").click(function(){
    $("#selectOrgModal").modal("show"); 
 });
+
 $("#viewOpen").click(function(){
     if($("#viewLinks").hasClass("visible")){
      $("#viewLinks").addClass("hidden");  

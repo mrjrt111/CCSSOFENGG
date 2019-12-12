@@ -40,6 +40,16 @@ router.get("/viewOrgs", function (req,res) {
     })
 })
 
+router.get("/viewOrgsAPS", function (req,res) {
+    Organization.getAllOrgs().then((orgs)=>{
+        Organization.getWOrgs().then((worgs)=>{
+            res.render("viewOrgsAPS.hbs",{
+                orgs,worgs
+            })
+        })
+    })
+})
+
 router.post("/addOrg", (req, res)=>{
     var org = {
         orgName: req.body.orgName, 

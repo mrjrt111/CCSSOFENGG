@@ -6,13 +6,10 @@
     <script src="/public/jQuery.js"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>View Documents</title>
+    <title>Pre-Acts</title>
     <link rel="stylesheet" href="/assetsLog/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsLog/css/DocumentsView.css">
-    {{!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <script src="assetsManage/js/jquery.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 </head>
 
 <body id="page-top">
@@ -20,16 +17,14 @@
         <div class="d-flex flex-column" id="content-wrapper">
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
-                    <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button>
+                    <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboardAPS'">Back</button>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">List of Documents</span></li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">List of Preacts</span></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;{{org}}&gt;<button class="btn btn-primary float-right" type="button" style="background-color: #7be495;margin-right: 15px;" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</button><button class="btn btn-primary float-right" type="button" style="background-color: #56c596;margin-right: 15px;" onclick="window.location.href = '/docu/encode'">Encode PREACTS</button>
-                        <button
-                            class="btn btn-primary float-right" id="selectOrgButt" type="button" style="background-color: #329d9c;margin-right: 15px;">Select Org</button>
+                    <h3 class="text-dark mb-4" style="color: #205072;">&lt;{{org}}&gt;<button class="btn btn-primary float-right" id="encodePreButt" type="button" style="background-color: #56c596;margin-right: 15px;" {{!--onclick="window.location.href = '/docu/encode'"--}}>Encode PREACTS</button>
                     </h3>
                     <div class="card shadow">
                         <div class="card-body">
@@ -64,7 +59,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each docus}}
+                                        {{#each pres}}
                                         <tr data-id="{{_id}}">
                                             <td data-id="{{_id}}">{{actName}}</td>
                                             <td data-id="{{_id}}">{{docuType}}</td>
@@ -75,39 +70,17 @@
                                             <td data-id="{{_id}}">{{startTime}} - {{endTime}}</td>
                                             <td data-id="{{_id}}">{{ENP}}</td>
                                             <td data-id="{{_id}}">{{ENMP}}</td>
-                                            <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
+                                            {{!-- <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                                 <div class="dropdown show"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
                                                     <div class="dropdown-menu"
                                                         role="menu"><a class="dropdown-item editButt" role="presentation" href="#">Edit</a>
                                                         <button class="dropdown-item deleteButt" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</button></div>
                                                 </div>
-                                            </td>
-                                            <div class="modal fade" role="dialog" tabindex="-1" id="deleteModal">
-                                                <div class="modal-dialog" role="document">
-                                                    <div class="modal-content">
-                                                        <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
-                                                            <h4 class="modal-title" style="color: #205072;">Delete Document</h4>
-                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                <span aria-hidden="true">×</span>
-                                                            </button>
-                                                        </div>
-                                                        <div class="modal-body">
-                                                            <div class="row">
-                                                                <div class="col d-flex flex-grow-1">
-                                                                    <span style="font-size: 28px;">Are you sure you want to delete this document?</span>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="modal-footer d-lg-flex justify-content-lg-center">
-                                                            <button id="conDel" class="btn btn-light confirmDelete"  data-dismiss="modal" data-id="{{_id}}" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button>
-                                                            <button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                            </td> --}}
                                         </tr>
                                         {{/each}}
                                     </tbody>
-                                    <tfoot>
+                                    {{!-- <tfoot>
                                         <tr>
                                             <td><strong>Document Name</strong></td>
                                             <td><strong>Document Type</strong></td>
@@ -120,7 +93,7 @@
                                             <td><strong>ENMP</strong></td>
                                             <td><strong></strong></td>
                                         </tr>
-                                    </tfoot>
+                                    </tfoot> --}}
                                 </table>
                             </div>
                             <div class="row">
@@ -233,14 +206,23 @@
                                 </tr>
                                 <tr>
                                     <td class="flex-grow-1 flex-fill" colspan="3">
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
+                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                            <select class="flex-grow-1" id="selectedDoc">
+                                                <optgroup label="Pre-Acts">
+                                                    {{#each pres}}
+                                                        <option data-id="{{_id}}">{{actName}}</option>
+                                                        {{!-- <option>{{_id}}</option> --}}
+                                                    {{/each}}
+                                                </optgroup>
+                                            </select>
+                                        </div>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
+                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary selectEncode" id="confirmPre" data-dismiss="modal" type="button" style="background-color: #329d9c;">Select</button></div>
             </div>
         </div>
     </div>
@@ -402,85 +384,127 @@
             </div>
         </div>
     </div>
-    <div class="modal fade" role="dialog" tabindex="-1" id="editDocAPSModal">
+    <div class="modal fade" role="dialog" tabindex="-1" id="editDocAPSModal" style="overflow:scroll">
         <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
-                    <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="table-responsive table-borderless">
-                        <table class="table table-bordered table-sm">
-                            <tbody>
-                                <tr>
-                                    <td>Received by</td>
-                                    <td>Date Received</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                                    </td>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>First Checked by</td>
-                                    <td>Date Checked</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                                    </td>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Second Checked by</td>
-                                    <td>Date Checked</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                                    </td>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Filed by</td>
-                                    <td>Date Filed</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                                    </td>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">Status</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><select class="flex-grow-1"><optgroup label="This is a group"><option value="12" selected="">This is item 1</option><option value="13">This is item 2</option><option value="14">This is item 3</option></optgroup></select></div>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td colspan="3">Remarks</td>
-                                </tr>
-                                <tr>
-                                    <td class="flex-grow-1 flex-fill" colspan="3">
-                                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text"></div>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
+            {{!-- <form action="/docu/encodeAPS" method="POST"> --}}
+                <div class="modal-content">
+                    <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                        <h4 class="modal-title" style="color: #205072;">Edit Activity</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                    <div class="modal-body">
+                        <div class="table-responsive table-borderless">
+                            <table class="table table-bordered table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td>Received by</td>
+                                        <td>Date Received</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                                <select class="flex-grow-1" id="recBy">
+                                                    <optgroup label="Received By">
+                                                        {{#each cso}}
+                                                            <option>{{givenname}} {{lastname}}</option>
+                                                        {{/each}}
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" id="dateRec"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>First Checked by</td>
+                                        <td>Date Checked</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                                <select class="flex-grow-1" id="firstCheck">
+                                                    <optgroup label="First Checked By">
+                                                        {{#each cso}}
+                                                            <option>{{givenname}} {{lastname}}</option>
+                                                        {{/each}}
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" id="firstDate"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Second Checked by</td>
+                                        <td>Date Checked</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                                <select class="flex-grow-1" id="secondCheck">
+                                                    <optgroup label="Second Checked By">
+                                                        {{#each cso}}
+                                                            <option>{{givenname}} {{lastname}}</option>
+                                                        {{/each}}
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" id="secondDate"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Filed by</td>
+                                        <td>Date Filed</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                                <select class="flex-grow-1" id="filedBy">
+                                                    <optgroup label="Filed By">
+                                                        {{#each cso}}
+                                                            <option>{{givenname}} {{lastname}}</option>
+                                                        {{/each}}
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="date" id="fileDate"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">Status</td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                                <select class="flex-grow-1" id="status">
+                                                    <optgroup label="Status">
+                                                        <option selected="">Approved</option>
+                                                        <option>Late Approved</option>
+                                                        <option>Pended</option>
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td colspan="3">Remarks</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="flex-grow-1 flex-fill" colspan="3">
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" id="remarks" type="text"></div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary confirmDoc" data-dismiss="modal" type="button" style="background-color: #329d9c;">Save</button></div>
                 </div>
-                <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><button class="btn btn-primary" type="button" style="background-color: #329d9c;">Save</button></div>
-            </div>
+            {{!-- </form> --}}
         </div>
     </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="deleteDocModal">
@@ -493,7 +517,7 @@
                         <div class="col d-flex flex-grow-1"><span style="font-size: 28px;">Are you sure you want to delete this document?</span></div>
                     </div>
                 </div>
-                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light confirmDelete" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
+                <div class="modal-footer d-lg-flex justify-content-lg-center"><button class="btn btn-light" type="button" data-dismiss="modal" style="background-color: rgb(50,157,156);color: rgb(255,255,255);">Confirm</button><button class="btn btn-primary" type="button" style="background-color: #d48664;">Cancel</button></div>
             </div>
         </div>
     </div>
@@ -504,6 +528,55 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="/assetsLog/js/theme.js"></script>
 </body>
+
+<script>
+    $(document).ready(function(){
+        $("button.selectEncode").click(function(){
+            let encodeDoc = $('#selectedDoc :selected').text()
+            let id = $('#selectedDoc').find(':selected').data('id')
+            console.log(encodeDoc)
+            console.log(id)
+            $("button.confirmDoc").click(function(){
+                console.log("aguy")
+                let recBy = $('#recBy :selected').text() 
+                let dateRec = new Date($('#dateRec').val()) 
+                let firstCheck = $('#firstCheck :selected').text() 
+                let firstDate = new Date($('#firstDate').val()) 
+                let secondCheck = $('#secondCheck :selected').text() 
+                let secondDate = new Date($('#secondDate').val()) 
+                let filedBy = $('#filedBy :selected').text() 
+                let fileDate = new Date($('#fileDate').val()) 
+                let status = $('#status :selected').text() 
+                let remarks = $('#remarks').val() 
+                console.log(recBy)
+                console.log(dateRec)
+                console.log(remarks)
+                $.ajax({
+                url: "/docu/encodeAPS",
+                method: "post",
+                data: {
+                    id: id,
+                    recBy: recBy,
+                    dateRec: dateRec,
+                    firstCheck: firstCheck,
+                    firstDate: firstDate,
+                    secondCheck: secondCheck,
+                    secondDate: secondDate,
+                    filedBy: filedBy,
+                    fileDate: fileDate,
+                    status: status,
+                    remarks: remarks
+                },
+                success: function(result){
+                    alert("Document encoded!")
+                    window.location.href  = "/docu/viewPreActs"
+                    }
+                })
+            })
+        })
+    })
+</script>
+
 <script>
     $(document).ready(function(){
         // $('button.dropdown-item').click(function(){
@@ -523,6 +596,7 @@
                 },
                 success:function(result){
                     // if(result.ok === 1){
+                        alert("Successfully deleted")
                         $("tr[data-id='" + id + "']").remove()
                     // }else{
                     //     alert("Something went wrong")
@@ -533,52 +607,4 @@
         })
     })
 </script>
-
-<script>
-    $(document).ready(function() {
-        $('#example').DataTable();
-    } );
-
-</script>
-
-
-<script>
-    function sortTable(n, id) {
-        var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-        table = document.getElementById(id);
-        switching = true;
-        dir = "asc";
-        while (switching) {
-            switching = false;
-            rows = table.rows;
-            for (i = 1; i < (rows.length - 1); i++) {
-                shouldSwitch = false;
-                x = rows[i].getElementsByTagName("TD")[n];
-                y = rows[i + 1].getElementsByTagName("TD")[n];
-                if (dir == "asc") {
-                    if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                } else if (dir == "desc") {
-                    if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
-                        shouldSwitch = true;
-                        break;
-                    }
-                }
-            }
-            if (shouldSwitch) {
-                rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
-                switching = true;
-                switchcount++;
-            } else {
-                if (switchcount == 0 && dir == "asc") {
-                    dir = "desc";
-                    switching = true;
-                }
-            }
-        }
-    }
-</script>
-
 </html>

@@ -60,8 +60,30 @@ router.get("/dashboard", function(req,res) {
     },(error)=>{
         res.sendFile(error)
     })
+})
 
-
+router.get("/dashboardAPS", function(req,res) {
+    var name = req.session.givenname
+    var org = req.session.org
+    Document.getPre().then((pres) => {
+            User.getAll().then((users) => {
+                Organization.getAll().then((orgs) => {
+                    res.render("dashboardAPS.hbs", {
+                        users,
+                        orgs,
+                        pres,
+                        org,
+                        name
+                    })
+                },(error)=>{
+                    res.sendFile(error)
+                })
+            }, (error) => {
+                res.sendFile(error)
+            })
+    },(error)=>{
+        res.sendFile(error)
+    })
 })
 
 router.get("/regis", function(req, res){

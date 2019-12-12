@@ -117,7 +117,24 @@ router.post("/login", function(req, res){
                             })
                         }
                         else if(newUser.type == "aps"){
-
+                            console.log(newUser.type)
+                            User.getByEmail(user.email).then((user)=>{
+                                req.session.givenname = user.givenname
+                                Document.getPre().then((pres)=>{
+                                        Organization.getAll().then((orgs)=>{
+                                            res.render("dashboardAPS.hbs",{
+                                                orgs, pres,
+                                                org:req.session.org,
+                                                name: req.session.givenname
+                                            })
+                                            // res.redirect("/dashboard")
+                                        }, (error)=>{
+                                            res.sendFile(error)
+                                        })
+                                }, (error)=>{
+                                    res.sendFile(error)
+                                })
+                            })
                         }
                         else if(newUser.type == "adm"){
                             
@@ -190,6 +207,14 @@ router.post("/editUser", function(req,res){
     // .then((user)=>{
     //     res.redirect("/manageOfficers")
     // })
+})
+
+router.get("/viewOfficersAPS", function(req,res){
+    User.getCSO().then((officers)=>{
+        res.render("viewOfficersAPS.hbs", {officers})
+    }, (error)=>{
+        res.sendFile(error)
+    })
 })
 
 module.exports = router

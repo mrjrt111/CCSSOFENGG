@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsDash/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/assetsDash/css/dashboard.css">
-    {{!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <script src="assetsManage/js/jquery.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 </head>
 
 <body id="page-top">
@@ -26,16 +23,10 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar"></ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
                 <div class="d-flex flex-column align-items-xl-center" id="sidebarOptions"><span id="viewOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">VIEW</span>
-                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/docu/viewDocs'">View all documents</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">View all officers</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/org/viewOrgs'">View all organizations</span></div>
+                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/docu/viewPreActs'">View all documents</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/user/viewOfficersAPS'">View all officers</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/org/viewOrgsAPS'">View all organizations</span></div>
                     <span
                         id="encodeOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ENCODE</span>
-                        <div id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/docu/encode'">Encode PREACTS</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</span></div>
-                        <span
-                            id="manageOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">MANAGE</span>
-                            <div id="manageLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/manageOfficers'">Manage Organization</span><span id="addOrgOfficerButt" class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Add Org Officer</span>
-                                <span
-                                    id="addOrgButt" class="option" style="color: rgb(255,255,255);margin: 0px 0px 15px;margin-bottom: 30px;cursor: pointer;">Add Organization</span>
-                            </div>
+                        <div id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" id="encodeAPS" onclick="window.location.href = '/docu/viewEncodeAPS'">Encode PREACTS</span></div>
                 </div>
             </div>
         </nav>
@@ -43,7 +34,7 @@
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
+                        <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button></div>
                         <div><button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button><button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
                     </div>
                 </nav>
@@ -136,7 +127,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each posts}}
+                                        {{#each docus}}
                                             <tr>
                                                 <td>
                                                     {{actName}}
@@ -185,6 +176,42 @@
             </div>
         </div>
     </div>
+    <div class="modal fade" role="dialog" tabindex="-1" id="encodeAPSModal">
+        <div class="modal-dialog" role="document">
+            <form action="/docu/encodeAPS" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                        <h4 class="modal-title" style="color: #205072;">Encode PREACTS</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                    <div class="modal-body">
+                        <div class="table-responsive table-borderless">
+                            <table class="table table-bordered table-sm">
+                                <tbody>
+                                    <tr>
+                                        <td colspan="3">What activity will you encode?</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="flex-grow-1 flex-fill" colspan="3">
+                                            <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                                                <select class="flex-grow-1" id="selectedDoc">
+                                                    <optgroup label="Pre-Acts">
+                                                        {{#each pres}}
+                                                            <option data-id="{{_id}}" value="{{_id}}">{{actName}}</option>
+                                                            {{!-- <option>{{_id}}</option> --}}
+                                                        {{/each}}
+                                                    </optgroup>
+                                                </select>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button><input class="btn btn-primary selectEncode" id="confirmPre" value="Select" data-dismiss="modal" type="submit" style="background-color: #329d9c;"></input></div>
+                </div>
+            </form>
+        </div>
+    </div>
     <div class="modal fade" role="dialog" tabindex="-1" id="addOrgOfficerModal">
         <div class="modal-dialog" role="document">
             <form action="/officer/addofficer" method="POST">
@@ -202,7 +229,7 @@
                         </div>
                     </div>
                     <div class="row d-flex flex-grow-1">
-                        <div class="col d-flex flex-grow-1"><select class="d-flex flex-grow-1" name="type"><optgroup label="This is a group"><option value="aps" selected="">APS</option><option value="adm">ADM</option><option value="admin">Admin</option><option value="orgOfficer">Org Officer</option></optgroup></select></div>
+                        <div class="col d-flex flex-grow-1"><select class="d-flex flex-grow-1" name="type"><optgroup label="This is a group"><option value="moderator" selected="">Moderator</option><option value="admin">Admin</option><option value="orgOfficer">Org Officer</option></optgroup></select></div>
                     </div>
                     <div class="row d-flex flex-grow-1">
                         <div class="col d-flex flex-grow-1">
@@ -217,7 +244,7 @@
                     </div>
                     <div class="row d-flex flex-grow-1">
                         <div class="col d-flex flex-grow-1">
-                            <input class="d-flex flex-grow-1" type="text" name="position" placeholder="Org Position"></div>
+                            <input class="d-flex flex-grow-1" type="text" placeholder="Org Position"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -231,25 +258,25 @@
     <div class="modal fade" role="dialog" tabindex="-1" id="addOrgModal">
         <div class="modal-dialog" role="document">
             <form action="/org/addOrg" method="POST">
-            <div class="modal-content">
-                <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
-                    <h4 class="modal-title">Add Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
-                <div class="modal-body">
-                    <div class="row d-flex flex-grow-1">
-                        <div class="col d-flex flex-grow-1"><input class="d-flex flex-grow-1" type="text" placeholder="Organization Name" name="orgName"></div>
+                <div class="modal-content">
+                    <div class="modal-header" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);color: #205072;">
+                        <h4 class="modal-title">Add Organization</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                    <div class="modal-body">
+                        <div class="row d-flex flex-grow-1">
+                            <div class="col d-flex flex-grow-1"><input class="d-flex flex-grow-1" type="text" placeholder="Organization Name" name="orgName"></div>
+                        </div>
+                        <div class="row d-flex flex-grow-1">
+                            <div class="col d-flex flex-grow-1"><input class="d-flex flex-grow-1" type="text" placeholder="Organization Abbreviation" name="abbrev"></div>
+                        </div>
+                        <div class="row d-flex flex-grow-1">
+                            <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" placeholder="Description of Organization" name="description"></div>
+                        </div>
                     </div>
-                    <div class="row d-flex flex-grow-1">
-                        <div class="col d-flex flex-grow-1"><input class="d-flex flex-grow-1" type="text" placeholder="Organization Abbreviation" name="abbrev"></div>
-                    </div>
-                    <div class="row d-flex flex-grow-1">
-                        <div class="col d-flex flex-grow-1"><input class="flex-grow-1" type="text" placeholder="Description of Organization" name="description"></div>
+                    <div class="modal-footer">
+                        <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
+                        <input class="btn btn-primary" type="submit" value="Confirm" style="background-color: #329d9c;">
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <button class="btn btn-light" type="button" data-dismiss="modal">Close</button>
-                    <input class="btn btn-primary" type="submit" value="Confirm" style="background-color: #329d9c;">
-                </div>
-            </div>
             </form>
         </div>
     </div>
@@ -310,14 +337,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    } );
-
-    </script>
-
     <script src="/assetsDash/js/jquery.min.js"></script>
     <script src="/assetsDash/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>

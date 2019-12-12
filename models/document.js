@@ -15,6 +15,8 @@ var documentSchema = mongoose.Schema({
     dateRec: Date,
     firstCheck: String,
     firstDate: Date,
+    secondCheck: String,
+    secondDate: Date,
     date: Date,
     startTime: String,
     endTime: String,
@@ -59,7 +61,7 @@ exports.delete = function (id){
 
 exports.edit = function(oldContent, newContent){
     return new Promise(function(resolve,reject){
-        Document.findOneAndUpdate(oldContent, newContent).then(()=>{
+        Document.findOneAndUpdate(oldContent, newContent).then((docu)=>{
             console.log("Update: ", docu)
         })
     })

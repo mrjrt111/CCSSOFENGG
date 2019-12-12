@@ -218,12 +218,65 @@ router.post("/editDocs", (req,res)=>{
     })
 })
 
+// router.post("/encodeAPS", (req, res)=>{
+//     let id = req.body.id
+//     let recBy = req.body.recBy
+//     let dateRec = req.body.dateRec
+//     let firstCheck = req.body.firstCheck
+//     let firstDate = req.body.firstDate
+//     let secondCheck = req.body.secondCheck
+//     let secondDate = req.body.secondDate
+//     let filedBy = req.body.filedBy
+//     let fileDate = req.body.fileDate
+//     let status = req.body.status
+//     let remarks = req.body.remarks
+
+//     Document.edit({_id:id}, {recBy:recBy, dateRec:dateRec, firstCheck:firstCheck, firstDate:firstDate, secondCheck:secondCheck, secondDate:secondDate, filedBy:filedBy, fileDate:fileDate, status:status,remarks:remarks}).then((docu)=>{
+//         res.redirect("/viewPreActs")
+//     }, (error)=>{
+//         res.sendFile(error)
+//     })
+// })
+
+// router.post("/encodeAPS", (req,res)=>{
+//     let id = req.body.id
+
+//     Document.get(id).then((docu)=>{
+//         console.log(docu)
+//         res.render("encodeAPS.hbs", {docu})
+//     },(error)=>{
+//         res.sendFile(error)
+//     })
+// })
+
+router.get("/viewEncodeAPS", (req,res)=>{
+    res.render("encodeAPS.hbs")
+})
+
 router.get("/viewDocs", (req,res)=>{
     var org = req.session.org
     Document.getAll().then((docus)=>{
         Organization.getAll().then((orgs)=>{
             res.render("viewDocs.hbs", {
                 docus, orgs
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
+router.get("/viewPreActs", (req,res)=>{
+    Document.getPre().then((pres)=>{
+        Organization.getAll().then((orgs)=>{
+            User.getCSO().then((cso)=>{
+                res.render("viewPreActs.hbs", {
+                    pres, orgs, cso
+                })
+            },(error)=>{
+                res.sendFile(error)
             })
         }, (error)=>{
             res.sendFile(error)
