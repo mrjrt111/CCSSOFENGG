@@ -138,7 +138,24 @@ router.post("/login", function(req, res){
                             })
                         }
                         else if(newUser.type == "adm"){
-                            
+                            console.log(newUser.type)
+                            User.getByEmail(user.email).then((user)=>{
+                                req.session.givenname = user.givenname
+                                Document.getPost().then((posts)=>{
+                                        Organization.getAll().then((orgs)=>{
+                                            res.render("dashboardADM.hbs",{
+                                                orgs, posts,
+                                                org:req.session.org,
+                                                name: req.session.givenname
+                                            })
+                                            // res.redirect("/dashboard")
+                                        }, (error)=>{
+                                            res.sendFile(error)
+                                        })
+                                }, (error)=>{
+                                    res.sendFile(error)
+                                })
+                            })
                         }
                         else if(newUser.type == "orgOfficer"){
                             User.getByEmail(user.email).then((user)=>{
@@ -247,6 +264,14 @@ router.post("/editUser", function(req,res){
 router.get("/viewOfficersAPS", function(req,res){
     User.getCSO().then((officers)=>{
         res.render("viewOfficersAPS.hbs", {officers})
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
+router.get("/viewOfficersADM", function(req,res){
+    User.getCSO().then((officers)=>{
+        res.render("viewOfficersADM.hbs", {officers})
     }, (error)=>{
         res.sendFile(error)
     })

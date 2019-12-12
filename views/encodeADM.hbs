@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Encode Pre-Acts</title>
+    <title>Encode Post-Acts</title>
     <link rel="stylesheet" href="/assetsEncode/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsEncode/fonts/fontawesome-all.min.css">
@@ -18,16 +18,16 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                            <div class="input-group"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboardAPS'">Back</button></div>
+                            <div class="input-group"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboardADM'">Back</button></div>
                         </form>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span id="orgNameTitle" style="font-size: 28px;color: #205072;">CSO - APS</span></li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span id="orgNameTitle" style="font-size: 28px;color: #205072;">CSO - ADM</span></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-1" id="encodePreactsHeader">Encode PREACTS</h3>
-                    <h3 class="text-dark" id="encodePostactsHeader" style="font-size: 28px; display: none;">Encode POSTACTS</h3>
+                    <h3 class="text-dark mb-1" id="encodePreactsHeader">Encode POSTACTS</h3>
+                    <h3 class="text-dark" id="encodePostactsHeader" style="font-size: 28px; display: none;">Encode PREACTS</h3>
                 </div>
             </div>
         </div>
@@ -57,11 +57,11 @@
                                 <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
                                     <select class="flex-grow-1" id="status">
                                         <optgroup label="Status">
-                                            <option selected="">Early Approved</option>
-                                            <option>Late Approved</option>
+                                            <option selected="">Early Complete</option>
+                                            <option>Early Incomplete</option>
+                                            <option>Late Incomplete</option>
                                             <option>Pended</option>
-                                            <option>No Status</option>
-                                            <option>Denied</option>
+                                            <option>Acknowledged Cancellation</option>
                                         </optgroup>
                                     </select>
                                 </div>
@@ -189,7 +189,7 @@
                 console.log(dateRec)
                 console.log(remarks)
                 $.ajax({
-                url: "/docu/encodeAPS",
+                url: "/docu/encodeADM",
                 method: "post",
                 data: {
                     id: id,
@@ -206,11 +206,11 @@
                 },
                 success: function(result){
                     alert("Document encoded!")
-                    window.location.href  = "/dashboardAPS"
+                    window.location.href  = "/dashboardADM"
                     },
                 error: function(jqXHR, exception){
                     alert("Document encoded!")
-                    window.location.href  = "/dashboardAPS"
+                    window.location.href  = "/dashboardADM"
                 }
                 })
         })

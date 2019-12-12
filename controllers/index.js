@@ -86,6 +86,30 @@ router.get("/dashboardAPS", function(req,res) {
     })
 })
 
+router.get("/dashboardADM", function(req,res) {
+    var name = req.session.givenname
+    var org = req.session.org
+    Document.getPost().then((posts) => {
+            User.getAll().then((users) => {
+                Organization.getAll().then((orgs) => {
+                    res.render("dashboardADM.hbs", {
+                        users,
+                        orgs,
+                        posts,
+                        org,
+                        name
+                    })
+                },(error)=>{
+                    res.sendFile(error)
+                })
+            }, (error) => {
+                res.sendFile(error)
+            })
+    },(error)=>{
+        res.sendFile(error)
+    })
+})
+
 router.get("/regis", function(req, res){
     Organization.getAll().then((orgs)=>{
         res.render("register.hbs",{

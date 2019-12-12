@@ -6,11 +6,6 @@ $(".deleteButt").click(function(){
   $("#deleteOfficerModal").modal("show");
   });
 
-$("#encodePreButt").click(function(){
-  $("#encodeAPSModal").modal("show");
-});
-
-
 $("#blacklistWhitelistButt").click(function(){
   $("#blacklistWhitelistOfficerModal").modal("show");
   });
