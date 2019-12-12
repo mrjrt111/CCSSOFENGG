@@ -1,0 +1,149 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Blank Page - Brand</title>
+    <link rel="stylesheet" href="/assetsEncode/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="/assetsEncode/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="/assetsEncode/css/Contact-Form-Clean.css">
+</head>
+
+<body id="page-top">
+<div id="wrapper">
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
+                <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                    <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                        <div class="input-group"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button></div>
+                    </form>
+                    <ul class="nav navbar-nav flex-nowrap ml-auto">
+                        <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span id="orgNameTitle" style="font-size: 28px;color: #205072;">&lt;ORG NAME HERE&gt;</span></li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container-fluid">
+                <h3 class="text-dark" id="encodePostactsHeader" style="font-size: 28px;">Encode POSTACTS</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
+<form action="/docu/addDocu" method="POST">
+    <div class="border rounded-0 shadow flex-column flex-grow-1 justify-content-between visible" id="encodePostactsForm" style="height: 100%;margin: 30px;margin-top: 0px;width: 95%;padding: 15px;/*display: none;*/">
+        <div class="table-responsive table-borderless">
+            <table class="table table-bordered table-sm">
+                <tbody>
+                <tr></tr>
+                <tr>
+                    <td>Organization</td>
+                    <td>Term</td>
+                    <td>Activity Name</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                            <select class="flex-grow-1" name="org">
+                                <optgroup label="Organizations">
+                                        <option>{{org.abbrev}}</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                            <select class="flex-grow-1" name="term">
+                                <optgroup label="Term">
+                                    <option value="1" selected="">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">Termlong</option>
+                                    <option value="5">Yearlong</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="actName"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Type of Submission</td>
+                    <td>Nature of Activity</td>
+                    <td>Type of Activity</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                            <select class="flex-grow-1" name="subType">
+                                <optgroup label="Type of Submission">
+                                    <option selected="">Initial</option>
+                                    <option>Pended</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                            <select class="flex-grow-1" name="nature">
+                                <optgroup label="Nature">
+                                    <option selected="">Academic</option>
+                                    <option>Special Interest</option>
+                                    <option>Departmental Initiative</option>
+                                    <option>Fundraising</option>
+                                    <option>Community Development</option>
+                                    <option>Organizational Development</option>
+                                    <option>Issue Advocacy</option>
+                                    <option>Lasallian Formation / Spiritual Growth</option>
+                                    <option>Outreach</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="actType"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Linkages/ Tie-ups</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start"><input class="d-xl-flex flex-grow-1 flex-fill" type="text" name="tieUp"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Submitted by</td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="d-xl-flex flex-grow-1 flex-fill justify-content-xl-start">
+                            <select class="flex-grow-1" name="subBy">
+                                <optgroup label="Submitted By">
+                                    {{#each officers}}
+                                        <option>{{givenname}} {{lastname}}</option>
+                                    {{/each}}
+                                </optgroup>
+                            </select>
+                        </div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <input type="hidden" name="docuType" value="Post-Acts">
+    <div class="row" style="margin: 0px;">
+        <div class="col" style="padding: 0px 30px;"><input type="submit" value="Encode" class="btn btn-primary float-right" type="button" style="margin-left: 0px;margin-right: 0px;margin-bottom: 30px;background-color: #329d9c;"></input></div>
+    </div>
+</form>>
+<script src="/assetsEncode/js/jquery.min.js"></script>
+<script src="/assetsEncode/bootstrap/js/bootstrap.min.js"></script>
+<script src="/assetsEncode/js/hiding%20form%20div.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+<script src="/assetsEncode/js/theme.js"></script>
+</body>
+
+</html>
