@@ -273,25 +273,22 @@ router.post("/editDocs", (req,res)=>{
     })
 })
 
-// router.post("/encodeAPS", (req, res)=>{
-//     let id = req.body.id
-//     let recBy = req.body.recBy
-//     let dateRec = req.body.dateRec
-//     let firstCheck = req.body.firstCheck
-//     let firstDate = req.body.firstDate
-//     let secondCheck = req.body.secondCheck
-//     let secondDate = req.body.secondDate
-//     let filedBy = req.body.filedBy
-//     let fileDate = req.body.fileDate
-//     let status = req.body.status
-//     let remarks = req.body.remarks
+router.post("/encodeAPS", (req, res)=>{
+    let id = req.body.id
+    let recBy = req.body.recBy
+    let dateRec = req.body.dateRec
+    let firstCheck = req.body.firstCheck
+    let firstDate = req.body.firstDate
+    let secondCheck = req.body.secondCheck
+    let secondDate = req.body.secondDate
+    let filedBy = req.body.filedBy
+    let fileDate = req.body.fileDate
+    let status = req.body.status
+    let remarks = req.body.remarks
 
-//     Document.edit({_id:id}, {recBy:recBy, dateRec:dateRec, firstCheck:firstCheck, firstDate:firstDate, secondCheck:secondCheck, secondDate:secondDate, filedBy:filedBy, fileDate:fileDate, status:status,remarks:remarks}).then((docu)=>{
-//         res.redirect("/viewPreActs")
-//     }, (error)=>{
-//         res.sendFile(error)
-//     })
-// })
+    Document.edit({_id:id}, {recBy:recBy, dateRec:dateRec, firstCheck:firstCheck, firstDate:firstDate, secondCheck:secondCheck, secondDate:secondDate, filedBy:filedBy, fileDate:fileDate, status:status,remarks:remarks})
+    res.redirect("/viewPreActs")
+})
 
 // router.post("/encodeAPS", (req,res)=>{
 //     let id = req.body.id
@@ -305,7 +302,16 @@ router.post("/editDocs", (req,res)=>{
 // })
 
 router.get("/viewEncodeAPS", (req,res)=>{
-    res.render("encodeAPS.hbs")
+    User.getCSO().then((users)=>{
+        Document.getAll().then((docus)=>{
+            console.log(docus)
+            res.render("encodeAPS.hbs", {docus, users})
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
 })
 
 router.get("/viewDocs", (req,res)=>{

@@ -10,9 +10,6 @@ $("#encodePreButt").click(function(){
   $("#encodeAPSModal").modal("show");
 });
 
-$("#confirmPre").click(function(){
-  $("#editDocAPSModal").modal("show");
-});
 
 $("#blacklistWhitelistButt").click(function(){
   $("#blacklistWhitelistOfficerModal").modal("show");
