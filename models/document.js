@@ -107,6 +107,27 @@ exports.getPre = function(){
     })
 }
 
+exports.getPreOrg = function(org){
+    return new Promise(function(resolve,reject){
+        Document.find({docuType:'Pre-Acts', org:org}).then((pres)=>{
+            resolve(pres)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}
+
+exports.getPostOrg = function(org){
+    return new Promise(function(resolve,reject){
+        Document.find({docuType:'Post-Acts', org:org}).then((posts)=>{
+            resolve(posts)
+        },(err)=>{
+            reject(err)
+        })
+    })
+}
+
+
 exports.getPost = function(){
     return new Promise(function(resolve,reject){
         Document.find({docuType:'Post-Acts'}).then((posts)=>{

@@ -14,15 +14,18 @@ const urlencoder = bodyparser.urlencoded({
 router.use(urlencoder)
 
 router.get("/encode", (req, res)=>{
+    var type = req.session.type
+    var org = req.session.org
+    if(type === "orgOfficer"){
     User.getCSO().then((users)=>{
         console.log(users)
-        Organization.getAll().then((orgs)=>{
-            console.log(orgs)
+        Organization.getOrg(org).then((org)=>{
+            console.log(org)
             User.getOfficers().then((officers)=>{
                 console.log(officers)
                 Document.getAll().then((docus)=>{
-                    res.render("encode.hbs", {
-                        orgs, users, officers, docus
+                    res.render("encodePreOfficer.hbs", {
+                        org, users, officers, docus
                     })
                 }, (error)=>{
                     res.sendFile(error)
@@ -36,33 +39,85 @@ router.get("/encode", (req, res)=>{
     }, (error)=>{
         res.sendFile(error)
     })
-    
+    }
+    else {
+        User.getCSO().then((users)=>{
+            console.log(users)
+            Organization.getAll().then((orgs)=>{
+                console.log(orgs)
+                User.getOfficers().then((officers)=>{
+                    console.log(officers)
+                    Document.getAll().then((docus)=>{
+                        res.render("encode.hbs", {
+                            orgs, users, officers, docus
+                        })
+                    }, (error)=>{
+                        res.sendFile(error)
+                    })
+                },(error)=>{
+                    res.sendFile(error)
+                })
+            }, (error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }
 })
 
 router.get("/encodePost", (req, res)=>{
-    User.getCSO().then((users)=>{
-        console.log(users)
-        Organization.getAll().then((orgs)=>{
-            console.log(orgs)
-            User.getOfficers().then((officers)=>{
-                console.log(officers)
-                Document.getAll().then((docus)=>{
-                    res.render("encodePost.hbs", {
-                        orgs, users, officers, docus
+    var type = req.session.type
+    var org = req.session.org
+
+    if(type === "orgOfficer"){
+        User.getCSO().then((users)=>{
+            console.log(users)
+            Organization.getOrg(org).then((org)=>{
+                console.log(org)
+                User.getOfficers().then((officers)=>{
+                    console.log(officers)
+                    Document.getAll().then((docus)=>{
+                        res.render("encodePostOfficer.hbs", {
+                            org, users, officers, docus
+                        })
+                    }, (error)=>{
+                        res.sendFile(error)
                     })
-                }, (error)=>{
+                },(error)=>{
                     res.sendFile(error)
                 })
-            },(error)=>{
+            }, (error)=>{
                 res.sendFile(error)
             })
         }, (error)=>{
             res.sendFile(error)
         })
-    }, (error)=>{
-        res.sendFile(error)
-    })
-    
+    }
+    else{
+        User.getCSO().then((users)=>{
+            console.log(users)
+            Organization.getAll().then((orgs)=>{
+                console.log(orgs)
+                User.getOfficers().then((officers)=>{
+                    console.log(officers)
+                    Document.getAll().then((docus)=>{
+                        res.render("encodePost.hbs", {
+                            orgs, users, officers, docus
+                        })
+                    }, (error)=>{
+                        res.sendFile(error)
+                    })
+                },(error)=>{
+                    res.sendFile(error)
+                })
+            }, (error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }
 })
 
 router.post("/addDocu", (req, res)=>{
@@ -254,18 +309,37 @@ router.get("/viewEncodeAPS", (req,res)=>{
 })
 
 router.get("/viewDocs", (req,res)=>{
+    var type = req.session.type
     var org = req.session.org
-    Document.getAll().then((docus)=>{
-        Organization.getAll().then((orgs)=>{
-            res.render("viewDocs.hbs", {
-                docus, orgs
+
+    if(type === "orgOfficer"){
+        Document.getOrgDocu(org).then((docus)=>{
+            Organization.getAll().then((orgs)=>{
+                res.render("viewDocsOfficer.hbs", {
+                    docus, orgs
+                })
+            }, (error)=>{
+                res.sendFile(error)
             })
         }, (error)=>{
             res.sendFile(error)
         })
-    }, (error)=>{
-        res.sendFile(error)
-    })
+    }
+    else{
+        Document.getAll().then((docus)=>{
+            Organization.getAll().then((orgs)=>{
+                res.render("viewDocs.hbs", {
+                    docus, orgs
+                })
+            }, (error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+
+    }
+
 })
 
 router.get("/viewPreActs", (req,res)=>{
