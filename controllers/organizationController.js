@@ -119,7 +119,8 @@ router.post("/editOrg", function(req,res){
     let id = req.body.id;
     let orgName = req.body.orgName;
     let orgAbb = req.body.orgAbb;
-    
+
+    res.redirect("/manageOfficers")
     Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb, })
     // .then((user)=>{
     //     res.redirect("/manageOfficers")
