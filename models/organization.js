@@ -98,7 +98,7 @@ exports.delete = function (abbrev){
 
 exports.edit = function(oldContent, newContent){
     return new Promise(function(resolve,reject){
-        Organization.findOneAndUpdate(oldContent, newContent).then(()=>{
+        Organization.findOneAndUpdate(oldContent, newContent).then((org)=>{
             console.log("Update: ", org)
         })
     })

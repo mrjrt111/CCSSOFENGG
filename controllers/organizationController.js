@@ -111,7 +111,7 @@ router.post("/deleteOrg", function(req, res) {
 router.post("/deleteIndiv", function(req,res){
     let org = req.body.org
     console.log(org)
-
+    Organization.delete(org)
     res.redirect("/dashboard")
 })
 
@@ -120,7 +120,7 @@ router.post("/editOrg", function(req,res){
     let orgName = req.body.orgName;
     let orgAbb = req.body.orgAbb;
     
-    Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb, })
+    Organization.edit({_id:id}, {orgName:orgName, abbrev:orgAbb})
     // .then((user)=>{
     //     res.redirect("/manageOfficers")
     // })
