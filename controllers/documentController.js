@@ -259,19 +259,46 @@ router.post("/delete", (req,res)=>{
     res.redirect("/dashboard")
 })
 
-router.post("/editDocs", (req,res)=>{
-    let id = req.body.id;
-    let org = req.body.org;
+router.post("/edit", (req,res)=>{
+    let id = req.body.editId;
+    console.log(id)
+
+    Document.get(id).then((docu)=>{
+        console.log(docu)
+        res.render("editDocument.hbs", {docu, id})
+    })
+})
+
+router.post("/editDocs",async (req,res)=>{
+    let id = req.body.editId;
+    console.log(id)
     let actName = req.body.actName;
+    let org = req.body.org;
     let actType = req.body.actType;
     let nature = req.body.nature;
     let venue = req.body.venue;
-    let isOnline = req.body.isOnline;
-    let inGOSM = req.body.inGOSM;
+    let term = req.body.term;
+    let subType = req.body.subType;
+    let subBy = req.body.subBy;
+    let recBy = req.body.recBy;
+    let dateRec = req.body.dateRec;
+    let firstCheck = req.body.firstCheck;
+    let firstDate = req.body.firstDate;
+    let date = req.body.date;
+    let startTime = req.body.startTime;
+    let endTime = req.body.endTime;
+    let ENP = req.body.ENP;
+    let ENMP = req.body.ENMP;
+    let filedBy = req.body.filedBy;
+    let fileDate = req.body.fileDate;
+    let remarks = req.body.remarks;
+    let tieUp = req.body.tieUp;
+    let status = req.body.status
 
-    Document.edit({_id:id}, {org:org, actName:actName, actType:actType, nature:nature, venue:venue, isOnline:isOnline, inGOSM:inGOSM}).then((docu)=>{
-        res.redirect("/viewDocs")
-    })
+    console.log("pota")
+    res.redirect("/dashboard")
+
+    await Document.edit({_id:id}, {org:org, actName:actName, actType:actType, nature:nature, venue:venue, term: term, subType:subType, subBy:subBy, recBy:recBy, dateRec:dateRec, firstCheck:firstCheck, firstDate:firstDate, date:date, startTime:startTime, endTime:endTime, ENP:ENP, ENMP:ENMP, fileDate:fileDate, filedBy:filedBy, remarks:remarks,tieUp:tieUp,status:status})
 })
 
 router.post("/encodeAPS", (req, res)=>{

@@ -65,6 +65,7 @@
                                     </thead>
                                     <tbody>
                                         {{#each docus}}
+                                        <form action="/docu/edit" method="POST">
                                         <tr data-id="{{_id}}">
                                             <td data-id="{{_id}}">{{actName}}</td>
                                             <td data-id="{{_id}}">{{docuType}}</td>
@@ -75,10 +76,12 @@
                                             <td data-id="{{_id}}">{{startTime}} - {{endTime}}</td>
                                             <td data-id="{{_id}}">{{ENP}}</td>
                                             <td data-id="{{_id}}">{{ENMP}}</td>
+                                            <input type="text" value="{{_id}}" name="editId">
                                             <td class="d-xl-flex justify-content-xl-center align-items-xl-center">
                                                 <div class="dropdown show"><button class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="editDeleteButt" type="button" style="background-color: rgb(50,157,156);">...</button>
                                                     <div class="dropdown-menu"
-                                                        role="menu"><a class="dropdown-item editButt" role="presentation" href="#">Edit</a>
+                                                        role="menu">
+                                                        <button class="dropdown-item editDocButt" type="submit" role="presentation" href="#" data-id="{{_id}}">Edit</button>
                                                         <button class="dropdown-item deleteButt" role="presentation" id="deleteButt" data-id="{{_id}}" href="#">Delete</button></div>
                                                 </div>
                                             </td>
@@ -105,6 +108,7 @@
                                                 </div>
                                             </div>
                                         </tr>
+                                        </form>
                                         {{/each}}
                                     </tbody>
                                     <tfoot>
@@ -504,6 +508,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="/assetsLog/js/theme.js"></script>
 </body>
+
+{{!-- <script>
+    $(document).ready(function(){
+        $("button.editDocButt").click(function(){
+            let id = $(this).attr("data-id")
+            window.location.href  = "/docu/encode"
+        })
+
+    })
+</script> --}}
+
 <script>
     $(document).ready(function(){
         // $('button.dropdown-item').click(function(){
