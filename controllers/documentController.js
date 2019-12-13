@@ -240,6 +240,7 @@ router.post("/addDocu", (req, res)=>{
     //         // res.render("dashboard.hbs")    
     // }
     // else{
+
         Document.create(docu).then((docu)=>{
             console.log(docu)
             req.session.actName = docu.actName
