@@ -94,7 +94,7 @@ router.post("/deleteOrg", function(req, res) {
     // // })
     console.log(abbrev)
     Organization.delete(abbrev)
-    // User.deleteAllOfficers(abbrev)
+    User.deleteAllOfficers(abbrev)
     res.redirect("/dashboard")
 
     //     .then(()=>{
@@ -112,6 +112,7 @@ router.post("/deleteIndiv", function(req,res){
     let org = req.body.org
     console.log(org)
     Organization.delete(org)
+    User.deleteAllOfficers(org)
     res.redirect("/dashboard")
 })
 
