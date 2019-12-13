@@ -32,8 +32,7 @@
                     <span
                         id="encodeOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ENCODE</span>
                         <div id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/docu/encode'">Encode PREACTS</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</span></div>
-                        <span
-                            id="manageOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">MANAGE</span>
+<!--                        <span id="manageOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">MANAGE</span>-->
                             <div id="manageLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/manageOfficers'">Manage Organization</span><span id="addOrgOfficerButt" class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Add Org Officer</span>
                                 <span
                                     id="addOrgButt" class="option" style="color: rgb(255,255,255);margin: 0px 0px 15px;margin-bottom: 30px;cursor: pointer;">Add Organization</span>
@@ -46,11 +45,13 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
                         <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
-                        <div><button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button><button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
+                        <div>
+<!--                            <button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button>-->
+                            <button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4">{{org}} : Status &lt;Whitelisted/Blacklisted&gt;</h3>
+                    <h3 class="text-dark mb-4">{{org}}</h3>
                     <div class="card shadow visibleBody" id="preactsPreview">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 font-weight-bold">Recent Pre-Activity Submissions</p>
@@ -101,19 +102,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
-                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
+<!--                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>-->
                                 </div>
-                                <div class="col-md-6">
-                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
+<!--                                <div class="col-md-6">-->
+<!--                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">-->
+<!--                                        <ul class="pagination">-->
+<!--                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>-->
+<!--                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
+<!--                                            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
+<!--                                            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
+<!--                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
+<!--                                        </ul>-->
+<!--                                    </nav>-->
+<!--                                </div>-->
                             </div>
                         </div>
                     </div>
