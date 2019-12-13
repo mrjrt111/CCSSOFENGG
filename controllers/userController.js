@@ -204,16 +204,15 @@ router.post("/login", function(req, res){
     })
 })
 
-router.post("/getOfficers", function (req,res) {
-    User.getByEmail(user.email).then((user)=>{
-        req.session.givenname = user.givenname
+router.get("/getOfficers", function (req,res) {
+        var org = req.session.org
         User.getOfficerOrg(req.session.org).then((users)=>{
-            res.render("viewOfficers.hbs",{users
+            res.render("viewOfficers.hbs",
+                {users,org
             })
         }, (error)=>{
             res.sendFile(error)
         })
-    })
 })
 
 router.post("/deleteOfficer", function(req, res){

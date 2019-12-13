@@ -139,6 +139,17 @@ exports.getOfficerOrg = function(org){
     })
 }
 
+exports.deleteAllOfficers = function(org){
+    return new Promise(function(resolve, reject){
+        User.remove({org:org}).then(()=>{
+        }, (err)=>{
+            reject(err)
+        })
+    })
+}
+
+
+
 exports.getUser = function(email){
     return new Promise(function(resolve, reject){
         User.findOne({email:email}).then((user)=>{

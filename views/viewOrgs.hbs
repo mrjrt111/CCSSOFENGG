@@ -311,21 +311,21 @@
             console.log(abbrev)
             $("button.confirmDelete").click(function(){
                 console.log("whoa")
-                $.ajax({
-                url: "/org/deleteOrg",
-                method: "post",
-                data: {
-                    abbrev:abbrev
-                },
-                success:function(result){
-                    //if(result.ok == 1){
-                    $("tr[data-id='" + id + "']").remove()
-                    alert("Successfully deleted")
-                    //}else{
-                    //   alert("Something went wrong")
-                    //    }
-                    }
-                })
+                // $.ajax({
+                // url: "/org/deleteOrg",
+                // method: "post",
+                // data: {
+                //     abbrev:abbrev
+                // },
+                // success:function(result){
+                //     //if(result.ok == 1){
+                //     $("tr[data-id='" + id + "']").remove()
+                //     alert("Successfully deleted")
+                //     //}else{
+                //     //   alert("Something went wrong")
+                //     //    }
+                //     }
+                // })
             })    
         })
     })

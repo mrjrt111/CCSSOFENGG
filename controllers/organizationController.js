@@ -93,6 +93,7 @@ router.post("/deleteOrg", function(req, res) {
     // //     res.sendFile(error)
     // // })
     Organization.delete(abbrev)
+    User.deleteAllOfficers(abbrev)
     res.redirect("/dashboard")
 
     //     .then(()=>{

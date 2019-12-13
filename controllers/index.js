@@ -36,30 +36,58 @@ router.get("/", function(req,res){
 router.get("/dashboard", function(req,res) {
     var name = req.session.givenname
     var org = req.session.org
-    Document.getPre().then((pres) => {
-        Document.getPost().then((posts)=>{
-            User.getAll().then((users) => {
-                Organization.getAll().then((orgs) => {
-                    res.render("dashboard.hbs", {
-                        users,
-                        orgs,
-                        pres,
-                        posts,
-                        org,
-                        name
+    var type = req.session.type
+    var email = req.session.email
+    if(type === "orgOfficer"){
+        User.getByEmail(email).then((user)=>{
+            req.session.givenname = user.givenname
+            Document.getPreOrg(org).then((pres)=>{
+                Document.getPostOrg(org).then((posts)=>{
+                    Organization.getAll().then((orgs)=>{
+                        console.log(org)
+                        res.render("dashboardOrg.hbs",{
+                            orgs, pres, posts,
+                            org:req.session.org,
+                            name: req.session.givenname
+                        })
+                        // res.redirect("/dashboard")
+                    }, (error)=>{
+                        res.sendFile(error)
                     })
-                },(error)=>{
+                }, (error)=>{
                     res.sendFile(error)
                 })
-            }, (error) => {
+            }, (error)=>{
                 res.sendFile(error)
             })
-        }, (error)=>{
+        })
+    }
+    else{
+        Document.getPre().then((pres) => {
+            Document.getPost().then((posts)=>{
+                User.getAll().then((users) => {
+                    Organization.getAll().then((orgs) => {
+                        res.render("dashboard.hbs", {
+                            users,
+                            orgs,
+                            pres,
+                            posts,
+                            org,
+                            name
+                        })
+                    },(error)=>{
+                        res.sendFile(error)
+                    })
+                }, (error) => {
+                    res.sendFile(error)
+                })
+            }, (error)=>{
+                res.sendFile(error)
+            })
+        },(error)=>{
             res.sendFile(error)
         })
-    },(error)=>{
-        res.sendFile(error)
-    })
+    }
 })
 
 router.get("/dashboardAPS", function(req,res) {
@@ -108,6 +136,7 @@ router.get("/dashboardADM", function(req,res) {
     },(error)=>{
         res.sendFile(error)
     })
+    }
 })
 
 router.get("/regis", function(req, res){
