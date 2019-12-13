@@ -288,17 +288,12 @@
                     orgAbb: $("input.editAbb").val()
                 },
                 success:function(result){
-                    //if(result.ok === 1){
+                    if(result.ok === 1){
                     alert("Successfully edited")
-                    window.location.href  = "/org/viewOrgs" 
-                    //}else{
-                    //   alert("Something went wrong")
-                    //  }
-                    },
-                    error: function(jqXHR, exception){
-                    alert("Document encoded!")
-                    window.location.href  = "/org/viewOrgs"
-                }
+                    }else{
+                       window.location.href="/org/viewOrgs"
+                        }
+                    }
                 })
             })
         })
