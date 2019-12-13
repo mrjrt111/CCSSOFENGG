@@ -262,7 +262,7 @@ router.post("/editUser", function(req,res){
     let eMail = req.body.eMail;
     let cellNum = req.body.cellNum;
     
-
+    res.redirect("/manageOfficers")
     User.edit({_id:id}, {givenname:fName, lastname:lName, email:eMail, number:cellNum})
     // .then((user)=>{
     //     res.redirect("/manageOfficers")

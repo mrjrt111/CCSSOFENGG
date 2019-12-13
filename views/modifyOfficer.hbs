@@ -19,15 +19,17 @@
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-primary" type="button" style="background-color: #329d9c;" onclick="window.location.href = '/dashboard'">Back</button>
                         <ul class="nav navbar-nav flex-nowrap ml-auto">
-                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">Manage Organization</span></li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation"><span style="font-size: 28px;color: #205072;">List of Officers</span></li>
                         </ul>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4" style="color: #205077;">{{org}}<button class="btn btn-primary float-right" id="addOfficerButt" type="button" style="background-color: #56c596;margin-right: 15px;">Add Officer</button><button class="btn btn-primary float-right" id="addOrgButt"
+                    <h3 class="text-dark mb-4" style="color: #205077;">{{org}}<button class="btn btn-primary float-right" id="addOfficerButt" type="button" style="background-color: #56c596;margin-right: 15px;">Add Officer</button>
+                    {{!-- <button class="btn btn-primary float-right" id="addOrgButt"
                             type="button" style="background-color: #329d9c;margin-right: 15px;">Add Org</button><button class="btn btn-primary float-right" id="deleteOrgPromptButt" type="button" style="background-color: #d48664;margin-right: 15px;">Delete Org</button>
                         <button
-                            class="btn btn-primary float-right" id="blacklistOrgButt" type="button" style="background-color: #948a96;margin-right: 15px;">Blacklist Org</button><span class="float-right" style="margin-right: 30px;"></span></h3>
+                            class="btn btn-primary float-right" id="blacklistOrgButt" type="button" style="background-color: #948a96;margin-right: 15px;">Blacklist Org</button> --}}
+                            <span class="float-right" style="margin-right: 30px;"></span></h3>
                     <div class="card shadow">
                         <div class="card-body">
                             <div class="row">
@@ -372,7 +374,8 @@
                     if(result.ok === 1){
                     alert("Successfully edited")
                     }else{
-                       alert("Something went wrong")
+                        alert("Successfully edited")
+                        window.location.href="/manageOfficers"
                         }
                     }
                 })

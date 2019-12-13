@@ -37,13 +37,13 @@ router.post("/addOfficer", function(req, res){
         console.log(officer.org)
         Officer.create(officer).then((officer)=>{
             console.log(officer)
-            res.redirect("/dashboard")
+            res.redirect("/manageOfficers")
         }, (error)=>{
             res.sendFile(error)
         })
     }
     else {
-        res.redirect("/dashboard")
+        res.redirect("/manageOfficers")
         // Document.getAll().then((docus)=>{
         //     Organization.getAll().then((orgs)=>{
         //         res.render("dashboard.hbs",{

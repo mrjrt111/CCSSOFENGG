@@ -71,13 +71,13 @@ router.post("/addOrg", (req, res)=>{
     {
         console.log(org.orgName)
         Organization.create(org).then((org)=>{
-            res.redirect("/dashboard")
+            res.redirect("/org/viewOrgs")
         }, (error)=>{
             res.sendFile(error)
         })
     }
     else{
-        res.redirect("/dashboard")
+        res.redirect("/org/viewOrgs")
     }
 })
 
