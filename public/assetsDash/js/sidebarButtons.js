@@ -7,6 +7,7 @@ $("#addOrgButt").click(function(){
 $("#selectOrgButt").click(function(){
    $("#selectOrgModal").modal("show"); 
 });
+
 $("#viewOpen").click(function(){
     if($("#viewLinks").hasClass("visible")){
      $("#viewLinks").addClass("hidden");  
@@ -56,12 +57,12 @@ $("#preactsButton").click(function(){
     $("#postactsPreview").addClass("hiddenBody");
     $("#postactsPreview").removeClass("visibleBody");
 });
-$("#postactsButton").click(function(){
-     $("#postactsButton").addClass("selected");  
-     $("#postactsButton").removeClass("unselected");
-      $("#preactsButton").addClass("unselected");  
-    $("#postactsPreview").addClass("visibleBody");
-    $("#postactsPreview").removeClass("hiddenBody");
-    $("#preactsPreview").addClass("hiddenBody");
-     $("#preactsPreview").removeClass("visibleBody");
-});
+// $("#postactsButton").click(function(){
+//      $("#postactsButton").addClass("selected");  
+//      $("#postactsButton").removeClass("unselected");
+//       $("#preactsButton").addClass("unselected");  
+//     $("#postactsPreview").addClass("visibleBody");
+//     $("#postactsPreview").removeClass("hiddenBody");
+//     $("#preactsPreview").addClass("hiddenBody");
+//      $("#preactsPreview").removeClass("visibleBody");
+// });

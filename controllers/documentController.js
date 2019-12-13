@@ -274,6 +274,77 @@ router.post("/editDocs", (req,res)=>{
     })
 })
 
+router.post("/encodeAPS", (req, res)=>{
+    let id = req.body.id
+    let recBy = req.body.recBy
+    let dateRec = req.body.dateRec
+    let firstCheck = req.body.firstCheck
+    let firstDate = req.body.firstDate
+    let secondCheck = req.body.secondCheck
+    let secondDate = req.body.secondDate
+    let filedBy = req.body.filedBy
+    let fileDate = req.body.fileDate
+    let status = req.body.status
+    let remarks = req.body.remarks
+
+    Document.edit({_id:id}, {recBy:recBy, dateRec:dateRec, firstCheck:firstCheck, firstDate:firstDate, secondCheck:secondCheck, secondDate:secondDate, filedBy:filedBy, fileDate:fileDate, status:status,remarks:remarks})
+    res.redirect("/viewPreActs")
+})
+
+router.post("/encodeADM", (req, res)=>{
+    let id = req.body.id
+    let recBy = req.body.recBy
+    let dateRec = req.body.dateRec
+    let firstCheck = req.body.firstCheck
+    let firstDate = req.body.firstDate
+    let secondCheck = req.body.secondCheck
+    let secondDate = req.body.secondDate
+    let filedBy = req.body.filedBy
+    let fileDate = req.body.fileDate
+    let status = req.body.status
+    let remarks = req.body.remarks
+
+    Document.edit({_id:id}, {recBy:recBy, dateRec:dateRec, firstCheck:firstCheck, firstDate:firstDate, secondCheck:secondCheck, secondDate:secondDate, filedBy:filedBy, fileDate:fileDate, status:status,remarks:remarks})
+    res.redirect("/viewPostActs")
+})
+
+// router.post("/encodeAPS", (req,res)=>{
+//     let id = req.body.id
+
+//     Document.get(id).then((docu)=>{
+//         console.log(docu)
+//         res.render("encodeAPS.hbs", {docu})
+//     },(error)=>{
+//         res.sendFile(error)
+//     })
+// })
+
+router.get("/viewEncodeAPS", (req,res)=>{
+    User.getCSO().then((users)=>{
+        Document.getPre().then((docus)=>{
+            console.log(docus)
+            res.render("encodeAPS.hbs", {docus, users})
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
+router.get("/viewEncodeADM", (req,res)=>{
+    User.getCSO().then((users)=>{
+        Document.getPost().then((docus)=>{
+            console.log(docus)
+            res.render("encodeADM.hbs", {docus, users})
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
 router.get("/viewDocs", (req,res)=>{
     var type = req.session.type
     var org = req.session.org
@@ -306,6 +377,42 @@ router.get("/viewDocs", (req,res)=>{
 
     }
 
+})
+
+router.get("/viewPreActs", (req,res)=>{
+    Document.getPre().then((pres)=>{
+        Organization.getAll().then((orgs)=>{
+            User.getCSO().then((cso)=>{
+                res.render("viewPreActs.hbs", {
+                    pres, orgs, cso
+                })
+            },(error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
+})
+
+router.get("/viewPostActs", (req,res)=>{
+    Document.getPost().then((posts)=>{
+        Organization.getAll().then((orgs)=>{
+            User.getCSO().then((cso)=>{
+                res.render("viewPostActs.hbs", {
+                    posts, orgs, cso
+                })
+            },(error)=>{
+                res.sendFile(error)
+            })
+        }, (error)=>{
+            res.sendFile(error)
+        })
+    }, (error)=>{
+        res.sendFile(error)
+    })
 })
 
 router.get("/deleteView", (req,res)=>{

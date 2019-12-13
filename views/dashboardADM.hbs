@@ -9,9 +9,6 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/assetsDash/fonts/fontawesome-all.min.css">
     <link rel="stylesheet" href="/assetsDash/css/dashboard.css">
-    {{!-- <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
-    <script src="assetsManage/js/jquery.min.js"></script>
-    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script> --}}
 </head>
 
 <body id="page-top">
@@ -26,17 +23,10 @@
                 <ul class="nav navbar-nav text-light" id="accordionSidebar"></ul>
                 <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
                 <div class="d-flex flex-column align-items-xl-center" id="sidebarOptions"><span id="viewOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">VIEW</span>
-                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/docu/viewDocs'">View all documents</span>
-                        <span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer"onclick="window.location.href = '/manageOfficers'">View all officers</span>
-                        <span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/org/viewOrgs'">View all organizations</span></div>
+                    <div id="viewLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/docu/viewPostActs'">View all documents</span><span class="option" onclick="window.location.href = '/user/viewOfficersADM'" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">View all officers</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;cursor: pointer;" onclick="window.location.href = '/org/viewOrgsADM'">View all organizations</span></div>
                     <span
                         id="encodeOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">ENCODE</span>
-                        <div id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/docu/encode'">Encode PREACTS</span><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer" onclick="window.location.href = '/docu/encodePost'">Encode POSTACTS</span></div>
-<!--                        <span id="manageOpen" class="bold" style="color: rgb(255,255,255);margin-bottom: 15px; cursor:pointer;">MANAGE</span>-->
-                            <div id="manageLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer" onclick="window.location.href = '/manageOfficers'">Manage Organization</span><span id="addOrgOfficerButt" class="option" style="color: rgb(255,255,255);margin-bottom: 15px;  cursor:pointer">Add Org Officer</span>
-                                <span
-                                    id="addOrgButt" class="option" style="color: rgb(255,255,255);margin: 0px 0px 15px;margin-bottom: 30px;cursor: pointer;">Add Organization</span>
-                            </div>
+                        <div id="encodeLinks" class="hidden"><span class="option" style="color: rgb(255,255,255);margin-bottom: 30px;  cursor:pointer" onclick="window.location.href = '/docu/viewEncodeADM'">Encode POSTACTS</span></div>
                 </div>
             </div>
         </nav>
@@ -44,14 +34,12 @@
             <div id="content">
                 <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top" style="background: linear-gradient(47deg, rgba(207,244,210,1) 0%, rgba(86,197,150,1) 100%);">
                     <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
-                        <div class="btn-group" role="group"><button class="btn btn-primary selected" id="preactsButton" type="button" style="/*background-color: rgb(50,157,156);*/">PREACTS</button><button class="btn btn-primary unselected" id="postactsButton" type="button">POSTACTS</button></div>
-                        <div>
-<!--                            <button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button>-->
-                            <button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
+                        <div class="btn-group" role="group"><button class="btn btn-primary selected" id="postactsButton" type="button">POSTACTS</button></div>
+                        <div><button class="btn btn-primary" id="selectOrgButt" type="button" style="background-color: rgb(50,157,156);margin-right: 15px;">Select Organization</button><button class="btn btn-primary" type="button" style="margin-bottom: 0px;background-color: #d48664;" onclick="window.location.href = '/logout'">Logout</button></div>
                     </div>
                 </nav>
                 <div class="container-fluid">
-                    <h3 class="text-dark mb-4">{{org}}</h3>
+                    <h3 class="text-dark mb-4">{{org}} : Status &lt;Whitelisted/Blacklisted&gt;</h3>
                     <div class="card shadow visibleBody" id="preactsPreview">
                         <div class="card-header py-3">
                             <p class="text-primary m-0 font-weight-bold">Recent Pre-Activity Submissions</p>
@@ -73,7 +61,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each pres}}
+                                        {{#each posts}}
                                             <tr>
                                                 <td>
                                                     {{actName}}
@@ -102,19 +90,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-6 align-self-center">
-<!--                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>-->
+                                    <p id="dataTable_info" class="dataTables_info" role="status" aria-live="polite">Showing 1 to 10 of 27</p>
                                 </div>
-<!--                                <div class="col-md-6">-->
-<!--                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">-->
-<!--                                        <ul class="pagination">-->
-<!--                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>-->
-<!--                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>-->
-<!--                                            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--                                            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
-<!--                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>-->
-<!--                                        </ul>-->
-<!--                                    </nav>-->
-<!--                                </div>-->
+                                <div class="col-md-6">
+                                    <nav class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -139,7 +127,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {{#each posts}}
+                                        {{#each docus}}
                                             <tr>
                                                 <td>
                                                     {{actName}}
@@ -205,7 +193,7 @@
                         </div>
                     </div>
                     <div class="row d-flex flex-grow-1">
-                        <div class="col d-flex flex-grow-1"><select class="d-flex flex-grow-1" name="type"><optgroup label="This is a group"><option value="aps" selected="">APS</option><option value="adm">ADM</option><option value="admin">Admin</option><option value="orgOfficer">Org Officer</option></optgroup></select></div>
+                        <div class="col d-flex flex-grow-1"><select class="d-flex flex-grow-1" name="type"><optgroup label="This is a group"><option value="moderator" selected="">Moderator</option><option value="admin">Admin</option><option value="orgOfficer">Org Officer</option></optgroup></select></div>
                     </div>
                     <div class="row d-flex flex-grow-1">
                         <div class="col d-flex flex-grow-1">
@@ -220,7 +208,7 @@
                     </div>
                     <div class="row d-flex flex-grow-1">
                         <div class="col d-flex flex-grow-1">
-                            <input class="d-flex flex-grow-1" type="text" name="position" placeholder="Org Position"></div>
+                            <input class="d-flex flex-grow-1" type="text" placeholder="Org Position"></div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -313,14 +301,6 @@
             </div>
         </div>
     </div>
-
-    <script>
-    $(document).ready(function() {
-        $('#dataTable').DataTable();
-    } );
-
-    </script>
-
     <script src="/assetsDash/js/jquery.min.js"></script>
     <script src="/assetsDash/bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
