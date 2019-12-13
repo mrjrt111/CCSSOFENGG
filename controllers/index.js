@@ -136,7 +136,6 @@ router.get("/dashboardADM", function(req,res) {
     },(error)=>{
         res.sendFile(error)
     })
-    }
 })
 
 router.get("/regis", function(req, res){
