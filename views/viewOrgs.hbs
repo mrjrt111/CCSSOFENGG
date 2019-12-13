@@ -63,7 +63,7 @@
                                                     <div class="dropdown-menu"
                                                         role="menu">
                                                         <button class="dropdown-item editOrgButt" role="presentation" href="#" data-id="{{_id}}">Edit</button>
-                                                        <button class="dropdown-item deleteOrgButt" role="presentation" href="#" data-id="{{abbrev}}">Delete</button>
+                                                        <button class="dropdown-item deleteThisButt" role="presentation" href="#" data-id="{{_id}}">Delete</button>
                                                         <button class="dropdown-item blacklistWhitelistButt" role="presentation" data-id="{{_id}}" href="#">Blacklist/Whitelist</button></div>
                                                     </div>
                                                 </td>
@@ -204,14 +204,14 @@
 <!--                        <option value="13">This is item 2</option>-->
 <!--                        <option value="14">This is item 3</option>-->
                         {{#each orgs}}
-                            <option value="{{abbrev}}">{{abbrev}}</option>
+                            <option value="{{abbrev}}" data-id="{{_id}}">{{abbrev}}</option>
                         {{/each}}
                     </optgroup>
                     </select>
                 </div>
                 <div class="modal-footer d-xl-flex justify-content-xl-center">
 <!--                    <input class="btn btn-light" id="deleteOrgButt" type="submit" value="Confirm" style="color: rgb(255,255,255);background-color: #329d9c;">-->
-                    <button class="btn btn-light" data-dismiss="modal" id="deleteOrgButt" style="color: rgb(255,255,255);background-color: #329d9c;">Select</button>
+                    <button class="btn btn-light orgDelete" data-dismiss="modal" id="deleteOrgButt" style="color: rgb(255,255,255);background-color: #329d9c;">Select</button>
                     <button class="btn btn-primary" data-dismiss="modal" type="button" style="background-color: #d48664;">Cancel</button>
                 </div>
             </div>
@@ -232,7 +232,7 @@
                 </div>
                 <div class="modal-footer d-xl-flex justify-content-xl-center">
 <!--                                        <input class="btn btn-light"  type="submit" value="Confirm" data-dismiss="modal" style="color: rgb(255,255,255);background-color: #329d9c;">-->
-                    <button id="deleteOrgConfirm" class="btn btn-light" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button>
+                    <button id="deleteOrgConfirm" class="btn btn-light confirmDelete" type="button" data-dismiss="modal" style="background-color: #329d9c;color: rgb(255,255,255);">Confirm</button>
                     <button class="btn btn-primary" type="button" data-dismiss="modal" style="background-color: #d48664;">Cancel</button>
                 </div>
             </div>
@@ -306,18 +306,15 @@
     $(document).ready(function(){
         $("button.deleteOrgButt").click(function(){
             let id = $(this).attr("data-id")
-            var abbrev = $("td[data-id='" + id + "'].orgAbb").text()
-            req.session.abbrev = abbrev
-            var currAbbrev = req.session.abbrev
+            var orgAbbrev = $("td[data-id='" + id + "'].orgAbb").text()
             console.log("NACLICK RIN")
-            console.log(abbrev)
+            console.log(orgAbbrev)
             $("button.confirmDelete").click(function(){
-                console.log(abbrev)
                 $.ajax({
                 url: "/org/deleteOrg",
                 method: "post",
                 data: {
-                    abbrev:id
+                    abbrev:orgAbbrev
                 },
                 success:function(result){
                     //if(result.ok == 1){
@@ -334,6 +331,35 @@
 </script>
 
 <script>
+    
+    $(document).ready(function(){
+        $("button.deleteThisButt").click(function(){
+            let id = $(this).attr("data-id")
+            var abbrev = $("td[data-id='" + id + "'].orgAbb").text()
+            console.log("NACLICK RIN")
+            console.log(abbrev)
+            $("button.confirmDelete").click(function(){
+                $.ajax({
+                url: "/org/deleteIndiv",
+                method: "post",
+                data: {
+                    org:abbrev
+                },
+                success:function(result){
+                    //if(result.ok == 1){
+                    $("tr[data-id='" + id + "']").remove()
+                    alert("Successfully deleted")
+                    //}else{
+                    //   alert("Something went wrong")
+                    //    }
+                    }
+                })
+            })
+        })
+    })
+</script>
+
+{{!-- <script>
     $(document).ready(function () {
         document.getElementById("deleteOrgConfirm").addEventListener("click", function() {
             let org = $('#orgOpt :selected').text();
@@ -351,7 +377,7 @@
             })
         });
     })
-</script>
+</script> --}}
 
 <script>
     $(document).ready(function(){
@@ -406,6 +432,31 @@
                 success: function(result){
                     alert("Organization status updated!")
                     window.location.href  = "/org/viewOrgs"
+                    }
+                })
+            })
+        })
+    })
+</script>
+
+<script>
+    $(document).ready(function(){
+        $("button.orgDelete").click(function(){
+            let dOrg = $('#orgOpt :selected').text()
+            let id = $('#orgOpt').find(':selected').data('id')
+            console.log(dOrg)
+            console.log(id)
+            $("button.confirmDelete").click(function(){
+                console.log("aguy")
+                $.ajax({
+                url: "/org/deleteOrg",
+                method: "post",
+                data: {
+                    abbrev: dOrg
+                },
+                success: function(result){
+                    $("tr[data-id='" + id + "']").remove()
+                    alert("Successfully deleted")
                     }
                 })
             })

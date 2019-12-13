@@ -92,8 +92,9 @@ router.post("/deleteOrg", function(req, res) {
     // // },(error)=>{
     // //     res.sendFile(error)
     // // })
+    console.log(abbrev)
     Organization.delete(abbrev)
-    User.deleteAllOfficers(abbrev)
+    // User.deleteAllOfficers(abbrev)
     res.redirect("/dashboard")
 
     //     .then(()=>{
@@ -105,6 +106,13 @@ router.post("/deleteOrg", function(req, res) {
     //     })
     //     })
     // })
+})
+
+router.post("/deleteIndiv", function(req,res){
+    let org = req.body.org
+    console.log(org)
+
+    res.redirect("/dashboard")
 })
 
 router.post("/editOrg", function(req,res){

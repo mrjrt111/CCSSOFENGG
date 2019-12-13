@@ -38,7 +38,7 @@ router.post("/register", function(req, res){
                 Officer.delete(user.email)
                 console.log(user)
                 req.session.email = user.email
-                res.redirect("/dashboard")
+                res.redirect("/")
                 // res.render("dashboard.hbs")
             }, (error)=>{
                 res.sendFile(error)
@@ -79,12 +79,21 @@ router.post("/login", function(req, res){
         if(newUser){
             BList.authenticate(blacklist).then((newBList)=>{
                 BlOrg.authenticate(bOrg).then((newBOrg)=>{
-                    if(newBList || newBOrg){
+                    if(newBList){
                         Organization.getAll().then((orgs)=>{
                             console.log("LOGGED IN " + orgs)
                             res.render("login.hbs",{orgs,
             
                                 error:2
+                            })
+                        })
+                    }
+                    else if(newBOrg){
+                        Organization.getAll().then((orgs)=>{
+                            console.log("LOGGED IN " + orgs)
+                            res.render("login.hbs",{orgs,
+            
+                                error:3
                             })
                         })
                     }
